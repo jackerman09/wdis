@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130920225139) do
+ActiveRecord::Schema.define(version: 20130920225749) do
 
   create_table "microposts", force: true do |t|
     t.string   "content"
@@ -21,6 +21,32 @@ ActiveRecord::Schema.define(version: 20130920225139) do
   end
 
   add_index "microposts", ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
+
+  create_table "players", force: true do |t|
+    t.string   "last_name"
+    t.string   "first_name"
+    t.string   "position"
+    t.integer  "team"
+    t.decimal  "pts_week_1"
+    t.decimal  "pts_week_2"
+    t.decimal  "pts_week_3"
+    t.decimal  "pts_week_4"
+    t.decimal  "pts_week_5"
+    t.decimal  "pts_week_6"
+    t.decimal  "pts_week_7"
+    t.decimal  "pts_week_8"
+    t.decimal  "pts_week_9"
+    t.decimal  "pts_week_10"
+    t.decimal  "pts_week_11"
+    t.decimal  "pts_week_12"
+    t.decimal  "pts_week_13"
+    t.decimal  "pts_week_14"
+    t.decimal  "pts_week_15"
+    t.decimal  "pts_week_16"
+    t.decimal  "pts_week_17"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "relationships", force: true do |t|
     t.integer  "follower_id"

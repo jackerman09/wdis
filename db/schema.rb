@@ -11,7 +11,48 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130920225749) do
+ActiveRecord::Schema.define(version: 20130920230107) do
+
+  create_table "matchups", force: true do |t|
+    t.integer  "player_1"
+    t.integer  "player_2"
+    t.integer  "pts_player_1_week_1"
+    t.integer  "pts_player_1_week_2"
+    t.integer  "pts_player_1_week_3"
+    t.integer  "pts_player_1_week_4"
+    t.integer  "pts_player_1_week_5"
+    t.integer  "pts_player_1_week_6"
+    t.integer  "pts_player_1_week_7"
+    t.integer  "pts_player_1_week_8"
+    t.integer  "pts_player_1_week_9"
+    t.integer  "pts_player_1_week_10"
+    t.integer  "pts_player_1_week_11"
+    t.integer  "pts_player_1_week_12"
+    t.integer  "pts_player_1_week_13"
+    t.integer  "pts_player_1_week_14"
+    t.integer  "pts_player_1_week_15"
+    t.integer  "pts_player_1_week_16"
+    t.integer  "pts_player_1_week_17"
+    t.integer  "pts_player_2_week_1"
+    t.integer  "pts_player_2_week_2"
+    t.integer  "pts_player_2_week_3"
+    t.integer  "pts_player_2_week_4"
+    t.integer  "pts_player_2_week_5"
+    t.integer  "pts_player_2_week_6"
+    t.integer  "pts_player_2_week_7"
+    t.integer  "pts_player_2_week_8"
+    t.integer  "pts_player_2_week_9"
+    t.integer  "pts_player_2_week_10"
+    t.integer  "pts_player_2_week_11"
+    t.integer  "pts_player_2_week_12"
+    t.integer  "pts_player_2_week_13"
+    t.integer  "pts_player_2_week_14"
+    t.integer  "pts_player_2_week_15"
+    t.integer  "pts_player_2_week_16"
+    t.integer  "pts_player_2_week_17"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "microposts", force: true do |t|
     t.string   "content"

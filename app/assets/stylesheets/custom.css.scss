@@ -260,5 +260,41 @@ aside {
 
 .playerpic {
   border-radius: 2px;
-  
+}
+
+.mp {
+
+}
+
+.mpimage {
+  width: 400px;
+  height: 250px;
+  overflow: hidden;
+  border-radius: 2px;
+  // box-shadow: 0 5px 0 0 #e9edee, 0 5px 0 2px #ccd2d2, 0 12px 20px 6px #d5dbdb;
+  // -webkit-tap-highlight-color: rgba(black, 0);
+  position: relative;
+  &:active {
+    top: 2px;
+    
+    box-shadow: 0 5px 0 3px #ccd2d2, 0 7px 20px 6px #d5dbdb;
+  }
+}
+
+* {box-sizing: border-box;}
+
+#mpimage1 {
+
+}
+
+#mpimage2 {
+  margin-left: 20px;
+}
+
+#mpts1 {
+
+}
+
+#mpts2 {
+  margin-left: 50px;
 }

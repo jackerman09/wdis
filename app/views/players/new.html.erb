@@ -16,11 +16,14 @@
       <%= f.text_field :position %>
 
       <%= f.label :team %>
-      <% unless @team.nil? %>
-        <%= f.text_field :team, value: @team.name %>
-      <% else %>
-        <%= f.text_field :team %>
+      <% if false %>
+        <% unless @team.nil? %>
+          <%= f.text_field :team, value: @team.name %>
+        <% else %>
+          <%= f.text_field :team %>
+        <% end %>
       <% end %>
+      <%= f.collection_select :team_id, Team.all, :id, :name, {}, { :multiple => false } %>
 
       <%= f.submit "Add a Player", class: "btn btn-large btn-primary" %>
     <% end %>

@@ -13,55 +13,55 @@
       <%= f.text_field :location %>
 
       <%= f.label :opp_week_1, 'Week 1 Opponent' %>
-      <%= f.text_field :opp_week_1 %>
+      <%= f.collection_select :opp_week_1, Team.all, :id, :name, {}, { :multiple => false } %>
 
       <%= f.label :opp_week_2, 'Week 2 Opponent' %>
-      <%= f.text_field :opp_week_2 %>
+      <%= f.collection_select :opp_week_2, Team.all, :id, :name, {}, { :multiple => false } %>
 
       <%= f.label :opp_week_3, 'Week 3 Opponent' %>
-      <%= f.text_field :opp_week_3 %>
+      <%= f.collection_select :opp_week_3, Team.all, :id, :name, {}, { :multiple => false } %>
 
       <%= f.label :opp_week_4, 'Week 4 Opponent' %>
-      <%= f.text_field :opp_week_4 %>
+      <%= f.collection_select :opp_week_4, Team.all, :id, :name, {}, { :multiple => false } %>
 
       <%= f.label :opp_week_5, 'Week 5 Opponent' %>
-      <%= f.text_field :opp_week_5 %>
+      <%= f.collection_select :opp_week_5, Team.all, :id, :name, {}, { :multiple => false } %>
 
       <%= f.label :opp_week_6, 'Week 6 Opponent' %>
-      <%= f.text_field :opp_week_6 %>
+      <%= f.collection_select :opp_week_6, Team.all, :id, :name, {}, { :multiple => false } %>
 
       <%= f.label :opp_week_7, 'Week 7 Opponent' %>
-      <%= f.text_field :opp_week_7 %>
+      <%= f.collection_select :opp_week_7, Team.all, :id, :name, {}, { :multiple => false } %>
 
       <%= f.label :opp_week_8, 'Week 8 Opponent' %>
-      <%= f.text_field :opp_week_8 %>
+      <%= f.collection_select :opp_week_8, Team.all, :id, :name, {}, { :multiple => false } %>
 
       <%= f.label :opp_week_9, 'Week 9 Opponent' %>
-      <%= f.text_field :opp_week_9 %>
+      <%= f.collection_select :opp_week_9, Team.all, :id, :name, {}, { :multiple => false } %>
 
       <%= f.label :opp_week_10, 'Week 10 Opponent' %>
-      <%= f.text_field :opp_week_10 %>
+      <%= f.collection_select :opp_week_10, Team.all, :id, :name, {}, { :multiple => false } %>
 
       <%= f.label :opp_week_11, 'Week 11 Opponent' %>
-      <%= f.text_field :opp_week_11 %>
+      <%= f.collection_select :opp_week_11, Team.all, :id, :name, {}, { :multiple => false } %>
 
       <%= f.label :opp_week_12, 'Week 12 Opponent' %>
-      <%= f.text_field :opp_week_12 %>
+      <%= f.collection_select :opp_week_12, Team.all, :id, :name, {}, { :multiple => false } %>
 
       <%= f.label :opp_week_13, 'Week 13 Opponent' %>
-      <%= f.text_field :opp_week_13 %>
+      <%= f.collection_select :opp_week_13, Team.all, :id, :name, {}, { :multiple => false } %>
 
       <%= f.label :opp_week_14, 'Week 14 Opponent' %>
-      <%= f.text_field :opp_week_14 %>
+      <%= f.collection_select :opp_week_14, Team.all, :id, :name, {}, { :multiple => false } %>
 
       <%= f.label :opp_week_15, 'Week 15 Opponent' %>
-      <%= f.text_field :opp_week_15 %>
+      <%= f.collection_select :opp_week_15, Team.all, :id, :name, {}, { :multiple => false } %>
 
       <%= f.label :opp_week_16, 'Week 16 Opponent' %>
-      <%= f.text_field :opp_week_16 %>
+      <%= f.collection_select :opp_week_16, Team.all, :id, :name, {}, { :multiple => false } %>
 
       <%= f.label :opp_week_17, 'Week 17 Opponent' %>
-      <%= f.text_field :opp_week_17 %>
+      <%= f.collection_select :opp_week_17, Team.all, :id, :name, {}, { :multiple => false } %>
 
       <%= f.submit "Update", class: "btn btn-large btn-primary" %>
     <% end %>

@@ -13,16 +13,18 @@
       <%= f.text_field :first_name %>
 
       <%= f.label :team %>
-      <% unless @team.nil? %>
-        <%= f.text_field :team, value: @team.name %>
-      <% else %>
-        <%= f.text_field :team %>
+      <% if false %>
+        <% unless @team.nil? %>
+          <%= f.text_field :team, value: @team.name %>
+        <% else %>
+          <%= f.text_field :team %>
+        <% end %>
       <% end %>
+      <%= f.collection_select :team_id, Team.all, :id, :name, {}, { :multiple => false } %>
+
 
       <%= f.label :position %>
       <%= f.text_field :position %>
-
-      
 
       <%= f.submit "Update", class: "btn btn-large btn-primary" %>
     <% end %>

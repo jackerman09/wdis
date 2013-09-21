@@ -48,4 +48,7 @@
 class Matchup < ActiveRecord::Base
 	validates :player_1, presence: true
 	validates :player_2, presence: true
+
+	has_many :matchplays
+	has_many :players, through: :matchplays
 end

@@ -34,6 +34,9 @@
 class Player < ActiveRecord::Base
 	validates :last_name, presence: true
 	validates :first_name, presence: true
+	# validates :team, presence: true
 
 	belongs_to :team
+	has_many :matchplays
+	has_many :matchups, through: :matchplays
 end

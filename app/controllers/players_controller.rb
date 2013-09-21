@@ -12,7 +12,7 @@ def index
   end
 
   def create
-    params[:player][:team] = Team.find_by(name: params[:player][:team])
+    params[:player][:team] = Team.find_by(id: params[:player][:team_id])
     @player = Player.new(player_params)
     if @player.save
       flash[:success] = "Player created."
@@ -33,7 +33,7 @@ def index
 
   def update
     @player = Player.find(params[:id])
-    params[:player][:team] = Team.find_by(name: params[:player][:team])
+    params[:player][:team] = Team.find_by(id: params[:player][:team_id])
     if @player.update_attributes(player_params)
       flash[:success] = "Player updated."
       redirect_to @player
@@ -45,7 +45,7 @@ def index
   def destroy
     Player.find(params[:id]).destroy
     flash[:success] = "Player destroyed."
-    redirect_to users_url
+    redirect_to players_url
   end
 
   private

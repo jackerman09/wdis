@@ -1,0 +1,69 @@
+<% provide(:title, 'Edit') %>
+<h1>Edit the <%= @team.name %></h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@team) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+
+      <%= f.label :location %>
+      <%= f.text_field :location %>
+
+      <%= f.label :opp_week_1, 'Week 1 Opponent' %>
+      <%= f.text_field :opp_week_1 %>
+
+      <%= f.label :opp_week_2, 'Week 2 Opponent' %>
+      <%= f.text_field :opp_week_2 %>
+
+      <%= f.label :opp_week_3, 'Week 3 Opponent' %>
+      <%= f.text_field :opp_week_3 %>
+
+      <%= f.label :opp_week_4, 'Week 4 Opponent' %>
+      <%= f.text_field :opp_week_4 %>
+
+      <%= f.label :opp_week_5, 'Week 5 Opponent' %>
+      <%= f.text_field :opp_week_5 %>
+
+      <%= f.label :opp_week_6, 'Week 6 Opponent' %>
+      <%= f.text_field :opp_week_6 %>
+
+      <%= f.label :opp_week_7, 'Week 7 Opponent' %>
+      <%= f.text_field :opp_week_7 %>
+
+      <%= f.label :opp_week_8, 'Week 8 Opponent' %>
+      <%= f.text_field :opp_week_8 %>
+
+      <%= f.label :opp_week_9, 'Week 9 Opponent' %>
+      <%= f.text_field :opp_week_9 %>
+
+      <%= f.label :opp_week_10, 'Week 10 Opponent' %>
+      <%= f.text_field :opp_week_10 %>
+
+      <%= f.label :opp_week_11, 'Week 11 Opponent' %>
+      <%= f.text_field :opp_week_11 %>
+
+      <%= f.label :opp_week_12, 'Week 12 Opponent' %>
+      <%= f.text_field :opp_week_12 %>
+
+      <%= f.label :opp_week_13, 'Week 13 Opponent' %>
+      <%= f.text_field :opp_week_13 %>
+
+      <%= f.label :opp_week_14, 'Week 14 Opponent' %>
+      <%= f.text_field :opp_week_14 %>
+
+      <%= f.label :opp_week_15, 'Week 15 Opponent' %>
+      <%= f.text_field :opp_week_15 %>
+
+      <%= f.label :opp_week_16, 'Week 16 Opponent' %>
+      <%= f.text_field :opp_week_16 %>
+
+      <%= f.label :opp_week_17, 'Week 17 Opponent' %>
+      <%= f.text_field :opp_week_17 %>
+
+      <%= f.submit "Update", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

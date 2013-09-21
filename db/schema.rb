@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130920232455) do
+ActiveRecord::Schema.define(version: 20130921150004) do
 
   create_table "matchups", force: true do |t|
     t.integer  "player_1"
@@ -86,6 +86,7 @@ ActiveRecord::Schema.define(version: 20130920232455) do
     t.decimal  "pts_week_17"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "team_id"
   end
 
   create_table "relationships", force: true do |t|

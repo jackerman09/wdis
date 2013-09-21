@@ -25,7 +25,9 @@
 #  pts_week_17 :decimal(, )
 #  created_at  :datetime
 #  updated_at  :datetime
+#  team_id     :integer
 #
+
 
 
 
@@ -33,5 +35,5 @@ class Player < ActiveRecord::Base
 	validates :last_name, presence: true
 	validates :first_name, presence: true
 
-	has_one :team
+	belongs_to :team
 end

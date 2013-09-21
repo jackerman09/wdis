@@ -25,6 +25,7 @@
 #  pts_week_17 :decimal(, )
 #  created_at  :datetime
 #  updated_at  :datetime
+#  team_id     :integer
 #
 
 require 'spec_helper'

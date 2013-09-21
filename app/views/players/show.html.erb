@@ -1,2 +1,34 @@
-<h1>Players#show</h1>
-<p>Find me in app/views/players/show.html.erb</p>
+<% provide(:title, @player.last_name) %>
+<h1> <%= @player.first_name %> <%= @player.last_name %></h1>
+
+<div class="row">
+	<h4>Team:			<% if @player.team != nil%><%= @player.team.name %><% end %></h4>
+	<h4>Position: 	<%= @player.position %></h4>
+</div>
+</br>
+<div class="row">
+	<h3>Schedule</h3>
+	<ul class="users">
+		<li>Week 1:		<% if Team.exists?(id: @player.team.opp_week_1) %><%= Team.find(@player.team.opp_week_1).name %><% end %></li>
+		<li>Week 2:		<% if Team.exists?(id: @player.team.opp_week_2) %><%= Team.find(@player.team.opp_week_2).name %><% end %></li>
+		<li>Week 3:		<% if Team.exists?(id: @player.team.opp_week_3) %><%= Team.find(@player.team.opp_week_3).name %><% end %></li>
+		<li>Week 4:		<% if Team.exists?(id: @player.team.opp_week_4) %><%= Team.find(@player.team.opp_week_4).name %><% end %></li>
+		<li>Week 5:		<% if Team.exists?(id: @player.team.opp_week_5) %><%= Team.find(@player.team.opp_week_5).name %><% end %></li>
+		<li>Week 6:		<% if Team.exists?(id: @player.team.opp_week_6) %><%= Team.find(@player.team.opp_week_6).name %><% end %></li>
+		<li>Week 7:		<% if Team.exists?(id: @player.team.opp_week_7) %><%= Team.find(@player.team.opp_week_7).name %><% end %></li>
+		<li>Week 8:		<% if Team.exists?(id: @player.team.opp_week_8) %><%= Team.find(@player.team.opp_week_8).name %><% end %></li>
+		<li>Week 9:		<% if Team.exists?(id: @player.team.opp_week_9) %><%= Team.find(@player.team.opp_week_9).name %><% end %></li>
+		<li>Week 10:		<% if Team.exists?(id: @player.team.opp_week_10) %><%= Team.find(@player.team.opp_week_10).name %><% end %></li>
+		<li>Week 11:		<% if Team.exists?(id: @player.team.opp_week_11) %><%= Team.find(@player.team.opp_week_11).name %><% end %></li>
+		<li>Week 12:		<% if Team.exists?(id: @player.team.opp_week_12) %><%= Team.find(@player.team.opp_week_12).name %><% end %></li>
+		<li>Week 13:		<% if Team.exists?(id: @player.team.opp_week_13) %><%= Team.find(@player.team.opp_week_13).name %><% end %></li>
+		<li>Week 14:		<% if Team.exists?(id: @player.team.opp_week_14) %><%= Team.find(@player.team.opp_week_14).name %><% end %></li>
+		<li>Week 15:		<% if Team.exists?(id: @player.team.opp_week_15) %><%= Team.find(@player.team.opp_week_15).name %><% end %></li>
+		<li>Week 16:		<% if Team.exists?(id: @player.team.opp_week_16) %><%= Team.find(@player.team.opp_week_16).name %><% end %></li>
+		<li>Week 17:		<% if Team.exists?(id: @player.team.opp_week_17) %><%= Team.find(@player.team.opp_week_17).name %><% end %></li>
+	</ul>
+</div>
+</br>
+<div class="row">
+	<%= link_to 'Edit', edit_player_path(@player) %>
+</div>

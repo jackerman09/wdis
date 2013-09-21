@@ -12,6 +12,7 @@ def index
   end
 
   def create
+    params[:player][:team] = Team.find_by(name: params[:player][:team])
     @player = Player.new(player_params)
     if @player.save
       flash[:success] = "Player created."
@@ -23,10 +24,16 @@ def index
 
   def edit
     @player = Player.find(params[:id])
+    if @player.team_id == nil
+
+    else
+      @team =   Team.find(@player.team_id)
+    end
   end
 
   def update
     @player = Player.find(params[:id])
+    params[:player][:team] = Team.find_by(name: params[:player][:team])
     if @player.update_attributes(player_params)
       flash[:success] = "Player updated."
       redirect_to @player

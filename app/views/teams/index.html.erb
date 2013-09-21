@@ -1,10 +1,16 @@
 <% provide(:title, 'All Teams') %>
 <h1>All Teams</h1>
 
-<%= will_paginate %>
+<div class="row">
+	<%= will_paginate %>
 
-<ul class="users">
-  <%= render @teams %>
-</ul>
+	<ul class="users">
+	  <%= render @teams %>
+	</ul>
 
-<%= will_paginate %>
+	<%= will_paginate %>
+</div>
+</br>
+<div class="row">
+	<%= link_to 'Add a Player', new_player_path, class: 'btn'%>
+</div>

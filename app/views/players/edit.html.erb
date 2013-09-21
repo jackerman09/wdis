@@ -12,6 +12,18 @@
       <%= f.label :first_name %>
       <%= f.text_field :first_name %>
 
+      <%= f.label :team %>
+      <% unless @team.nil? %>
+        <%= f.text_field :team, value: @team.name %>
+      <% else %>
+        <%= f.text_field :team %>
+      <% end %>
+
+      <%= f.label :position %>
+      <%= f.text_field :position %>
+
+      
+
       <%= f.submit "Update", class: "btn btn-large btn-primary" %>
     <% end %>
   </div>

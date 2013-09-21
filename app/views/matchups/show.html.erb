@@ -1,0 +1,12 @@
+<div class="center hero-unit">
+	<h1> <%= link_to @player1.last_name, @player1, class: 'showplayername' %> vs. <%= link_to @player2.last_name, @player2, class: 'showplayername' %></h1>
+	</br>
+
+  <%= render 'fullmatchup' %>
+
+
+</div>
+
+<div class="row">
+	<%= link_to 'Edit Matchup', edit_matchup_path(@matchup) %>
+</div>

@@ -245,3 +245,20 @@ aside {
     margin-bottom: 5px;
   }
 }
+
+// Matchup Players
+.mp {
+  // border: 1px solid black;
+
+}
+
+.showplayername {
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.playerpic {
+  border-radius: 2px;
+  
+}

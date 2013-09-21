@@ -1,0 +1,24 @@
+<div class="row">
+	<div id="mpcontainer" class="">
+		<div id="mp1" class="span5 mp">
+			<h3><%= "#{@player1.first_name} #{@player1.last_name}" %></h3>
+			<h4>@ <%= Team.find(@player1.team.opp_week_1).name %></h4>
+			<%= image_tag("#{@player1.first_name}_#{@player1.last_name}.jpg", alt: "#{@player1.first_name}_#{@player1.last_name}", class: "playerpic") %>
+		</div>
+		<div id="mp2" class="span5 mp">
+			<h3><%= "#{@player2.first_name} #{@player2.last_name}" %></h3>
+			<h4>@ <%= Team.find(@player2.team.opp_week_1).name %></h4>
+			<%= image_tag("#{@player2.first_name}_#{@player2.last_name}.jpg", alt: "#{@player2.first_name}_#{@player2.last_name}", class: "playerpic") %>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="span12 center">
+		<div id="mpts1" class="span4">
+			<%= @matchup.pts_player_1_week_1 %>
+		</div>
+		<div id="mpts2" class="span4">
+			<%= @matchup.pts_player_2_week_1 %>
+		</div>
+	</div>
+</div>

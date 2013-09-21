@@ -1,9 +1,9 @@
 class StaticPagesController < ApplicationController
 
   def home
-    if signed_in?
-      
-    end
+    @matchup = Matchup.order("RANDOM()").first
+    @player1 = Player.find(@matchup.player_1)
+    @player2 = Player.find(@matchup.player_2)
   end
   
   def help

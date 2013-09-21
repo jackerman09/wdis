@@ -1,0 +1,18 @@
+<% provide(:title, 'Edit') %>
+<h1> <%= link_to @player1.last_name, @player1, class: 'showplayername' %> vs. <%= link_to @player2.last_name, @player2, class: 'showplayername' %></h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@matchup) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      
+      <%= f.label :player_1 %>
+      <%= f.collection_select :player_1, Player.all, :id, :last_name, {}, { :multiple => false } %>
+
+      <%= f.label :player_2 %>
+      <%= f.collection_select :player_2, Player.all, :id, :last_name, {}, { :multiple => false } %>      
+
+      <%= f.submit "Update Matchup", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

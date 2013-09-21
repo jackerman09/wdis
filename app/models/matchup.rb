@@ -49,6 +49,46 @@ class Matchup < ActiveRecord::Base
 	validates :player_1, presence: true
 	validates :player_2, presence: true
 
+	before_create :set_matchup_pts_to_0
+
 	has_many :matchplays
 	has_many :players, through: :matchplays
+
+	private
+		def set_matchup_pts_to_0
+			self.pts_player_1_week_1  = 0
+			self.pts_player_1_week_2  = 0
+			self.pts_player_1_week_3  = 0
+			self.pts_player_1_week_4  = 0
+			self.pts_player_1_week_5  = 0
+			self.pts_player_1_week_6  = 0
+			self.pts_player_1_week_7  = 0
+			self.pts_player_1_week_8  = 0
+			self.pts_player_1_week_9  = 0
+			self.pts_player_1_week_10 = 0
+			self.pts_player_1_week_11 = 0
+			self.pts_player_1_week_12 = 0
+			self.pts_player_1_week_13 = 0
+			self.pts_player_1_week_14 = 0
+			self.pts_player_1_week_15 = 0
+			self.pts_player_1_week_16 = 0
+			self.pts_player_1_week_17 = 0
+			self.pts_player_2_week_1  = 0
+			self.pts_player_2_week_2  = 0
+			self.pts_player_2_week_3  = 0
+			self.pts_player_2_week_4  = 0
+			self.pts_player_2_week_5  = 0
+			self.pts_player_2_week_6  = 0
+			self.pts_player_2_week_7  = 0
+			self.pts_player_2_week_8  = 0
+			self.pts_player_2_week_9  = 0
+			self.pts_player_2_week_10 = 0
+			self.pts_player_2_week_11 = 0
+			self.pts_player_2_week_12 = 0
+			self.pts_player_2_week_13 = 0
+			self.pts_player_2_week_14 = 0
+			self.pts_player_2_week_15 = 0
+			self.pts_player_2_week_16 = 0
+			self.pts_player_2_week_17 = 0
+		end
 end

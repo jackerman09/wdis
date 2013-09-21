@@ -4,6 +4,7 @@ SampleApp::Application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   resources :teams
   resources :players
+  resources :matchups
 
   root to: 'static_pages#home'
   match '/signup',  to: 'users#new',            via: 'get'

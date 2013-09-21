@@ -1,0 +1,16 @@
+<% provide(:title, 'All Matchups') %>
+<h1>All Matchups</h1>
+
+<div class="row">
+	<%= will_paginate %>
+
+	<ul class="users">
+	  <%= render @matchups %>
+	</ul>
+
+	<%= will_paginate %>
+</div>
+</br>
+<div class="row">
+	<%= link_to 'Add a Matchup', new_matchup_path, class: 'btn'%>
+</div>

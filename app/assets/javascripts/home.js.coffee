@@ -17,7 +17,6 @@ jQuery ->
 		  type: 'get'
 		  data: my_data
 		  success: (data,status,xhr) ->
-		    console.log('p1: ' + data.new_player_1_pts + '; p2: ' + data.new_player_2_pts)
 		    $('#mpts1').find('h2').html(data.new_player_1_pts)
 		    $('#mpts2').find('h2').html(data.new_player_2_pts)
 		  error: (xhr,status,error) ->

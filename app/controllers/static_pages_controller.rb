@@ -24,6 +24,9 @@ class StaticPagesController < ApplicationController
 
     new_player_1_pts = @matchup.send("pts_player_1_week_#{current_week}")
     new_player_2_pts = @matchup.send("pts_player_2_week_#{current_week}")
+
+    this_week_player_1_pts = @player1.send("pts_week_#{current_week}")
+    this_week_player_2_pts = @player2.send("pts_week_#{current_week}")
     
     if params[:player1or2] == '1'
       if new_player_1_pts.nil?
@@ -32,6 +35,8 @@ class StaticPagesController < ApplicationController
         new_player_1_pts += 1
       end
       @matchup.update_attributes(pts_player_1_week_1: new_player_1_pts)
+      # this_week_player_1_pts += (this_week_player_2_pts/this_week_player_1_pts)
+      # @player1.update_attributes("pts_week_#{current_week}".to_sym => this_week_player_1_pts)
     else
       if new_player_2_pts.nil?
         new_player_2_pts = 1

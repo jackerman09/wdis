@@ -1,35 +1,30 @@
 jQuery ->
 	pointForPlayer1 = (e) ->
 		e.preventDefault()
-		console.log('player 1 clicked')
-		# $.post({
-		# 	url: '/updatepts',
-		# 	data: { newPointValue: $('mpts1').val() , matchupid: $('#matchupID').data('matchupid'), player1or2: 1, current_week: current_week},
-		# 	})
 		matchupid = $('#matchupID').data('matchupid')
-		player1or2 = 1
-		current_week = current_week
-		console.log('matchupid: ' + matchupid + '; player1or2: ' + player1or2 + '; current_week: ' + current_week)
+		
+		if e.currentTarget.id == 'mp1'
+			player1or2 = 1
+		else
+			player1or2 = 2
+		
 		my_data = 
 			matchupid:		matchupid
 			player1or2:		player1or2
-			current_week:	current_week
-		console.log('my_data: ' + my_data)
+
 		$.ajax({ 
 		  url: '/updatepts'
 		  type: 'get'
 		  data: my_data
 		  success: (data,status,xhr) ->
-		    console.log(data)
-		    alert(data.new_player_1_pts)
+		    console.log('p1: ' + data.new_player_1_pts + '; p2: ' + data.new_player_2_pts)
+		    $('#mpts1').find('h2').html(data.new_player_1_pts)
+		    $('#mpts2').find('h2').html(data.new_player_2_pts)
 		  error: (xhr,status,error) ->
 		    console.log(xhr)
 		    alert(error)
 		  })
-	pointForPlayer2 = (e) ->
-		e.preventDefault()
-		console.log('player 2 clicked')
 
 	$('#mp1').click pointForPlayer1
-	$('#mp2').click pointForPlayer2
+	$('#mp2').click pointForPlayer1
 

@@ -16,20 +16,35 @@ class StaticPagesController < ApplicationController
   end
 
   def updatepts
-    # @matchup = Matchup.find_by(player_1: params[:matchupid])
-    # if params[:player1or2] = 1
-    #   @matchup.update_attributes("pts_player_1_week_#{params[:current_week]}".to_sym => params[:newPointValue])
-    # else
-    #   @matchup.update_attributes(pts_player_2_week_1: params[:newPointValue])
-    # end
     @matchup = Matchup.find(params[:matchupid])
     @player1 = Player.find(@matchup.player_1)
     @player2 = Player.find(@matchup.player_2)
-    # @matchup.update_attributes(pts_player_1_week_1:)
+    
+    current_week = view_context.current_week
 
-    new_player_1_pts = @player1.last_name
-    data = {new_player_1_pts: new_player_1_pts }
+    new_player_1_pts = @matchup.send("pts_player_1_week_#{current_week}")
+    new_player_2_pts = @matchup.send("pts_player_2_week_#{current_week}")
+    
+    if params[:player1or2] == '1'
+      if new_player_1_pts.nil?
+        new_player_1_pts = 1
+      else
+        new_player_1_pts += 1
+      end
+      @matchup.update_attributes(pts_player_1_week_1: new_player_1_pts)
+    else
+      if new_player_2_pts.nil?
+        new_player_2_pts = 1
+      else
+        new_player_2_pts += 1
+      end
+      @matchup.update_attributes(pts_player_2_week_1: new_player_2_pts)
+    end
+
+    data = {
+      new_player_1_pts: new_player_1_pts,
+      new_player_2_pts: new_player_2_pts
+    }
     render :json => data, :status => :ok
-    # redirect_to root_url
   end
 end

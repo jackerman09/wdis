@@ -1,7 +1,7 @@
 <li>
-  <%= link_to "#{player.last_name}, #{player.first_name}", player %>
+  <%= link_to "#{player.last_name}, #{player.first_name}", player %> --- <%= "Week #{current_week} Score: #{player.pts_week_1}" %>
   <% if current_user.admin? %>
-    // <%= link_to "edit", edit_player_path(player) %>
+    </br><%= link_to "edit", edit_player_path(player) %>
     // <%= link_to "delete", player, method: :delete,
                                   data: { confirm: "You sure?" } %>
   <% end %>

@@ -52,4 +52,18 @@ class StaticPagesController < ApplicationController
     }
     render :json => data, :status => :ok
   end
+
+  def findMatchup
+    if params[:player_1].nil? || params[:player_2].nil?
+      redirect_to root_path
+    else
+      @player1 = Player.find(params[:player_1])
+      @player2 = Player.find(params[:player_2])
+      @matchup = Matchup.find_by(player_1: @player1.id, player_2: @player2.id)
+      if @matchup.nil?
+        @matchup = Matchup.find_by(player_1: @player2.id, player_2: @player1.id)
+      end
+      redirect_to @matchup
+    end
+  end
 end

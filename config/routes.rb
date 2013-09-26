@@ -14,4 +14,5 @@ SampleApp::Application.routes.draw do
   match '/about',   to: 'static_pages#about',   via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
   match '/updatepts', to: 'static_pages#updatepts', via: 'get'
+  match '/findMatchup', to: 'static_pages#findMatchup', via: 'get'
 end

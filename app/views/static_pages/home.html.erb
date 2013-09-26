@@ -5,21 +5,22 @@
 
 </div>
 <div class="center hero-unit">
-	<%= form_tag matchups_path, method: :get do %>
-    
-    <div class="row">
-      <%= label_tag(:player_1, "Select a player:") %>
-      <%= collection_select :player_1, Player.all, :id, :last_name, {}, { :multiple => false, class: "matchupSearchField" } %>
-
-      <h2>VS</h2>
-      <% if false %>
-      <%= f.label :player_2 %>
-      <%= f.collection_select :player_2, Player.all, :id, :last_name, {}, { :multiple => false, class: "matchupSearchField" } %>      
-    </div>
-    	<% end %>
-
-    <%= submit_tag "Update Matchup", class: "btn btn-large btn-primary" %>
-  <% end %>
+  <div class="row">
+  	<div class="span11 center searchFieldContainer">
+	  	<div class="span3">
+	    	<%= collection_select :matchup, :player_1, Player.all, :id, :last_name, {}, { :multiple => false, class: "matchupSearchField", id: "player_1_search_field" } %>
+	    </div>
+	    <div class="span3">
+		    <h2>VS</h2>
+		  </div>
+		  <div class="span3">
+	    	<%= collection_select :matchup, :player_2, Player.all, :id, :last_name, {}, { :multiple => false, class: "matchupSearchField", id: "player_2_search_field" } %>
+	    </div>
+	  </div>
+  </div>
+  <div class="row">
+  	<%= link_to "View Matchup", findMatchup_path(:player_1 => 3, :player_2 => 2), :method => :get, class: "" %>
+  </div>
 </div>
 
 <%= link_to image_tag("rails.png", alt: "Rails"), 'http://rubyonrails.org/' %>

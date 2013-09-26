@@ -1,6 +1,6 @@
 class MatchupsController < ApplicationController
 
-def index
+  def index
     @matchups = Matchup.paginate(page: params[:page])
   end
 

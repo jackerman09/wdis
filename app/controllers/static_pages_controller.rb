@@ -69,17 +69,26 @@ class StaticPagesController < ApplicationController
     if params[:matchup][:player_1].nil? || params[:matchup][:player_2].nil?
       redirect_to root_path
     else
-      @player1 = Player.find(params[:matchup][:player_1])
-      @player2 = Player.find(params[:matchup][:player_2])
-      @matchup = Matchup.find_by(player_1: @player1.id, player_2: @player2.id)
-      if @matchup.nil?
-        @matchup = Matchup.find_by(player_1: @player2.id, player_2: @player1.id)
-      end
-      if @matchup.nil?
-        flash[:error] = "Matchup does not exist."
+      if cookies[:num_credits].nil? || cookies[:num_credits].to_f < 3
+        flash[:error] = "You need to vote 3 times for every search. Vote more."
         redirect_to root_path
       else
-        redirect_to @matchup
+        
+        @player1 = Player.find(params[:matchup][:player_1])
+        @player2 = Player.find(params[:matchup][:player_2])
+        @matchup = Matchup.find_by(player_1: @player1.id, player_2: @player2.id)
+        if @matchup.nil?
+          @matchup = Matchup.find_by(player_1: @player2.id, player_2: @player1.id)
+        end
+        if @matchup.nil?
+          flash[:error] = "Matchup does not exist."
+          redirect_to root_path
+        else
+          current_credits = cookies[:num_credits].to_f
+          current_credits -= 3
+          cookies[:num_credits] = current_credits
+          redirect_to @matchup
+        end
       end
     end
   end

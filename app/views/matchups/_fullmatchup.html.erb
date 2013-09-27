@@ -1,32 +1,35 @@
-<div class="row">
-	<div id="matchupID" data-matchupid= <%= "#{@matchup.id}" %>></div>
-	<div id="mpcontainer" class="">
-		<div id="mp1" class="span5 mp">
-			<h3><%= "#{@player1.first_name} #{@player1.last_name}" %></h3>
-			<h4>@ <%= Team.find(@player1.team.send("opp_week_#{current_week}")).name %></h4>
-			<div class="mpimage" id="mpimage1">
-				<%= image_tag("#{@player1.first_name}_#{@player1.last_name}.jpg", alt: "#{@player1.first_name}_#{@player1.last_name}", class: "playerpic") %>
+<% if @player1.nil? or @player2.nil? or @matchup.nil? %>
+<% else %>
+	<div class="row">
+		<div id="matchupID" data-matchupid= <%= "#{@matchup.id}" %>></div>
+		<div id="mpcontainer" class="">
+			<div id="mp1" class="span5 mp">
+				<h3><%= "#{@player1.first_name} #{@player1.last_name}" %></h3>
+				<h4>@ <%= Team.find(@player1.team.send("opp_week_#{current_week}")).name %></h4>
+				<div class="mpimage" id="mpimage1">
+					<%= image_tag("#{@player1.first_name}_#{@player1.last_name}.jpg", alt: "#{@player1.first_name}_#{@player1.last_name}", class: "playerpic") %>
+				</div>
 			</div>
-		</div>
 
-		<div id="mp2" class="span5 mp">
-			<h3><%= "#{@player2.first_name} #{@player2.last_name}" %></h3>
-			<h4>@ <%= Team.find(@player2.team.send("opp_week_#{current_week}")).name %></h4>
-			<div class="mpimage" id="mpimage2">
-				<%= image_tag("#{@player2.first_name}_#{@player2.last_name}.jpg", alt: "#{@player2.first_name}_#{@player2.last_name}", class: "playerpic") %>
+			<div id="mp2" class="span5 mp">
+				<h3><%= "#{@player2.first_name} #{@player2.last_name}" %></h3>
+				<h4>@ <%= Team.find(@player2.team.send("opp_week_#{current_week}")).name %></h4>
+				<div class="mpimage" id="mpimage2">
+					<%= image_tag("#{@player2.first_name}_#{@player2.last_name}.jpg", alt: "#{@player2.first_name}_#{@player2.last_name}", class: "playerpic") %>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
-</br>
-<div class="row">
-	<div class="">
-		<div id="mpts1" class="span5">
-			<h2><%= @matchup.send("pts_player_1_week_#{current_week}") %></h2>
-		</div>
+	</br>
+	<div class="row">
+		<div class="">
+			<div id="mpts1" class="span5">
+				<h2><%= @matchup.send("pts_player_1_week_#{current_week}") %></h2>
+			</div>
 
-		<div id="mpts2" class="span5">
-			<h2><%= @matchup.send("pts_player_2_week_#{current_week}") %></h2>
+			<div id="mpts2" class="span5">
+				<h2><%= @matchup.send("pts_player_2_week_#{current_week}") %></h2>
+			</div>
 		</div>
 	</div>
-</div>
+<% end %>

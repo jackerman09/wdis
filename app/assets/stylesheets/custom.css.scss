@@ -83,15 +83,19 @@ p {
 
 #credit-counter {
   background-color: white;
-  border: 3px solid $grayLight;
-  border-radius: 2px;
+  border: 2px solid $grayLight;
+  border-radius: 5px;
   
-  width: 75px;
-  height: 40px;
+  width: 50px;
+  height: 30px;
+
+  margin: 5px 0px 5px 10px;
 
   text-align: center;
   h3 {
     vertical-align: middle;
+    font-size: 20px;
+    margin-top: 3px;
   }
 }
 

@@ -8,5 +8,5 @@
 </div>
 
 <div class="row">
-	<%= link_to 'Edit Matchup', edit_matchup_path(@matchup) %>
+	<% if current_user && current_user.admin %><%= link_to 'Edit Matchup', edit_matchup_path(@matchup) %><% end %>
 </div>

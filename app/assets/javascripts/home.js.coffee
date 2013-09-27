@@ -37,9 +37,7 @@ jQuery ->
 				num_credits_cookie = c
 				num_credits_value = num_credits_cookie.substring(num_credits_cookie.indexOf('=') + 1)
 				num_credits_number = parseInt(num_credits_value, 10)
-		console.log(num_credits_number)
 		return num_credits_number
 
 	$('#credit-counter-value').text(getNumCredits)
-	console.log(getNumCredits)
 

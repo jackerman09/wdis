@@ -73,7 +73,6 @@ class StaticPagesController < ApplicationController
         flash[:error] = "You need to vote 3 times for every search. Vote more."
         redirect_to root_path
       else
-        
         @player1 = Player.find(params[:matchup][:player_1])
         @player2 = Player.find(params[:matchup][:player_2])
         @matchup = Matchup.find_by(player_1: @player1.id, player_2: @player2.id)

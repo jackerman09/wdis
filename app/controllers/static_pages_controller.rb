@@ -54,16 +54,21 @@ class StaticPagesController < ApplicationController
   end
 
   def findMatchup
-    if params[:player_1].nil? || params[:player_2].nil?
+    if params[:matchup][:player_1].nil? || params[:matchup][:player_2].nil?
       redirect_to root_path
     else
-      @player1 = Player.find(params[:player_1])
-      @player2 = Player.find(params[:player_2])
+      @player1 = Player.find(params[:matchup][:player_1])
+      @player2 = Player.find(params[:matchup][:player_2])
       @matchup = Matchup.find_by(player_1: @player1.id, player_2: @player2.id)
       if @matchup.nil?
         @matchup = Matchup.find_by(player_1: @player2.id, player_2: @player1.id)
       end
-      redirect_to @matchup
+      if @matchup.nil?
+        flash[:error] = "Matchup does not exist."
+        redirect_to root_path
+      else
+        redirect_to @matchup
+      end
     end
   end
 end

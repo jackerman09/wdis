@@ -5,10 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-teams = Team.create(name: 'Jets')
-players = Player.create(
-	[last_name: 'Gore', first_name: 'Frank', team_id: 1],
-	[last_name: 'Peterson', first_name: 'Adrian', team_id: 1],
-	)
-matchups = Matchup.create(player_1: 1, player_2: 2)
-users = User.create(name: 'Jason Ackerman', email: 'jackerman09@gmail.com', password: 'railstutorial', password_confirmation: 'railstutorial', admin: true)
+team = Team.create(name: 'Jets')
+player1 = Player.create(last_name: 'Gore', first_name: 'Frank', team_id: team.id, position: 'RB')
+player2 = Player.create(last_name: 'Peterson', first_name: 'Adrian', team_id: team.id, position: 'RB')
+matchup = Matchup.create(player_1: player1.id, player_2: player2.id)
+user = User.create(name: 'Jason Ackerman', email: 'jackerman09@gmail.com', password: 'railstutorial', password_confirmation: 'railstutorial', admin: true)

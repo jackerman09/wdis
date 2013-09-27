@@ -19,11 +19,17 @@ jQuery ->
 		  success: (data,status,xhr) ->
 		    $('#mpts1').find('h2').html(data.new_player_1_pts)
 		    $('#mpts2').find('h2').html(data.new_player_2_pts)
+		    
+		    $('#credit-counter-value').text($.cookie("num_credits"))
 		  error: (xhr,status,error) ->
 		    console.log(xhr)
 		    alert(error)
 		  })
+	
+	if $('#home-header').data('votable') == true
+		$('#mp1').click pointForPlayer1
+		$('#mp2').click pointForPlayer1
 
-	$('#mp1').click pointForPlayer1
-	$('#mp2').click pointForPlayer1
+	console.log($.cookie("num_credits"))
+	$('#credit-counter-value').text($.cookie("num_credits"))
 

@@ -37,6 +37,7 @@ class Player < ActiveRecord::Base
 	validates :team, presence: true
 
 	before_create :set_pts_to_0
+	before_save { self.image_name = "#{first_name}_#{last_name}.jpg" }
 	before_save { self.full_name = "#{first_name} #{last_name}" }
 
 	belongs_to :team

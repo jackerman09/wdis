@@ -81,6 +81,24 @@ p {
   }
 }
 
+#credit-counter {
+  background-color: white;
+  border: 3px solid $grayLight;
+  border-radius: 2px;
+  
+  width: 75px;
+  height: 40px;
+
+  text-align: center;
+  h3 {
+    vertical-align: middle;
+  }
+}
+
+#credit-counter-value {
+  color: black;
+}
+
 /* footer */
 
 footer {

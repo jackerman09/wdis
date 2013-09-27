@@ -35,8 +35,6 @@ class StaticPagesController < ApplicationController
         new_player_1_pts += 1
       end
       @matchup.update_attributes(pts_player_1_week_1: new_player_1_pts)
-      # this_week_player_1_pts += (this_week_player_2_pts/this_week_player_1_pts)
-      # @player1.update_attributes("pts_week_#{current_week}".to_sym => this_week_player_1_pts)
     else
       if new_player_2_pts.nil?
         new_player_2_pts = 1
@@ -50,6 +48,20 @@ class StaticPagesController < ApplicationController
       new_player_1_pts: new_player_1_pts,
       new_player_2_pts: new_player_2_pts
     }
+
+    # if cookies[:num_credits].nil?
+    #   cookies[:num_credits] = 1
+    # else 
+    #   cookies[:num_credits] += 1
+    # end
+    if cookies[:num_credits].nil?
+      cookies.permanent[:num_credits] = 1
+    else
+      current_credits = cookies[:num_credits].to_f
+      current_credits += 1
+      cookies[:num_credits] = current_credits
+    end
+
     render :json => data, :status => :ok
   end
 

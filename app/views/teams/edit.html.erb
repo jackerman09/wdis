@@ -15,6 +15,10 @@
       <%= f.label :opp_week_1, 'Week 1 Opponent' %>
       <%= f.collection_select :opp_week_1, Team.all, :id, :name, {}, { :multiple => false } %>
 
+      <%= f.label :home_week_1, 'Home?' %>
+      <%= f.check_box :home_week_1 %>
+
+
       <%= f.label :opp_week_2, 'Week 2 Opponent' %>
       <%= f.collection_select :opp_week_2, Team.all, :id, :name, {}, { :multiple => false } %>
 

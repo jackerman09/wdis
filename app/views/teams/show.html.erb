@@ -3,23 +3,17 @@
 
 <div class="row">
 	<ul class="users">
-		<li>Week 1: <% if Team.exists?(id: @team.opp_week_1) %><%= link_to Team.find(@team.opp_week_1).name, Team.find(@team.opp_week_1)%></li><% end %>
-		<li>Week 2: <% if Team.exists?(id: @team.opp_week_2) %><%= link_to Team.find(@team.opp_week_2).name, Team.find(@team.opp_week_2)%></li><% end %>
-		<li>Week 3: <% if Team.exists?(id: @team.opp_week_3) %><%= link_to Team.find(@team.opp_week_3).name, Team.find(@team.opp_week_3)%></li><% end %>
-		<li>Week 4: <% if Team.exists?(id: @team.opp_week_4) %><%= link_to Team.find(@team.opp_week_4).name, Team.find(@team.opp_week_4)%></li><% end %>
-		<li>Week 5: <% if Team.exists?(id: @team.opp_week_5) %><%= link_to Team.find(@team.opp_week_5).name, Team.find(@team.opp_week_5)%></li><% end %>
-		<li>Week 6: <% if Team.exists?(id: @team.opp_week_6) %><%= link_to Team.find(@team.opp_week_6).name, Team.find(@team.opp_week_6)%></li><% end %>
-		<li>Week 7: <% if Team.exists?(id: @team.opp_week_7) %><%= link_to Team.find(@team.opp_week_7).name, Team.find(@team.opp_week_7)%></li><% end %>
-		<li>Week 8: <% if Team.exists?(id: @team.opp_week_8) %><%= link_to Team.find(@team.opp_week_8).name, Team.find(@team.opp_week_8)%></li><% end %>
-		<li>Week 9: <% if Team.exists?(id: @team.opp_week_9) %><%= link_to Team.find(@team.opp_week_9).name, Team.find(@team.opp_week_9)%></li><% end %>
-		<li>Week 10: <% if Team.exists?(id: @team.opp_week_10) %><%= link_to Team.find(@team.opp_week_10).name, Team.find(@team.opp_week_10)%></li><% end %>
-		<li>Week 11: <% if Team.exists?(id: @team.opp_week_11) %><%= link_to Team.find(@team.opp_week_11).name, Team.find(@team.opp_week_11)%></li><% end %>
-		<li>Week 12: <% if Team.exists?(id: @team.opp_week_12) %><%= link_to Team.find(@team.opp_week_12).name, Team.find(@team.opp_week_12)%></li><% end %>
-		<li>Week 13: <% if Team.exists?(id: @team.opp_week_13) %><%= link_to Team.find(@team.opp_week_13).name, Team.find(@team.opp_week_13)%></li><% end %>
-		<li>Week 14: <% if Team.exists?(id: @team.opp_week_14) %><%= link_to Team.find(@team.opp_week_14).name, Team.find(@team.opp_week_14)%></li><% end %>
-		<li>Week 15: <% if Team.exists?(id: @team.opp_week_15) %><%= link_to Team.find(@team.opp_week_15).name, Team.find(@team.opp_week_15)%></li><% end %>
-		<li>Week 16: <% if Team.exists?(id: @team.opp_week_16) %><%= link_to Team.find(@team.opp_week_16).name, Team.find(@team.opp_week_16)%></li><% end %>
-		<li>Week 17: <% if Team.exists?(id: @team.opp_week_17) %><%= link_to Team.find(@team.opp_week_17).name, Team.find(@team.opp_week_17)%></li><% end %>
+		<% (1..17).each do |wk| %>
+			<li>
+				<%= "Week #{wk}:" %>				
+				<% if Team.exists?(id: @team.send("opp_week_#{wk}")) %>
+					<% if Team.find(@team.opp_week_1).home_week_1 == false %>
+						@
+					<% end %>
+					<%= link_to Team.find(@team.send("opp_week_#{wk}")).name, Team.find(@team.send("opp_week_#{wk}"))%>
+				<% end %>
+			</li>
+		<% end %>
 	</ul>
 </div>
 </br>

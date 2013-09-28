@@ -1,3 +1,7 @@
  - Have cookies check w/ user-field (create the field) for credit value
  - Remove players on teams that have a bye-week from the rotation
- - Have home page load new matchup after voting
+ - Have home page load new matchup after voting based on weighted probability so that closer matchups come up more often
+ - Add @ for home/away to team/show and to full_matchup if team is away
+ - Run seeds for matchup
+ - Show player's weekly scores on the players index in a table w/ opponent
+ - Credits don't show if not signed in, but should

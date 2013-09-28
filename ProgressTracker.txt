@@ -1,1 +1,3 @@
  - Have cookies check w/ user-field (create the field) for credit value
+ - Remove players on teams that have a bye-week from the rotation
+ - Have home page load new matchup after voting

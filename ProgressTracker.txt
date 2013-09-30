@@ -5,11 +5,12 @@
 
 - Remove players on teams that have a bye-week from the rotation
 - Have home page load new matchup after voting based on weighted probability so that closer matchups come up more often
+- Need current_week to be accessible in the matchup.rb model
 
 - Add @ for home/away to team/show and to full_matchup if team is away
 
 - Show player's weekly scores on the players index in a table w/ opponent
 
-- Add a schedule to current_week so that it updates automatically based on the date
+- Add a schedule to current_week so that it updates automatically based on the date in 'ApplicationHelper' and in 'Matchup.rb'
 
 - Add teams' schedules

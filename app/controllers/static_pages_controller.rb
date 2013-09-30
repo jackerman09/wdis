@@ -1,12 +1,13 @@
 class StaticPagesController < ApplicationController
 
   def home
-    @matchup = Matchup.order("RANDOM()").first
+    @matchup = getRandomMatchup
     if @matchup.nil?
       flash[:error] = "No matchups in database"
     else
       @player1 = Player.find(@matchup.player_1)
       @player2 = Player.find(@matchup.player_2)
+      @user = view_context.current_user
     end
   end
   
@@ -23,6 +24,8 @@ class StaticPagesController < ApplicationController
     @matchup = Matchup.find(params[:matchupid])
     @player1 = Player.find(@matchup.player_1)
     @player2 = Player.find(@matchup.player_2)
+    
+    @user = view_context.current_user
     
     current_week = view_context.current_week
 
@@ -48,16 +51,6 @@ class StaticPagesController < ApplicationController
       @matchup.update_attributes(pts_player_2_week_1: new_player_2_pts)
     end
 
-    data = {
-      new_player_1_pts: new_player_1_pts,
-      new_player_2_pts: new_player_2_pts
-    }
-
-    # if cookies[:num_credits].nil?
-    #   cookies[:num_credits] = 1
-    # else 
-    #   cookies[:num_credits] += 1
-    # end
     if cookies[:num_credits].nil?
       cookies.permanent[:num_credits] = 1
     else
@@ -65,6 +58,25 @@ class StaticPagesController < ApplicationController
       current_credits += 1
       cookies[:num_credits] = current_credits
     end
+
+    if @user.nil?
+      # flash[:error] = "No current user"
+    else
+      if @user.num_credits.nil?
+        @user.num_credits = 1
+      else
+        current_credits = @user.num_credits
+        current_credits += 1
+        @user.update_attributes(num_credits: current_credits)
+        user_credits = current_credits
+      end
+    end
+
+    data = {
+      new_player_1_pts: new_player_1_pts,
+      new_player_2_pts: new_player_2_pts,
+      user_credits: user_credits
+    }
 
     render :json => data, :status => :ok
   end
@@ -95,4 +107,9 @@ class StaticPagesController < ApplicationController
       end
     end
   end
+
+  private
+    def getRandomMatchup
+      Matchup.order("RANDOM()").first
+    end
 end

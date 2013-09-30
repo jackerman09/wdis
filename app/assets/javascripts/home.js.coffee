@@ -19,8 +19,12 @@ jQuery ->
 		  success: (data,status,xhr) ->
 		    $('#mpts1').find('h2').html(data.new_player_1_pts)
 		    $('#mpts2').find('h2').html(data.new_player_2_pts)
-		    
-		    $('#credit-counter-value').text(getNumCredits)
+
+		    if $('#account-link').text() != ''
+		    	# if the user is signed in
+		    	$('#credit-counter-value').text(data.user_credits)
+		    else
+		    	$('#credit-counter-value').text(getNumCredits)
 		  error: (xhr,status,error) ->
 		    console.log(xhr)
 		    alert(error)
@@ -37,6 +41,11 @@ jQuery ->
 				num_credits_cookie = c
 				num_credits_value = num_credits_cookie.substring(num_credits_cookie.indexOf('=') + 1)
 				num_credits_number = parseInt(num_credits_value, 10)
+			else if c.substring(0,11) == 'num_credits'
+				num_credits_cookie = c
+				num_credits_value = num_credits_cookie.substring(num_credits_cookie.indexOf('=') + 1)
+				num_credits_number = parseInt(num_credits_value, 10)
+
 		return num_credits_number
 
 	$('#credit-counter-value').text(getNumCredits)

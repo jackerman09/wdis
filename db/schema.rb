@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130926214223) do
+ActiveRecord::Schema.define(version: 20130930002238) do
 
   create_table "matchplays", force: true do |t|
     t.integer  "player_id"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 20130926214223) do
     t.integer  "pts_player_2_week_17"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "total_votes"
   end
 
   create_table "microposts", force: true do |t|
@@ -158,6 +159,7 @@ ActiveRecord::Schema.define(version: 20130926214223) do
     t.string   "password_digest"
     t.string   "remember_token"
     t.boolean  "admin"
+    t.integer  "num_credits"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

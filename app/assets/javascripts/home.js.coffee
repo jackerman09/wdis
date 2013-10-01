@@ -75,3 +75,6 @@ jQuery ->
 		$('#mpimage1').addClass('mpimage')
 		$('#mp2').click pointForPlayer
 		$('#mpimage2').addClass('mpimage')
+	else
+		$('#mpimage1').removeClass('mpimage')
+		$('#mpimage2').removeClass('mpimage')

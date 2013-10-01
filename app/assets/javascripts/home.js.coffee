@@ -71,5 +71,5 @@ jQuery ->
 
 	# Add click listener to player pictures
 	if $('#home-header').data('votable') == true
-		$('#mp1').click pointForPlayer
-		$('#mp2').click pointForPlayer
+		$('#mp1').addClass('mpimage').click pointForPlayer
+		$('#mp2').addClass('mpimage').click pointForPlayer

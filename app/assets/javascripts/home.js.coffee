@@ -1,5 +1,5 @@
 jQuery ->
-	pointForPlayer1 = (e) ->
+	pointForPlayer = (e) ->
 		e.preventDefault()
 		matchupid = $('#matchupID').data('matchupid')
 		
@@ -31,10 +31,14 @@ jQuery ->
 		  })
 	
 	if $('#home-header').data('votable') == true
-		$('#mp1').click pointForPlayer1
-		$('#mp2').click pointForPlayer1
+		$('#mp1').click pointForPlayer
+		$('#mp2').click pointForPlayer
 
 	getNumCredits = ->
+		# if $('#account-link').text() != ''
+
+    	
+
 		allCookies = document.cookie.split(';')
 		for c in allCookies
 			if c.substring(0,12) == ' num_credits'

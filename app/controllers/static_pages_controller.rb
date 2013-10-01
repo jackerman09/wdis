@@ -67,9 +67,12 @@ class StaticPagesController < ApplicationController
       else
         current_credits = @user.num_credits
         current_credits += 1
-        # @user.update_attributes(num_credits: current_credits)
         @user.num_credits = current_credits
-        @user.save(validate: false)
+        @user.save
+        error_messages_returned = @user.errors.full_messages.to_sentence
+        if error_messages_returned = "Password is too short (minimum is 6 characters)"
+          @user.save(validate: false)
+        end
         user_credits = current_credits
       end
     end

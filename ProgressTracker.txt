@@ -4,7 +4,7 @@
 - Have cookies check w/ user-field (create the field) for credit value - ALMOST WORKING, UPDATED USER WON'T SAVE - WORKS (user.save was triggering password validation rule)
 
 SETUP HOME PAGE MATCHUP SHOWING
-- Show voting results then a new matchup after voting
+- Show voting results then a new matchup after voting (ajax get request to get a matchup)
 - Remove players on teams that have a bye-week from the rotation
 - Have home page load new matchup after voting based on weighted probability so that closer matchups come up more often
 - Need current_week to be accessible in the matchup.rb model

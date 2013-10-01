@@ -311,10 +311,18 @@ aside {
 * {box-sizing: border-box;}
 
 #mpimage1 {
-
+  width: 400px;
+  height: 250px;
+  overflow: hidden;
+  border-radius: 2px;
 }
 
 #mpimage2 {
+  width: 400px;
+  height: 250px;
+  overflow: hidden;
+  border-radius: 2px;
+  
   margin-left: 20px;
 }
 

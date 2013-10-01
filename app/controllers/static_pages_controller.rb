@@ -63,18 +63,18 @@ class StaticPagesController < ApplicationController
       # flash[:error] = "No current user"
     else
       if @user.num_credits.nil?
-        @user.num_credits = 1
+        current_credits = 1
       else
         current_credits = @user.num_credits
         current_credits += 1
-        @user.num_credits = current_credits
-        @user.save
-        error_messages_returned = @user.errors.full_messages.to_sentence
-        if error_messages_returned = "Password is too short (minimum is 6 characters)"
-          @user.save(validate: false)
-        end
-        user_credits = current_credits
       end
+      @user.num_credits = current_credits
+      @user.save
+      error_messages_returned = @user.errors.full_messages.to_sentence
+      if error_messages_returned = "Password is too short (minimum is 6 characters)"
+        @user.save(validate: false)
+      end
+      user_credits = current_credits
     end
 
     data = {
@@ -83,6 +83,32 @@ class StaticPagesController < ApplicationController
       user_credits: user_credits
     }
 
+    render :json => data, :status => :ok
+  end
+
+  def getUserNumCredits
+    @user = view_context.current_user
+    current_week = view_context.current_week
+
+    if @user.nil?
+      # flash[:error] = "No current user"
+    else
+      if @user.num_credits.nil?
+        current_credits = 0
+        @user.num_credits = current_credits
+        @user.save
+        error_messages_returned = @user.errors.full_messages.to_sentence
+        if error_messages_returned = "Password is too short (minimum is 6 characters)"
+          @user.save(validate: false)
+        end
+      else
+        current_credits = @user.num_credits
+      end
+      user_credits = current_credits
+    end
+
+    user_credits = @user.num_credits
+    data = { user_credits: user_credits }
     render :json => data, :status => :ok
   end
 

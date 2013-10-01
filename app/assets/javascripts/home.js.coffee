@@ -1,4 +1,5 @@
 jQuery ->
+	# Increase the votes of the clicked player and the number of credits of the cookies/user
 	pointForPlayer = (e) ->
 		e.preventDefault()
 		matchupid = $('#matchupID').data('matchupid')
@@ -24,21 +25,14 @@ jQuery ->
 		    	# if the user is signed in
 		    	$('#credit-counter-value').text(data.user_credits)
 		    else
-		    	$('#credit-counter-value').text(getNumCredits)
+		    	$('#credit-counter-value').text(getNumCookieCredits())
 		  error: (xhr,status,error) ->
 		    console.log(xhr)
 		    alert(error)
-		  })
-	
-	if $('#home-header').data('votable') == true
-		$('#mp1').click pointForPlayer
-		$('#mp2').click pointForPlayer
+		  })	
 
-	getNumCredits = ->
-		# if $('#account-link').text() != ''
-
-    	
-
+	# Get the number of credits from the browser's cookies
+	getNumCookieCredits = ->
 		allCookies = document.cookie.split(';')
 		for c in allCookies
 			if c.substring(0,12) == ' num_credits'
@@ -49,8 +43,33 @@ jQuery ->
 				num_credits_cookie = c
 				num_credits_value = num_credits_cookie.substring(num_credits_cookie.indexOf('=') + 1)
 				num_credits_number = parseInt(num_credits_value, 10)
-
 		return num_credits_number
 
+	# Get the number of credits from the signed in user's model
+	getNumUserCredits = ->
+		$.ajax({ 
+		  url: '/getUserNumCredits'
+		  type: 'get'
+		  success: (data,status,xhr) ->
+		    if $('#account-link').text() != ''
+		    	# if the user is signed in
+		    	$('#credit-counter-value').text(data.user_credits)
+		  error: (xhr,status,error) ->
+		    console.log(xhr)
+		    alert(error)
+		  })
+
+	# Get the number of credits from user if signed in, if not, from cookies
+	getNumCredits = ->
+		if $('#account-link').text() != ''
+			getNumUserCredits()
+		else
+			getNumCookieCredits()
+
+	# Update number of credits in header on page load
 	$('#credit-counter-value').text(getNumCredits)
 
+	# Add click listener to player pictures
+	if $('#home-header').data('votable') == true
+		$('#mp1').click pointForPlayer
+		$('#mp2').click pointForPlayer

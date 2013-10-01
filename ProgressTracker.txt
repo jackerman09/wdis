@@ -1,7 +1,7 @@
 - Credits don't show if not signed in, but should - FIXED
 - Run seeds for matchup - DONE
 
-- Have cookies check w/ user-field (create the field) for credit value - ALMOST WORKING, UPDATED USER WON'T SAVE
+- Have cookies check w/ user-field (create the field) for credit value - ALMOST WORKING, UPDATED USER WON'T SAVE (w/ new num_credits value)
 
 - Remove players on teams that have a bye-week from the rotation
 - Have home page load new matchup after voting based on weighted probability so that closer matchups come up more often
@@ -14,3 +14,7 @@
 - Add a schedule to current_week so that it updates automatically based on the date in 'ApplicationHelper' and in 'Matchup.rb'
 
 - Add teams' schedules
+
+- Push local data to Heroku
+
+- Remove css click effect on /matchup/show

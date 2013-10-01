@@ -67,7 +67,9 @@ class StaticPagesController < ApplicationController
       else
         current_credits = @user.num_credits
         current_credits += 1
-        @user.update_attributes(num_credits: current_credits)
+        # @user.update_attributes(num_credits: current_credits)
+        @user.num_credits = current_credits
+        @user.save(validate: false)
         user_credits = current_credits
       end
     end

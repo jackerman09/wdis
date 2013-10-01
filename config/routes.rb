@@ -5,8 +5,7 @@ SampleApp::Application.routes.draw do
   resources :teams
   resources :players
   resources :matchups
-
-  root 'static_pages#home'
+  
   match '/signup',  to: 'users#new',            via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
@@ -15,4 +14,6 @@ SampleApp::Application.routes.draw do
   match '/contact', to: 'static_pages#contact', via: 'get'
   match '/updatepts', to: 'static_pages#updatepts', via: 'get'
   match '/findMatchup', to: 'static_pages#findMatchup', via: 'get'
+
+  root :to => 'static_pages#home'
 end

@@ -76,9 +76,16 @@ jQuery ->
 		    console.log(data)	
 		    console.log(getFullMatchupHTML(data))
 
-		    
-		    $('#matchupcontainer').html(getFullMatchupHTML(data))
-		    addClickListenersToPlayerPictures()
+		    $('#num-votes-row').slideDown(500)
+		    delay = (ms, func) -> setTimeout func, ms
+		    # delay 2000, ->
+		    # 	$('#matchupcontainer').slideUp()
+		    delay 1000, ->
+		    	$('#matchupcontainer').html(getFullMatchupHTML(data))
+		    # delay 1000, ->
+		    # 	$('#matchupcontainer').fadeIn()
+		    delay 1000, ->
+		    	addClickListenersToPlayerPictures()
 		  error: (xhr,status,error) ->
 		    console.log(xhr)
 		    alert(error)

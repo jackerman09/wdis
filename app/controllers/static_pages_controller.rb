@@ -83,6 +83,8 @@ class StaticPagesController < ApplicationController
       user_credits: user_credits
     }
 
+    
+
     render :json => data, :status => :ok
   end
 

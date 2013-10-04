@@ -3,18 +3,22 @@
 - Remove css click effect on /matchup/show - DONE
 - Have cookies check w/ user-field (create the field) for credit value - ALMOST WORKING, UPDATED USER WON'T SAVE - WORKS (user.save was triggering password validation rule)
 
+--------------------------------------------------------------------------------
+
 SETUP HOME PAGE MATCHUP SHOWING
 - Show voting results then a new matchup after voting (ajax get request to get a matchup)
 - Remove players on teams that have a bye-week from the rotation
 - Have home page load new matchup after voting based on weighted probability so that closer matchups come up more often
 - Need current_week to be accessible in the matchup.rb model
 
-- Add @ for home/away to team/show and to full_matchup if team is away
+- Change voting from jQuery event to link_to remote: true
 
+- Work out weekly and total scoring calculations
 - Show player's weekly scores on the players index in a table w/ opponent
+
+- Add @ for home/away to team/show and to full_matchup if team is away
 
 - Add a schedule to current_week so that it updates automatically based on the date in 'ApplicationHelper' and in 'Matchup.rb'
 
-- Add teams' schedules
-
-- Push local data to Heroku
+- Add teams' schedules to seeds.rb
+- Update seeds.rb so that it can run straight through

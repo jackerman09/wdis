@@ -77,10 +77,25 @@ class StaticPagesController < ApplicationController
       user_credits = current_credits
     end
 
+    @matchup = getRandomMatchup
+    if @matchup.nil?
+      flash[:error] = "No matchups in database"
+    else
+      @player1 = Player.find(@matchup.player_1)
+      @player2 = Player.find(@matchup.player_2)
+    end
+
     data = {
       new_player_1_pts: new_player_1_pts,
       new_player_2_pts: new_player_2_pts,
-      user_credits: user_credits
+      user_credits: user_credits,
+      matchup: @matchup,
+      player1: @player1,
+      player1OpponentTeamName: Team.find(@player1.team.send("opp_week_#{current_week}")).name,
+      ptsplayer1: @matchup.send("pts_player_1_week_#{current_week}"),
+      player2: @player2,
+      player2OpponentTeamName: Team.find(@player2.team.send("opp_week_#{current_week}")).name,
+      ptsplayer2: @matchup.send("pts_player_2_week_#{current_week}")
     }
 
     render :json => data, :status => :ok

@@ -1,4 +1,50 @@
 jQuery ->
+	# Add click listener to player pictures
+	addClickListenersToPlayerPictures = ->
+		if $('#home-header').data('votable') == true
+			$('#mp1').click pointForPlayer
+			$('#mpimage1').addClass('mpimage')
+			$('#mp2').click pointForPlayer
+			$('#mpimage2').addClass('mpimage')
+		else
+			$('#mpimage1').removeClass('mpimage')
+			$('#mpimage2').removeClass('mpimage')
+
+	getFullMatchupHTML = (data) ->
+		fullMatchupHtml = 
+		'<div class="row">' +
+			'<div id="matchupID" data-matchupid=' + data.matchup.id + '></div>' +
+			'<div id="mpcontainer" class="">' +
+				'<div id="mp1" class="span5 mp">' +
+					'<h3>' + data.player1.first_name + ' ' + data.player1.last_name + '</h3>' +
+					'<h4>' + data.player1OpponentTeamName + '</h4>' +
+					'<div id="mpimage1" class="mpimage">' +
+						'<img src="/images/' + data.player1.first_name + '_' + data.player1.last_name + '.jpg" alt="' + data.player1.first_name + '_' + data.player1.last_name + '" class= "playerpic" >' +
+					'</div>' +
+				'</div>' +
+				'<div id="mp2" class="span5 mp">' +
+					'<h3>' + data.player2.first_name + ' ' + data.player2.last_name + '</h3>' +
+					'<h4>' + data.player2OpponentTeamName + '</h4>' +
+					'<div id="mpimage2" class="mpimage">' +
+						'<img src="/images/' + data.player2.first_name + '_' + data.player2.last_name + '.jpg" alt="' + data.player2.first_name + '_' + data.player2.last_name + '" class= "playerpic" >' +
+						# '<%= image_tag("' + data.player2.first_name + '_' + data.player2.last_name + '.jpg", alt: "' + data.player2.first_name + '_' + data.player2.last_name + '", class: "playerpic") %>' +
+					'</div>' +
+				'</div>' +
+			'</div>' +
+		'</div>' +
+		'</br>' +
+		'<div class="row" id="num-votes-row">' +
+			'<div class="">' +
+				'<div id="mpts1" class="span5">' +
+					'<h2>' + data.ptsplayer1 + '</h2>' +
+				'</div>' +
+				'<div id="mpts2" class="span5">' +
+					'<h2>' + data.ptsplayer2 + '</h2>' +
+				'</div>' +
+			'</div>' +
+		'</div>'
+
+
 	# Increase the votes of the clicked player and the number of credits of the cookies/user
 	pointForPlayer = (e) ->
 		e.preventDefault()
@@ -26,6 +72,13 @@ jQuery ->
 		    	$('#credit-counter-value').text(data.user_credits)
 		    else
 		    	$('#credit-counter-value').text(getNumCookieCredits())
+
+		    console.log(data)	
+		    console.log(getFullMatchupHTML(data))
+
+		    
+		    $('#matchupcontainer').html(getFullMatchupHTML(data))
+		    addClickListenersToPlayerPictures()
 		  error: (xhr,status,error) ->
 		    console.log(xhr)
 		    alert(error)
@@ -69,12 +122,4 @@ jQuery ->
 	# Update number of credits in header on page load
 	$('#credit-counter-value').text(getNumCredits)
 
-	# Add click listener to player pictures
-	if $('#home-header').data('votable') == true
-		# $('#mp1').click pointForPlayer
-		$('#mpimage1').addClass('mpimage')
-		# $('#mp2').click pointForPlayer
-		$('#mpimage2').addClass('mpimage')
-	else
-		$('#mpimage1').removeClass('mpimage')
-		$('#mpimage2').removeClass('mpimage')
+	addClickListenersToPlayerPictures()

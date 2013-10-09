@@ -154,6 +154,9 @@ class StaticPagesController < ApplicationController
   end
 
   def findMatchup
+    @user = view_context.current_user
+    current_week = view_context.current_week
+    
     if params[:matchup][:player_1].nil? || params[:matchup][:player_2].nil?
       redirect_to root_path
     else

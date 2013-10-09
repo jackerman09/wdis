@@ -50,7 +50,7 @@ jQuery ->
 	pointForPlayer = (e) ->
 		e.preventDefault()
 		matchupid = $('#matchupID').data('matchupid')
-		
+
 		if e.currentTarget.id == 'mp1'
 			player1or2 = 1
 		else
@@ -132,7 +132,6 @@ jQuery ->
 
 	addClickListenersToPlayerPictures()
 
-	console.log($('#home-h1').text())
 	if $('#home-h1').text() == 'Who Would You Start?'
 		$('#num-votes-row').hide()
 	else

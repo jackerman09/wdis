@@ -10,6 +10,7 @@ jQuery ->
 			$('#mpimage1').removeClass('mpimage')
 			$('#mpimage2').removeClass('mpimage')
 
+	# Provide html to inject into the _fullmatchup partial on the home page
 	getFullMatchupHTML = (data) ->
 		fullMatchupHtml = 
 		'<div class="row">' +
@@ -33,7 +34,7 @@ jQuery ->
 			'</div>' +
 		'</div>' +
 		'</br>' +
-		'<div class="row" id="num-votes-row">' +
+		'<div class="row" id="num-votes-row" class="hiddenVoteRow">' +
 			'<div class="">' +
 				'<div id="mpts1" class="span5">' +
 					'<h2>' + data.ptsplayer1 + '</h2>' +
@@ -130,4 +131,10 @@ jQuery ->
 	$('#credit-counter-value').text(getNumCredits)
 
 	addClickListenersToPlayerPictures()
+
+	console.log($('#home-h1').text())
+	if $('#home-h1').text() == 'Who Would You Start?'
+		$('#num-votes-row').hide()
+	else
+		$('#num-votes-row').show()
 

@@ -103,12 +103,36 @@ class StaticPagesController < ApplicationController
     render :json => data, :status => :ok
   end
 
+  def userNumCredits
+    @user = view_context.current_user
+    current_week = view_context.current_week
+
+    if @user.nil?
+      flash[:error] = "Not logged in"
+      redirect_to root_path
+    else
+      if @user.num_credits.nil?
+        current_credits = 0
+        @user.num_credits = current_credits
+        @user.save
+        error_messages_returned = @user.errors.full_messages.to_sentence
+        if error_messages_returned = "Password is too short (minimum is 6 characters)"
+          @user.save(validate: false)
+        end
+      else
+        current_credits = @user.num_credits
+      end
+      user_credits = current_credits
+    end
+  end
+
   def getUserNumCredits
     @user = view_context.current_user
     current_week = view_context.current_week
 
     if @user.nil?
-      # flash[:error] = "No current user"
+      flash[:error] = "Not logged in"
+      redirect_to root_path
     else
       if @user.num_credits.nil?
         current_credits = 0
@@ -133,25 +157,48 @@ class StaticPagesController < ApplicationController
     if params[:matchup][:player_1].nil? || params[:matchup][:player_2].nil?
       redirect_to root_path
     else
-      if cookies[:num_credits].nil? || cookies[:num_credits].to_f < 3
+      if (cookies[:num_credits].nil? || cookies[:num_credits].to_f < 3) && userNumCredits < 3
         flash[:error] = "You need to vote 3 times for every search. Vote more."
         redirect_to root_path
       else
         @player1 = Player.find(params[:matchup][:player_1])
         @player2 = Player.find(params[:matchup][:player_2])
+        
+        # find the matchup by player ID
         @matchup = Matchup.find_by(player_1: @player1.id, player_2: @player2.id)
+        
+        # find the matchup by player ID with the ID's in the reversed spot
         if @matchup.nil?
           @matchup = Matchup.find_by(player_1: @player2.id, player_2: @player1.id)
         end
+        
         if @matchup.nil?
           flash[:error] = "Matchup does not exist."
           redirect_to root_path
         else
-          current_credits = cookies[:num_credits].to_f
-          current_credits -= 3
-          cookies[:num_credits] = current_credits
+          if @user.nil?
+            current_credits = cookies[:num_credits].to_f
+            current_credits -= 3
+            if current_credits < 0
+              current_credits = 0
+            end
+            cookies[:num_credits] = current_credits            
+          else
+            current_credits = @user.num_credits
+            current_credits -=3
+            if current_credits < 0
+              current_credits = 0
+            end
+            @user.num_credits = current_credits
+            @user.save
+            error_messages_returned = @user.errors.full_messages.to_sentence
+            if error_messages_returned = "Password is too short (minimum is 6 characters)"
+              @user.save(validate: false)
+            end
+          end
           redirect_to @matchup
         end
+
       end
     end
   end

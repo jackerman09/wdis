@@ -6,9 +6,11 @@ jQuery ->
 			$('#mpimage1').addClass('mpimage')
 			$('#mp2').click pointForPlayer
 			$('#mpimage2').addClass('mpimage')
+			$('#num-votes-row').hide()
 		else
 			$('#mpimage1').removeClass('mpimage')
 			$('#mpimage2').removeClass('mpimage')
+			$('#num-votes-row').show()
 
 	# Provide html to inject into the _fullmatchup partial on the home page
 	getFullMatchupHTML = (data) ->
@@ -74,19 +76,19 @@ jQuery ->
 		    else
 		    	$('#credit-counter-value').text(getNumCookieCredits())
 
-		    console.log(data)	
-		    console.log(getFullMatchupHTML(data))
+		    # console.log(data)	
+		    # console.log(getFullMatchupHTML(data))
 
 		    $('#num-votes-row').slideDown(500)
 		    delay = (ms, func) -> setTimeout func, ms
-		    # delay 2000, ->
-		    # 	$('#matchupcontainer').slideUp()
-		    delay 1000, ->
-		    	$('#matchupcontainer').html(getFullMatchupHTML(data))
-		    # delay 1000, ->
-		    # 	$('#matchupcontainer').fadeIn()
-		    delay 1000, ->
-		    	addClickListenersToPlayerPictures()
+		    delay 1500, ->
+		    	$('#matchupcontainer').fadeOut()
+			    delay 700, ->
+			    	$('#matchupcontainer').html(getFullMatchupHTML(data))
+					  delay 1000, ->
+				    	$('#matchupcontainer').fadeIn()
+					    delay 1000, ->
+					    	addClickListenersToPlayerPictures()
 		  error: (xhr,status,error) ->
 		    console.log(xhr)
 		    alert(error)
@@ -132,8 +134,8 @@ jQuery ->
 
 	addClickListenersToPlayerPictures()
 
-	if $('#home-h1').text() == 'Who Would You Start?'
-		$('#num-votes-row').hide()
-	else
-		$('#num-votes-row').show()
+	# if $('#home-h1').text() == 'Who Would You Start?'
+	# 	$('#num-votes-row').hide()
+	# else
+	# 	$('#num-votes-row').show()
 

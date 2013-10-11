@@ -41,14 +41,14 @@ class StaticPagesController < ApplicationController
       else
         new_player_1_pts += 1
       end
-      @matchup.update_attributes(pts_player_1_week_1: new_player_1_pts)
+      @matchup.update_attributes("pts_player_1_week_#{current_week}".to_sym => new_player_1_pts)
     else
       if new_player_2_pts.nil?
         new_player_2_pts = 1
       else
         new_player_2_pts += 1
       end
-      @matchup.update_attributes(pts_player_2_week_1: new_player_2_pts)
+      @matchup.update_attributes("pts_player_2_week_#{current_week}".to_sym => new_player_2_pts)
     end
 
     if cookies[:num_credits].nil?
@@ -95,7 +95,8 @@ class StaticPagesController < ApplicationController
       ptsplayer1: @matchup.send("pts_player_1_week_#{current_week}"),
       player2: @player2,
       player2OpponentTeamName: Team.find(@player2.team.send("opp_week_#{current_week}")).name,
-      ptsplayer2: @matchup.send("pts_player_2_week_#{current_week}")
+      ptsplayer2: @matchup.send("pts_player_2_week_#{current_week}"),
+      current_week: current_week
     }
 
     

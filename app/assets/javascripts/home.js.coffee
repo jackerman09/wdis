@@ -47,6 +47,19 @@ jQuery ->
 			'</div>' +
 		'</div>'
 
+	getLoadAnimation = ->
+		loadAnimation =
+			'<div id="floatingCirclesG">' +
+				'<div class="f_circleG" id="frotateG_01"></div>' +
+				'<div class="f_circleG" id="frotateG_02"></div>' +
+				'<div class="f_circleG" id="frotateG_03"></div>' +
+				'<div class="f_circleG" id="frotateG_04"></div>' +
+				'<div class="f_circleG" id="frotateG_05"></div>' +
+				'<div class="f_circleG" id="frotateG_06"></div>' +
+				'<div class="f_circleG" id="frotateG_07"></div>' +
+				'<div class="f_circleG" id="frotateG_08"></div>' +
+			'</div>'
+
 
 	# Increase the votes of the clicked player and the number of credits of the cookies/user
 	pointForPlayer = (e) ->
@@ -76,13 +89,14 @@ jQuery ->
 		    else
 		    	$('#credit-counter-value').text(getNumCookieCredits())
 
-		    # console.log(data)	
+		    console.log(data)	
 		    # console.log(getFullMatchupHTML(data))
 
 		    $('#num-votes-row').slideDown(500)
 		    delay = (ms, func) -> setTimeout func, ms
 		    delay 1500, ->
 		    	$('#matchupcontainer').fadeOut()
+		    	# $('#home-header').html(getLoadAnimation)
 			    delay 700, ->
 			    	$('#matchupcontainer').html(getFullMatchupHTML(data))
 					  delay 1000, ->

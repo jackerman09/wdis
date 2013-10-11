@@ -13,91 +13,13 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<th>Week 1</th>
-				<td><%= @matchup.pts_player_1_week_1 %></td>
-				<td><%= @matchup.pts_player_2_week_1 %></td>
-			</tr>
-			<tr>
-				<th>Week 2</th>
-				<td><%= @matchup.pts_player_1_week_2 %></td>
-				<td><%= @matchup.pts_player_2_week_2 %></td>
-			</tr>
-			<tr>
-				<th>Week 3</th>
-				<td><%= @matchup.pts_player_1_week_3 %></td>
-				<td><%= @matchup.pts_player_2_week_3 %></td>
-			</tr>
-			<tr>
-				<th>Week 4</th>
-				<td><%= @matchup.pts_player_1_week_4 %></td>
-				<td><%= @matchup.pts_player_2_week_4 %></td>
-			</tr>
-			<tr>
-				<th>Week 5</th>
-				<td><%= @matchup.pts_player_1_week_5 %></td>
-				<td><%= @matchup.pts_player_2_week_5 %></td>
-			</tr>
-			<tr>
-				<th>Week 6</th>
-				<td><%= @matchup.pts_player_1_week_6 %></td>
-				<td><%= @matchup.pts_player_2_week_6 %></td>
-			</tr>
-			<tr>
-				<th>Week 7</th>
-				<td><%= @matchup.pts_player_1_week_7 %></td>
-				<td><%= @matchup.pts_player_2_week_7 %></td>
-			</tr>
-			<tr>
-				<th>Week 8</th>
-				<td><%= @matchup.pts_player_1_week_8 %></td>
-				<td><%= @matchup.pts_player_2_week_8 %></td>
-			</tr>
-			<tr>
-				<th>Week 9</th>
-				<td><%= @matchup.pts_player_1_week_9 %></td>
-				<td><%= @matchup.pts_player_2_week_9 %></td>
-			</tr>
-			<tr>
-				<th>Week 10</th>
-				<td><%= @matchup.pts_player_1_week_10 %></td>
-				<td><%= @matchup.pts_player_2_week_10 %></td>
-			</tr>
-			<tr>
-				<th>Week 11</th>
-				<td><%= @matchup.pts_player_1_week_11 %></td>
-				<td><%= @matchup.pts_player_2_week_11 %></td>
-			</tr>
-			<tr>
-				<th>Week 12</th>
-				<td><%= @matchup.pts_player_1_week_12 %></td>
-				<td><%= @matchup.pts_player_2_week_12 %></td>
-			</tr>
-			<tr>
-				<th>Week 13</th>
-				<td><%= @matchup.pts_player_1_week_13 %></td>
-				<td><%= @matchup.pts_player_2_week_13 %></td>
-			</tr>
-			<tr>
-				<th>Week 14</th>
-				<td><%= @matchup.pts_player_1_week_14 %></td>
-				<td><%= @matchup.pts_player_2_week_14 %></td>
-			</tr>
-			<tr>
-				<th>Week 15</th>
-				<td><%= @matchup.pts_player_1_week_15 %></td>
-				<td><%= @matchup.pts_player_2_week_15 %></td>
-			</tr>
-			<tr>
-				<th>Week 16</th>
-				<td><%= @matchup.pts_player_1_week_16 %></td>
-				<td><%= @matchup.pts_player_2_week_16 %></td>
-			</tr>
-			<tr>
-				<th>Week 17</th>
-				<td><%= @matchup.pts_player_1_week_17 %></td>
-				<td><%= @matchup.pts_player_2_week_17 %></td>
-			</tr>
+			<% (1..17).each do |week| %>
+				<tr>
+					<th>Week <%= week %></th>
+					<td><%= @matchup.send("pts_player_1_week_#{week}") %></td>
+					<td><%= @matchup.send("pts_player_2_week_#{week}") %></td>
+				</tr>
+			<% end %>
 		</tbody>
 	</table>
 </div>

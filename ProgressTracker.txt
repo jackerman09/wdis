@@ -3,6 +3,8 @@
 - Remove css click effect on /matchup/show - DONE
 - Have cookies check w/ user-field (create the field) for credit value - ALMOST WORKING, UPDATED USER WON'T SAVE - WORKS (user.save was triggering password validation rule)
 
+- Add a schedule to current_week so that it updates automatically based on the date in 'ApplicationHelper' and in 'Matchup.rb' - DONE
+
 --------------------------------------------------------------------------------
 
 SETUP HOME PAGE MATCHUP SHOWING
@@ -16,9 +18,7 @@ SETUP HOME PAGE MATCHUP SHOWING
 
 - Add @ for home/away to team/show and to full_matchup if team is away
 
-- Add a schedule to current_week so that it updates automatically based on the date in 'ApplicationHelper' and in 'Matchup.rb'
-
 - Add teams' schedules to seeds.rb
 - Update seeds.rb so that it can run straight through
 
-- Update home page (js.coffee) so that the credit value doesn't show [OBJECT] briefly before loading the number
+- Update home page (js.coffee) so that the credit value doesn't show [OBJECT] briefly before loading the number (why is this even happening?)

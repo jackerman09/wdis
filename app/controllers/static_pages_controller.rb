@@ -208,6 +208,30 @@ class StaticPagesController < ApplicationController
 
   private
     def getRandomMatchup
-      Matchup.order("RANDOM()").first
+      current_week = view_context.current_week
+
+      m = Matchup.order("RANDOM()").first
+      
+      p1 = Player.find(m.player_1)
+      t1 = Team.find(p1.team_id)
+      o1 = Team.find(t1.send("opp_week_#{current_week}")).name
+
+      p2 = Player.find(m.player_2)
+      t2 = Team.find(p2.team_id)
+      o2 = Team.find(t2.send("opp_week_#{current_week}")).name
+
+      while o1 == "Bye Week" || o2 == "Bye Week"
+        m = Matchup.order("RANDOM()").first
+
+        p1 = Player.find(m.player_1)
+        t1 = Team.find(p1.team_id)
+        o1 = Team.find(t1.send("opp_week_#{current_week}")).name
+
+        p2 = Player.find(m.player_2)
+        t2 = Team.find(p2.team_id)
+        o2 = Team.find(t2.send("opp_week_#{current_week}")).name
+      end 
+
+      return m
     end
 end

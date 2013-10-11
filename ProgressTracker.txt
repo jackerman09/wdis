@@ -7,11 +7,9 @@
 
 SETUP HOME PAGE MATCHUP SHOWING
 - Show voting results then a new matchup after voting (ajax get request to get a matchup) - DONE
-- Remove players on teams that have a bye-week from the rotation
+- Remove players on teams that have a bye-week from the rotation - DONE
 - Have home page load new matchup after voting based on weighted probability so that closer matchups come up more often
 - Need current_week to be accessible in the matchup.rb model, otherwise recreate schedule in the model
-
-- Change voting from jQuery event to link_to remote: true - WHY?
 
 - Work out weekly and total scoring calculations
 - Show player's weekly scores on the players index in a table w/ opponent

@@ -22,14 +22,14 @@ jQuery ->
 					'<h3>' + data.player1.first_name + ' ' + data.player1.last_name + '</h3>' +
 					'<h4>' + data.player1OpponentTeamName + '</h4>' +
 					'<div id="mpimage1" class="mpimage">' +
-						'<img src="/images/' + data.player1.first_name + '_' + data.player1.last_name + '.jpg" alt="' + data.player1.first_name + '_' + data.player1.last_name + '" class= "playerpic" >' +
+						'<img src="/assets/' + data.player1.first_name + '_' + data.player1.last_name + '.jpg" alt="' + data.player1.first_name + '_' + data.player1.last_name + '" class= "playerpic" >' +
 					'</div>' +
 				'</div>' +
 				'<div id="mp2" class="span5 mp">' +
 					'<h3>' + data.player2.first_name + ' ' + data.player2.last_name + '</h3>' +
 					'<h4>' + data.player2OpponentTeamName + '</h4>' +
 					'<div id="mpimage2" class="mpimage">' +
-						'<img src="/images/' + data.player2.first_name + '_' + data.player2.last_name + '.jpg" alt="' + data.player2.first_name + '_' + data.player2.last_name + '" class= "playerpic" >' +
+						'<img src="/assets/' + data.player2.first_name + '_' + data.player2.last_name + '.jpg" alt="' + data.player2.first_name + '_' + data.player2.last_name + '" class= "playerpic" >' +
 						# '<%= image_tag("' + data.player2.first_name + '_' + data.player2.last_name + '.jpg", alt: "' + data.player2.first_name + '_' + data.player2.last_name + '", class: "playerpic") %>' +
 					'</div>' +
 				'</div>' +

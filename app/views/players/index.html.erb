@@ -4,10 +4,17 @@
 <div class="row">
 	<%= will_paginate %>
 
-	<ul class="users">
-	  <%= render @players %>
-	</ul>
-
+	<table class="table">
+			<thead>
+				<tr>
+					<th>Player</th>
+					<th>This Week's Score</th>
+				</tr>
+			</thead>
+	  	<tbody>
+	  		<%= render @players %>
+	  	</tbody>
+	</table>
 	<%= will_paginate %>
 </div>
 </br>

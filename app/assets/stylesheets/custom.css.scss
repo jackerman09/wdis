@@ -354,6 +354,19 @@ aside {
   height: 550px;
 }
 
+//Matchup Show Page//
+#matchup-history {
+  thead tr th {
+    text-align: center;
+  }
+  tbody tr td {
+    text-align: center;
+  }
+  tbody tr th {
+    text-align: left;
+  }
+}
+
 //Loading Animation//
 
 #floatingCirclesG{

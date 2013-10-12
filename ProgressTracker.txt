@@ -9,6 +9,12 @@
 --------------------------------------------------------------------------------
 
 SETUP HOME PAGE MATCHUP SHOWING
+
+--- PRIORITY ---
+- Currently able to search a matchup w/ less than 3 credits. Why?
+- Searching w/ less than 3 credits on heroku causes an error.
+
+
 - Show voting results then a new matchup after voting (ajax get request to get a matchup) - DONE
 - Remove players on teams that have a bye-week from the rotation - DONE
 - Have home page load new matchup after voting based on weighted probability so that closer matchups come up more often
@@ -18,6 +24,8 @@ SETUP HOME PAGE MATCHUP SHOWING
 - Show player's weekly scores on the players index in a table w/ opponent
 
 - Sort players/index by this week's score
+
+- Fix image size on players/show
 
 - Add @ for home/away to team/show and to full_matchup if team is away
 

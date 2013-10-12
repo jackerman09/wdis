@@ -139,12 +139,16 @@ jQuery ->
 	# Get the number of credits from user if signed in, if not, from cookies
 	getNumCredits = ->
 		if $('#account-link').text() != ''
+			console.log('In function, USER: ' + getNumUserCredits())
 			getNumUserCredits()
 		else
+			console.log('In function, COOKIE: ' + getNumCookieCredits())
 			getNumCookieCredits()
 
 	# Update number of credits in header on page load
-	$('#credit-counter-value').text(getNumCredits)
+	$('#credit-counter-value').text(getNumCredits())
+	# console.log('User:' + getNumUserCredits())
+	console.log('Cookie:' + getNumCredits())
 
 	addClickListenersToPlayerPictures()
 

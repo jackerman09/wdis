@@ -106,6 +106,9 @@ class StaticPagesController < ApplicationController
 
   def userNumCredits
     @user = view_context.current_user
+    if @user.nil?
+      return 0
+    end
     current_week = view_context.current_week
 
     if @user.nil?
@@ -123,7 +126,7 @@ class StaticPagesController < ApplicationController
       else
         current_credits = @user.num_credits
       end
-      user_credits = current_credits
+      user_credits = current_credits.to_f
     end
   end
 
@@ -202,7 +205,6 @@ class StaticPagesController < ApplicationController
           end
           redirect_to @matchup
         end
-
       end
     end
   end

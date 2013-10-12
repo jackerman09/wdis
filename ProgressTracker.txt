@@ -8,6 +8,12 @@
 - Currently able to search a matchup w/ less than 3 credits. Why? - FIXED
 - Searching w/ less than 3 credits on heroku causes an error. - FIXED
 - Fix image size on players/show - DONE
+- Make it so that you need to vote 10 times if not signed in, 5 times if signed in. Adjust flash message to say you can sign up to vote less. - DONE
+- Show voting results then a new matchup after voting (ajax get request to get a matchup) - DONE
+- Remove players on teams that have a bye-week from the rotation - DONE
+- Need current_week to be accessible in the matchup.rb model, otherwise recreate schedule in the model - DONE
+
+- Sort players/index by this week's score - DONE but untested
 
 --------------------------------------------------------------------------------
 
@@ -16,19 +22,16 @@ SETUP HOME PAGE MATCHUP SHOWING
 --- PRIORITY ---
 
 
-- Make it so that you need to vote 10 times if not signed in, 5 times if signed in. Adjust flash message to say you can sign up to vote less.
+----------------
+
+- Add button to generate matchups (that don't already exist) for given player
 
 - Add 'injured' field to player to remove them from matchup selection rotation
 
-- Show voting results then a new matchup after voting (ajax get request to get a matchup) - DONE
-- Remove players on teams that have a bye-week from the rotation - DONE
 - Have home page load new matchup after voting based on weighted probability so that closer matchups come up more often
-- Need current_week to be accessible in the matchup.rb model, otherwise recreate schedule in the model
 
 - Work out weekly and total scoring calculations
 - Show player's weekly scores on the players index in a table w/ opponent
-
-- Sort players/index by this week's score
 
 - Add @ for home/away to team/show and to full_matchup if team is away
 

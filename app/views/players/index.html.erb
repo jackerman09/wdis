@@ -12,7 +12,7 @@
 				</tr>
 			</thead>
 	  	<tbody>
-	  		<%= render @players %>
+	  		<%= render @players.sort_by &"pts_week_#{current_week}".to_sym %>
 	  	</tbody>
 	</table>
 	<%= will_paginate %>

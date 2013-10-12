@@ -5,14 +5,15 @@
 - Add a schedule to current_week so that it updates automatically based on the date in 'ApplicationHelper' and in 'Matchup.rb' - DONE
 - Add player image to player/show - DONE
 - Player index only shows week 1 right now, see _player.html to fix - DONE
+- Currently able to search a matchup w/ less than 3 credits. Why? - FIXED
+- Searching w/ less than 3 credits on heroku causes an error. - FIXED
 
 --------------------------------------------------------------------------------
 
 SETUP HOME PAGE MATCHUP SHOWING
 
 --- PRIORITY ---
-- Currently able to search a matchup w/ less than 3 credits. Why?
-- Searching w/ less than 3 credits on heroku causes an error.
+
 
 
 - Show voting results then a new matchup after voting (ajax get request to get a matchup) - DONE

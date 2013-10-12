@@ -57,7 +57,7 @@ players = Player.create([
 	{last_name: 'Ridley',			first_name: 'Stevan',			team_id: Team.find_by(name: 'Patriots').id,			position: 'RB'},
 	{last_name: 'Jackson',		first_name: 'Fred',				team_id: Team.find_by(name: 'Bills').id,				position: 'RB'},
 	{last_name: 'Spiller',		first_name: 'C.J.',				team_id: Team.find_by(name: 'Bills').id,				position: 'RB'},
-	{last_name: 'Wilson',			first_name: 'Davis',			team_id: Team.find_by(name: 'Giants').id,				position: 'RB'},
+	{last_name: 'Wilson',			first_name: 'David',			team_id: Team.find_by(name: 'Giants').id,				position: 'RB'},
 	{last_name: 'McCoy',			first_name: 'Lesean',			team_id: Team.find_by(name: 'Eagles').id,	position: 'RB'},
 	{last_name: 'Murray',			first_name: 'DeMarco',		team_id: Team.find_by(name: 'Cowboys').id,			position: 'RB'},
 	{last_name: 'Morris',			first_name: 'Alfred',			team_id: Team.find_by(name: 'Redskins').id,			position: 'RB'},

@@ -7,6 +7,7 @@
 - Player index only shows week 1 right now, see _player.html to fix - DONE
 - Currently able to search a matchup w/ less than 3 credits. Why? - FIXED
 - Searching w/ less than 3 credits on heroku causes an error. - FIXED
+- Fix image size on players/show - DONE
 
 --------------------------------------------------------------------------------
 
@@ -15,6 +16,9 @@ SETUP HOME PAGE MATCHUP SHOWING
 --- PRIORITY ---
 
 
+- Make it so that you need to vote 10 times if not signed in, 5 times if signed in. Adjust flash message to say you can sign up to vote less.
+
+- Add 'injured' field to player to remove them from matchup selection rotation
 
 - Show voting results then a new matchup after voting (ajax get request to get a matchup) - DONE
 - Remove players on teams that have a bye-week from the rotation - DONE
@@ -25,8 +29,6 @@ SETUP HOME PAGE MATCHUP SHOWING
 - Show player's weekly scores on the players index in a table w/ opponent
 
 - Sort players/index by this week's score
-
-- Fix image size on players/show
 
 - Add @ for home/away to team/show and to full_matchup if team is away
 

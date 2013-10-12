@@ -2,11 +2,12 @@
 <h1 class=""> <%= @player.first_name %> <%= @player.last_name %></h1>
 <div id="player-show-image" class="pimage">
 		<%= image_tag("#{@player.first_name}_#{@player.last_name}.jpg", alt: "#{@player.first_name}_#{@player.last_name}", class: "show-player-pic") %>
-	</div>
+</div>
+</br>
 <div class="row">
-	<h4>Team:			<% if @player.team != nil%><%= @player.team.name %><% end %></h4>
-	<h4>Position: 	<%= @player.position %></h4>
-	<p>Total Points: <%= @player.pts_week_1 %></p>
+	<h4 id="player-show-subtitle">Team:			<% if @player.team != nil%><%= @player.team.name %><% end %> | Position: 	<%= @player.position %></h4>
+	<h4></h4>
+	<p id="player-show-total-points">Total Points: <%= @player.pts_week_1 %></p>
 </div>
 </br>
 <div class="row">

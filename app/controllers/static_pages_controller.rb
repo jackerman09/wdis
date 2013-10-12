@@ -53,7 +53,7 @@ class StaticPagesController < ApplicationController
 
     if cookies[:num_credits].nil?
       cookies.permanent[:num_credits] = 1
-    else
+    elsif @user.nil?
       current_credits = cookies[:num_credits].to_f
       current_credits += 1
       cookies[:num_credits] = current_credits
@@ -162,10 +162,14 @@ class StaticPagesController < ApplicationController
     current_week = view_context.current_week
     
     if params[:matchup][:player_1].nil? || params[:matchup][:player_2].nil?
+      flash[:error] = "Could not find matchup."
       redirect_to root_path
     else
-      if (cookies[:num_credits].nil? || cookies[:num_credits].to_f < 3) && userNumCredits < 3
-        flash[:error] = "You need to vote 3 times for every search. Vote more."
+      if @user.nil? && (cookies[:num_credits].nil? || cookies[:num_credits].to_f < 10)
+        flash[:error] = "You need to vote 10 times for every search. Sign up for free, and you only need to vote 5 times per search."
+        redirect_to root_path
+      elsif !!@user && userNumCredits < 5
+        flash[:error] = "You need to vote 5 times for every search."
         redirect_to root_path
       else
         @player1 = Player.find(params[:matchup][:player_1])
@@ -185,14 +189,14 @@ class StaticPagesController < ApplicationController
         else
           if @user.nil?
             current_credits = cookies[:num_credits].to_f
-            current_credits -= 3
+            current_credits -= 10
             if current_credits < 0
               current_credits = 0
             end
             cookies[:num_credits] = current_credits            
           else
             current_credits = @user.num_credits
-            current_credits -=3
+            current_credits -=5
             if current_credits < 0
               current_credits = 0
             end

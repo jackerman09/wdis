@@ -539,18 +539,22 @@ background-color:#FFFFFF}
 
 //Player//
 .pimage {
+  width: 400px;
   height: 250px;
   overflow: hidden;
   border-radius: 2px;
-  // box-shadow: 0 5px 0 0 #e9edee, 0 5px 0 2px #ccd2d2, 0 12px 20px 6px #d5dbdb;
-  // -webkit-tap-highlight-color: rgba(black, 0);
-  // position: relative;
-  margin-left: auto;
+  
+  display: block;
+  margin: auto;
 }
 
 .show-player-pic {
   display: block;
   margin: auto;
+}
+
+#player-show-subtitle, #player-show-total-points {
+  text-align: center;
 }
 
 //TESTING//

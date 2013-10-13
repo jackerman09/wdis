@@ -3,7 +3,7 @@ class StaticPagesController < ApplicationController
   def home
     @matchup = getRandomMatchup
     if @matchup.nil?
-      flash[:error] = "No matchups in database"
+      flash[:error] = "Error loading matchup."
     else
       @player1 = Player.find(@matchup.player_1)
       @player2 = Player.find(@matchup.player_2)
@@ -79,7 +79,7 @@ class StaticPagesController < ApplicationController
 
     @matchup = getRandomMatchup
     if @matchup.nil?
-      flash[:error] = "No matchups in database"
+      flash[:error] = "Error loading matchup"
     else
       @player1 = Player.find(@matchup.player_1)
       @player2 = Player.find(@matchup.player_2)
@@ -220,22 +220,32 @@ class StaticPagesController < ApplicationController
       # m = Matchup.where.not(Team.find(Player.find(m.player_1).team.send("opp_week_#{current_week}")).name: "Bye Week", Team.find(Player.find(m.player_2).team.send("opp_week_#{current_week}")).name: "Bye Week").order("RANDOM()").first
 
       m = Matchup.order("RANDOM()").first
+      # bye-week matchup # m = Matchup.find(886)
       
       # p1 = Player.find(m.player_1)
       # t1 = p1.team
       # o1 = Team.find(t1.send("opp_week_#{current_week}")).name
-      o1 = Team.find(Player.find(m.player_1).team.send("opp_week_#{current_week}")).name
+      
 
       # p2 = Player.find(m.player_2)
       # t2 = p2.team
       # o2 = Team.find(t2.send("opp_week_#{current_week}")).name
+      
+      o1 = Team.find(Player.find(m.player_1).team.send("opp_week_#{current_week}")).name
       o2 = Team.find(Player.find(m.player_2).team.send("opp_week_#{current_week}")).name
 
+      counter  = 0
       while o1 == "Bye Week" || o2 == "Bye Week"
         m = Matchup.order("RANDOM()").first
+        # bye-week matchup # m = Matchup.find(886)
 
         o1 = Team.find(Player.find(m.player_1).team.send("opp_week_#{current_week}")).name
         o2 = Team.find(Player.find(m.player_2).team.send("opp_week_#{current_week}")).name
+        counter+=1
+        if counter > 9
+          m = nil
+          break
+        end
       end 
 
       return m

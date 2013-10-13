@@ -97,11 +97,11 @@ jQuery ->
 		    delay 1500, ->
 		    	$('#matchupcontainer').fadeOut()
 		    	# $('#home-header').html(getLoadAnimation)
-			    delay 700, ->
+			    delay 500, ->
 			    	$('#matchupcontainer').html(getFullMatchupHTML(data))
-					  delay 1000, ->
+					  delay 700, ->
 				    	$('#matchupcontainer').fadeIn()
-					    delay 1000, ->
+					    delay 700, ->
 					    	addClickListenersToPlayerPictures()
 		  error: (xhr,status,error) ->
 		    console.log(xhr)

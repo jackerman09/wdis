@@ -21,7 +21,7 @@
 SETUP HOME PAGE MATCHUP SHOWING
 
 --- PRIORITY ---
-
+- Update authentication so non-admins cannot access matchups or player/team[create, delete, edit]
 
 ----------------
 

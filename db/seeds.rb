@@ -6,39 +6,39 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-jets = Team.create(location: 'New York',			name: 'Jets'},
-dolphins = Team.create(location: 'Miami',				name: 'Dolphins'},
-patriots = Team.create(location: 'New England', 	name: 'Patriots'},
-bills = Team.create(location: 'Buffalo',			name: 'Bills'},
-giants = Team.create(location: 'New York', 		name: 'Giants'},
-eagles = Team.create(location: 'Philadelphia',	name: 'Eagles'},
-cowboys = Team.create(location: 'Dallas',				name: 'Cowboys'},
-redskins = Team.create(location: 'Washington',		name: 'Redskins'},
-steelers = Team.create(location: 'Pittsburg',		name: 'Steelers'},
-bengals = Team.create(location: 'Cincinnatti',	name: 'Bengals'},
-browns = Team.create(loadedcation: 'Cleveland',		name: 'Browns'},
-ravens = Team.create(location: 'Baltimore',		name: 'Ravens'},
-packers = Team.create(location: 'Green Bay',		name: 'Packers'},
-bears = Team.create(location: 'Chicago',			name: 'Bears'},
-lions = Team.create(location: 'Detroit',			name: 'Lions'},
-vikings = Team.create(location: 'Minnesota',		name: 'Vikings'},
-colts = Team.create(location: 'Indianapolis',	name: 'Colts'},
-jaguars = Team.create(location: 'Jacksonville',	name: 'Jaguars'},
-titans = Team.create(location: 'Tennessee',		name: 'Titans'},
-texans = Team.create(location: 'Houston',			name: 'Texans'},
-buccaneers = Team.create(location: 'Tamba Bay',		name: 'Buccaneers'},
-falcons = Team.create(location: 'Atlanta',			name: 'Falcons'},
-saints = Team.create(location: 'New Orleans',	name: 'Saints'},
-panthers = Team.create(location: 'Carolina',			name: 'Panthers'},
-chiefs = Team.create(location: 'Kansas City',	name: 'Chiefs'},
-broncos = Team.create(location: 'Denver',				name: 'Broncos'},
-chargers = Team.create(location: 'San Diego',		name: 'Chargers'},
-raiders = Team.create(location: 'Oakland',			name: 'Raiders'},
-49ers = Team.create(location: 'San Francisco',name: '49ers'},
-seahawks = Team.create(location: 'Seattle',			name: 'Seahawks'},
-rams = Team.create(location: 'St. Louis',		name: 'Rams'},
-cardinals = Team.create(location: 'Arizona',			name: 'Cardinals'},
-bye = Team.create(location: '',							name: 'Bye Week'}
+jets = Team.create({location: 'New York',			name: 'Jets'})
+dolphins = Team.create({location: 'Miami',				name: 'Dolphins'})
+patriots = Team.create({location: 'New England', 	name: 'Patriots'})
+bills = Team.create({location: 'Buffalo',			name: 'Bills'})
+giants = Team.create({location: 'New York', 		name: 'Giants'})
+eagles = Team.create({location: 'Philadelphia',	name: 'Eagles'})
+cowboys = Team.create({location: 'Dallas',				name: 'Cowboys'})
+redskins = Team.create({location: 'Washington',		name: 'Redskins'})
+steelers = Team.create({location: 'Pittsburg',		name: 'Steelers'})
+bengals = Team.create({location: 'Cincinnatti',	name: 'Bengals'})
+browns = Team.create({location: 'Cleveland',		name: 'Browns'})
+ravens = Team.create({location: 'Baltimore',		name: 'Ravens'})
+packers = Team.create({location: 'Green Bay',		name: 'Packers'})
+bears = Team.create({location: 'Chicago',			name: 'Bears'})
+lions = Team.create({location: 'Detroit',			name: 'Lions'})
+vikings = Team.create({location: 'Minnesota',		name: 'Vikings'})
+colts = Team.create({location: 'Indianapolis',	name: 'Colts'})
+jaguars = Team.create({location: 'Jacksonville',	name: 'Jaguars'})
+titans = Team.create({location: 'Tennessee',		name: 'Titans'})
+texans = Team.create({location: 'Houston',			name: 'Texans'})
+buccaneers = Team.create({location: 'Tamba Bay',		name: 'Buccaneers'})
+falcons = Team.create({location: 'Atlanta',			name: 'Falcons'})
+saints = Team.create({location: 'New Orleans',	name: 'Saints'})
+panthers = Team.create({location: 'Carolina',			name: 'Panthers'})
+chiefs = Team.create({location: 'Kansas City',	name: 'Chiefs'})
+broncos = Team.create({location: 'Denver',				name: 'Broncos'})
+chargers = Team.create({location: 'San Diego',		name: 'Chargers'})
+raiders = Team.create({location: 'Oakland',			name: 'Raiders'})
+fortyniners = Team.create({location: 'San Francisco',name: '49ers'})
+seahawks = Team.create({location: 'Seattle',			name: 'Seahawks'})
+rams = Team.create({location: 'St. Louis',		name: 'Rams'})
+cardinals = Team.create({location: 'Arizona',			name: 'Cardinals'})
+bye = Team.create({location: '',							name: 'Bye Week'})
 
 jets.update_attributes(
 	opp_week_1:	  buccaneers.id,
@@ -311,7 +311,7 @@ redskins.update_attributes(
 	opp_week_9:   chargers.id,
 	opp_week_10:  vikings.id,
 	opp_week_11:  eagles.id,
-	opp_week_12:  49ers.id,
+	opp_week_12:  fortyniners.id,
 	opp_week_13:  giants.id,
 	opp_week_14:  chiefs.id,
 	opp_week_15:  falcons.id,
@@ -485,7 +485,7 @@ ravens.update_attributes(
 	)
 
 packers.update_attributes(
-	opp_week_1:	  49ers.id,
+	opp_week_1:	  fortyniners.id,
 	opp_week_2:   redskins.id,
 	opp_week_3:   bengals.id,
 	opp_week_4:   bye.id,
@@ -635,7 +635,7 @@ vikings.update_attributes(
 colts.update_attributes(
 	opp_week_1:	  raiders.id,
 	opp_week_2:   dolphins.id,
-	opp_week_3:   49ers.id,
+	opp_week_3:   fortyniners.id,
 	opp_week_4:   jaguars.id,
 	opp_week_5:   seahawks.id,
 	opp_week_6:   chargers.id,
@@ -677,7 +677,7 @@ jaguars.update_attributes(
 	opp_week_5:   rams.id,
 	opp_week_6:   broncos.id,
 	opp_week_7:   chargers.id,
-	opp_week_8:   49ers.id,
+	opp_week_8:   fortyniners.id,
 	opp_week_9:   bye.id,
 	opp_week_10:  titans.id,
 	opp_week_11:  cardinals.id,
@@ -713,7 +713,7 @@ titans.update_attributes(
 	opp_week_4:   jets.id,
 	opp_week_5:   chiefs.id,
 	opp_week_6:   seahawks.id,
-	opp_week_7:   49ers.id,
+	opp_week_7:   fortyniners.id,
 	opp_week_8:   bye.id,
 	opp_week_9:   rams.id,
 	opp_week_10:  jaguars.id,
@@ -748,7 +748,7 @@ texans.update_attributes(
 	opp_week_2:   titans.id,
 	opp_week_3:   ravens.id,
 	opp_week_4:   seahawks.id,
-	opp_week_5:   49ers.id,
+	opp_week_5:   fortyniners.id,
 	opp_week_6:   rams.id,
 	opp_week_7:   chiefs.id,
 	opp_week_8:   bye.id,
@@ -795,7 +795,7 @@ buccaneers.update_attributes(
 	opp_week_12:  lions.id,
 	opp_week_13:  panthers.id,
 	opp_week_14:  bills.id,
-	opp_week_15:  49ers.id,
+	opp_week_15:  fortyniners.id,
 	opp_week_16:  rams.id,
 	opp_week_17:  saints.id,
 	home_week_1:  false,
@@ -833,7 +833,7 @@ falcons.update_attributes(
 	opp_week_13:  bills.id,
 	opp_week_14:  packers.id,
 	opp_week_15:  redskins.id,
-	opp_week_16:  49ers.id,
+	opp_week_16:  fortyniners.id,
 	opp_week_17:  panthers.id,
 	home_week_1:  false,
 	home_week_2:  true,
@@ -865,7 +865,7 @@ saints.update_attributes(
 	opp_week_8:   bills.id,
 	opp_week_9:   jets.id,
 	opp_week_10:  cowboys.id,
-	opp_week_11:  49ers.id,
+	opp_week_11:  fortyniners.id,
 	opp_week_12:  falcons.id,
 	opp_week_13:  seahawks.id,
 	opp_week_14:  panthers.id,
@@ -901,7 +901,7 @@ panthers.update_attributes(
 	opp_week_7:   rams.id,
 	opp_week_8:   buccaneers.id,
 	opp_week_9:   falcons.id,
-	opp_week_10:  49ers.id,
+	opp_week_10:  fortyniners.id,
 	opp_week_11:  patriots.id,
 	opp_week_12:  dolphins.id,
 	opp_week_13:  buccaneers.id,
@@ -1076,7 +1076,7 @@ raiders.update_attributes(
 	home_week_17: true
 	)
 
-49ers.update_attributes(
+fortyniners.update_attributes(
 	opp_week_1:	  packers.id,
 	opp_week_2:   seahawks.id,
 	opp_week_3:   colts.id,
@@ -1115,7 +1115,7 @@ raiders.update_attributes(
 
 seahawks.update_attributes(
 	opp_week_1:	  panthers.id,
-	opp_week_2:   49ers.id,
+	opp_week_2:   fortyniners.id,
 	opp_week_3:   jaguars.id,
 	opp_week_4:   texans.id,
 	opp_week_5:   colts.id,
@@ -1127,7 +1127,7 @@ seahawks.update_attributes(
 	opp_week_11:  vikings.id,
 	opp_week_12:  bye.id,
 	opp_week_13:  saints.id,
-	opp_week_14:  49ers.id,
+	opp_week_14:  fortyniners.id,
 	opp_week_15:  giants.id,
 	opp_week_16:  cardinals.id,
 	opp_week_17:  rams.id,
@@ -1154,7 +1154,7 @@ rams.update_attributes(
 	opp_week_1:	  cardinals.id,
 	opp_week_2:   falcons.id,
 	opp_week_3:   cowboys.id,
-	opp_week_4:   49ers.id,
+	opp_week_4:   fortyniners.id,
 	opp_week_5:   jaguars.id,
 	opp_week_6:   texans.id,
 	opp_week_7:   panthers.id,
@@ -1163,7 +1163,7 @@ rams.update_attributes(
 	opp_week_10:  colts.id,
 	opp_week_11:  bye.id,
 	opp_week_12:  bears.id,
-	opp_week_13:  49ers.id,
+	opp_week_13:  fortyniners.id,
 	opp_week_14:  cardinals.id,
 	opp_week_15:  saints.id,
 	opp_week_16:  buccaneers.id,
@@ -1193,7 +1193,7 @@ cardinals.update_attributes(
 	opp_week_3:   saints.id,
 	opp_week_4:   buccaneers.id,
 	opp_week_5:   panthers.id,
-	opp_week_6:   49ers.id,
+	opp_week_6:   fortyniners.id,
 	opp_week_7:   seahawks.id,
 	opp_week_8:   falcons.id,
 	opp_week_9:   bye.id,
@@ -1204,7 +1204,7 @@ cardinals.update_attributes(
 	opp_week_14:  rams.id,
 	opp_week_15:  titans.id,
 	opp_week_16:  seahawks.id,
-	opp_week_17:  49ers.id,
+	opp_week_17:  fortyniners.id,
 	home_week_1:  false,
 	home_week_2:  true,
 	home_week_3:  false,
@@ -1259,10 +1259,10 @@ players = Player.create([
 	{last_name: 'Moreno',			first_name: 'Knowshon',		team_id: broncos.id,			position: 'RB'},
 	{last_name: 'Matthews',		first_name: 'Ryan',				team_id: chargers.id,			position: 'RB'},
 	{last_name: 'McFadden',		first_name: 'Darren',			team_id: raiders.id,			position: 'RB'},
-	{last_name: 'Gore', 			first_name: 'Frank', 			team_id: 49ers.id,				position: 'RB'},
-	{last_name: 'Lynch',			first_name: 'Marshawn',		team_id: seahawks.id,			position: 'RB'}
+	{last_name: 'Gore', 			first_name: 'Frank', 			team_id: fortyniners.id,				position: 'RB'},
+	{last_name: 'Lynch',			first_name: 'Marshawn',		team_id: seahawks.id,			position: 'RB'},
 	{last_name: 'Richardson',	first_name: 'Daryl',			team_id: rams.id,					position: 'RB'},
-	{last_name: 'Mendenhall',	first_name: 'Rashard',		team_id: cardinals.id,		position: 'RB'},
+	{last_name: 'Mendenhall',	first_name: 'Rashard',		team_id: cardinals.id,		position: 'RB'}
 	])
 
 admin =	User.create(name: 'Jason Ackerman',		email: 'jackerman09@gmail.com', password: 'railstutorial', password_confirmation: 'railstutorial', admin: true)

@@ -12,6 +12,7 @@
 - Show voting results then a new matchup after voting (ajax get request to get a matchup) - DONE
 - Remove players on teams that have a bye-week from the rotation - DONE
 - Need current_week to be accessible in the matchup.rb model, otherwise recreate schedule in the model - DONE
+- Add teams' schedules to seeds.rb - DONE
 
 - Sort players/index by this week's score - DONE but untested
 
@@ -35,7 +36,6 @@ SETUP HOME PAGE MATCHUP SHOWING
 
 - Add @ for home/away to team/show and to full_matchup if team is away
 
-- Add teams' schedules to seeds.rb
 - Update seeds.rb so that it can run straight through
 
 - Update home page (js.coffee) so that the credit value doesn't show [OBJECT] briefly before loading the number (why is this even happening?)

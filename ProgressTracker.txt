@@ -14,8 +14,11 @@
 - Need current_week to be accessible in the matchup.rb model, otherwise recreate schedule in the model - DONE
 - Add teams' schedules to seeds.rb - DONE
 - Update seeds.rb so that it can run straight through - DONE
+- Fix infinite loop on bye-week avoiding matchup selection - ADDED ERROR CATCHER
+- After signin redirect_to root_path - DONE
 
 - Sort players/index by this week's score - DONE but untested
+- Have home page load new matchup after voting based on weighted probability so that closer matchups come up more often - DECIDED NOT TO DO THIS
 
 --------------------------------------------------------------------------------
 
@@ -26,14 +29,9 @@ SETUP HOME PAGE MATCHUP SHOWING
 
 ----------------
 
-- After signin redirect_to root_path
-
 - Add button to generate matchups (that don't already exist) for given player
 
 - Add 'injured' field to player to remove them from matchup selection rotation
-
-- Have home page load new matchup after voting based on weighted probability so that closer matchups come up more often - DECIDED NOT TO DO THIS
-- Fix infinite loop on bye-week avoiding matchup selection
 
 - Work out weekly and total scoring calculations
 - Show player's weekly scores on the players index in a table w/ opponent

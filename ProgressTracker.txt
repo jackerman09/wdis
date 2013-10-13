@@ -16,8 +16,10 @@
 - Update seeds.rb so that it can run straight through - DONE
 - Fix infinite loop on bye-week avoiding matchup selection - ADDED ERROR CATCHER
 - After signin redirect_to root_path - DONE
+- Add @ for home/away to team/show and to full_matchup if team is away - DONE
 
 - Sort players/index by this week's score - DONE but untested
+- Add 'injured' field to player to remove them from matchup selection rotation - DONE but untested
 - Have home page load new matchup after voting based on weighted probability so that closer matchups come up more often - DECIDED NOT TO DO THIS
 
 --------------------------------------------------------------------------------
@@ -31,11 +33,7 @@ SETUP HOME PAGE MATCHUP SHOWING
 
 - Add button to generate matchups (that don't already exist) for given player
 
-- Add 'injured' field to player to remove them from matchup selection rotation
-
 - Work out weekly and total scoring calculations
 - Show player's weekly scores on the players index in a table w/ opponent
-
-- Add @ for home/away to team/show and to full_matchup if team is away
 
 - Update home page (js.coffee) so that the credit value doesn't show [OBJECT] briefly before loading the number (why is this even happening?)

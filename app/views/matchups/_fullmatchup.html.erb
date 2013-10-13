@@ -6,7 +6,12 @@
 			<div id="mpcontainer" class="">
 				<div id="mp1" class="span5 mp">
 					<h3><%= "#{@player1.first_name} #{@player1.last_name}" %></h3>
-					<h4>@ <%= Team.find(@player1.team.send("opp_week_#{current_week}")).name %></h4>
+					<h4>
+						<% if Team.find(@player1.team.send("opp_week_#{current_week}")).send("home_week_#{current_week}") == false %>
+							@
+						<% end %>
+						<%= Team.find(@player1.team.send("opp_week_#{current_week}")).name %>
+					</h4>
 					<div id="mpimage1" class="mpimage">
 						<%= image_tag("#{@player1.first_name}_#{@player1.last_name}.jpg", alt: "#{@player1.first_name}_#{@player1.last_name}", class: "playerpic") %>
 					</div>
@@ -14,7 +19,12 @@
 
 				<div id="mp2" class="span5 mp">
 					<h3><%= "#{@player2.first_name} #{@player2.last_name}" %></h3>
-					<h4>@ <%= Team.find(@player2.team.send("opp_week_#{current_week}")).name %></h4>
+					<h4>
+						<% if Team.find(@player2.team.send("opp_week_#{current_week}")).send("home_week_#{current_week}") == false %>
+							@
+						<% end %>
+						<%= Team.find(@player2.team.send("opp_week_#{current_week}")).name %>
+					</h4>
 					<div id="mpimage2" class="mpimage">
 						<%= image_tag("#{@player2.first_name}_#{@player2.last_name}.jpg", alt: "#{@player2.first_name}_#{@player2.last_name}", class: "playerpic") %>
 					</div>

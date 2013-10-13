@@ -7,7 +7,7 @@
 			<li>
 				<%= "Week #{wk}:" %>				
 				<% if Team.exists?(id: @team.send("opp_week_#{wk}")) %>
-					<% if Team.find(@team.opp_week_1).home_week_1 == false %>
+					<% if Team.find(@team.send("opp_week_#{wk}")).send("home_week_#{wk}") == false %>
 						@
 					<% end %>
 					<%= link_to Team.find(@team.send("opp_week_#{wk}")).name, Team.find(@team.send("opp_week_#{wk}"))%>

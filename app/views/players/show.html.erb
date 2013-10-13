@@ -1,12 +1,20 @@
 <% provide(:title, @player.last_name) %>
 <h1 class=""> <%= @player.first_name %> <%= @player.last_name %></h1>
+<% if @player.injured == true %>
+	<h5 id="injured-status">Currently injured.</h5>
+	<!-- </br> -->
+<% end %>
 <div id="player-show-image" class="pimage">
 		<%= image_tag("#{@player.first_name}_#{@player.last_name}.jpg", alt: "#{@player.first_name}_#{@player.last_name}", class: "show-player-pic") %>
 </div>
 </br>
 <div class="row">
 	<h4 id="player-show-subtitle">Team:			<% if @player.team != nil%><%= @player.team.name %><% end %> | Position: 	<%= @player.position %></h4>
-	<h4></h4>
+	<div id="edit-player-link" class="row">
+		<% if current_user && current_user.admin? %>
+			<%= link_to 'Edit This Player', edit_player_path(@player) %>
+		<% end %>
+	</div>
 	<!-- <p id="player-show-total-points">Total Points: <%= @player.pts_week_1 %></p> -->
 </div>
 </br>
@@ -32,6 +40,3 @@
 	</table>
 </div>
 </br>
-<div class="row">
-	<%= link_to 'Edit', edit_player_path(@player) %>
-</div>

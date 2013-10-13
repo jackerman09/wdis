@@ -5,7 +5,7 @@
 	<%= will_paginate %>
 
 	<ul class="users">
-	  <%= render @teams %>
+	  <%= render @teams.sort_by &:name %>
 	</ul>
 
 	<%= will_paginate %>

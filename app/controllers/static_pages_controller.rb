@@ -3,7 +3,7 @@ class StaticPagesController < ApplicationController
   def home
     @matchup = getRandomMatchup
     if @matchup.nil?
-      flash[:error] = "Error loading matchup."
+      flash[:error] = "Error loading matchup. Please refresh the page."
     else
       @player1 = Player.find(@matchup.player_1)
       @player2 = Player.find(@matchup.player_2)
@@ -79,7 +79,7 @@ class StaticPagesController < ApplicationController
 
     @matchup = getRandomMatchup
     if @matchup.nil?
-      flash[:error] = "Error loading matchup"
+      flash[:error] = "Error loading matchup. Please refresh the page."
     else
       @player1 = Player.find(@matchup.player_1)
       @player2 = Player.find(@matchup.player_2)
@@ -220,8 +220,9 @@ class StaticPagesController < ApplicationController
       # m = Matchup.where.not(Team.find(Player.find(m.player_1).team.send("opp_week_#{current_week}")).name: "Bye Week", Team.find(Player.find(m.player_2).team.send("opp_week_#{current_week}")).name: "Bye Week").order("RANDOM()").first
 
       m = Matchup.order("RANDOM()").first
-      # bye-week matchup # m = Matchup.find(886)
-      
+      # m = Matchup.find(886) #test bye-week team
+      # m = Matchup.find(1128) #test injured player
+
       # p1 = Player.find(m.player_1)
       # t1 = p1.team
       # o1 = Team.find(t1.send("opp_week_#{current_week}")).name
@@ -237,13 +238,29 @@ class StaticPagesController < ApplicationController
       i1 = Player.find(m.player_1).injured
       i2 = Player.find(m.player_2).injured
 
+      logger.debug "Matchup Before Loop: #{m.id}"
+      logger.debug "o1: #{o1}"
+      logger.debug "o2: #{o2}"
+      logger.debug "i1: #{i1}"
+      logger.debug "i2: #{i2}"
+
       counter  = 0
       while o1 == "Bye Week" || o2 == "Bye Week" || i1 == true || i2 == true
         m = Matchup.order("RANDOM()").first
-        # bye-week matchup # m = Matchup.find(886)
+        # m = Matchup.find(886) #test bye-week team
+        # m = Matchup.find(1128) #test injured player
 
         o1 = Team.find(Player.find(m.player_1).team.send("opp_week_#{current_week}")).name
         o2 = Team.find(Player.find(m.player_2).team.send("opp_week_#{current_week}")).name
+        i1 = Player.find(m.player_1).injured
+        i2 = Player.find(m.player_2).injured
+
+        logger.debug "Matchup In Loop (#{counter}): #{m.id}"
+        logger.debug "o1: #{o1}"
+        logger.debug "o2: #{o2}"
+        logger.debug "i1: #{i1}"
+        logger.debug "i2: #{i2}"
+
         counter+=1
         if counter > 9
           m = nil

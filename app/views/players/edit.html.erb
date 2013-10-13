@@ -26,6 +26,11 @@
       <%= f.label :position %>
       <%= f.text_field :position %>
 
+      </br>
+      <%= f.label :injured, 'Injured?' %>
+      <%= f.check_box :injured %>  
+      </br></br>   
+
       <%= f.submit "Update", class: "btn btn-large btn-primary" %>
     <% end %>
   </div>

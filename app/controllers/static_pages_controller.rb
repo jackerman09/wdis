@@ -234,8 +234,11 @@ class StaticPagesController < ApplicationController
       o1 = Team.find(Player.find(m.player_1).team.send("opp_week_#{current_week}")).name
       o2 = Team.find(Player.find(m.player_2).team.send("opp_week_#{current_week}")).name
 
+      i1 = Player.find(m.player_1).injured
+      i2 = Player.find(m.player_2).injured
+
       counter  = 0
-      while o1 == "Bye Week" || o2 == "Bye Week"
+      while o1 == "Bye Week" || o2 == "Bye Week" || i1 == true || i2 == true
         m = Matchup.order("RANDOM()").first
         # bye-week matchup # m = Matchup.find(886)
 

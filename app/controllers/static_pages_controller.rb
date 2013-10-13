@@ -252,6 +252,7 @@ class StaticPagesController < ApplicationController
 
         o1 = Team.find(Player.find(m.player_1).team.send("opp_week_#{current_week}")).name
         o2 = Team.find(Player.find(m.player_2).team.send("opp_week_#{current_week}")).name
+        
         i1 = Player.find(m.player_1).injured
         i2 = Player.find(m.player_2).injured
 

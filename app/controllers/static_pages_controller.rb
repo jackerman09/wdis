@@ -85,6 +85,10 @@ class StaticPagesController < ApplicationController
       @player2 = Player.find(@matchup.player_2)
     end
 
+    # player1img = image_tag "#{@player1.image_name}", alt: "#{@player1.image_name}"
+    # logger.debug(player1img)
+    # player2img = image_tag "#{@player2.image_name}", alt: "#{@player2.image_name}"
+
     data = {
       new_player_1_pts: new_player_1_pts,
       new_player_2_pts: new_player_2_pts,
@@ -92,9 +96,11 @@ class StaticPagesController < ApplicationController
       matchup: @matchup,
       player1: @player1,
       player1OpponentTeamName: Team.find(@player1.team.send("opp_week_#{current_week}")).name,
+      # player1img: player1img,
       ptsplayer1: @matchup.send("pts_player_1_week_#{current_week}"),
       player2: @player2,
       player2OpponentTeamName: Team.find(@player2.team.send("opp_week_#{current_week}")).name,
+      # player2img: player2img,
       ptsplayer2: @matchup.send("pts_player_2_week_#{current_week}"),
       current_week: current_week
     }

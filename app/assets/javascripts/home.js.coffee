@@ -14,6 +14,10 @@ jQuery ->
 
 	# Provide html to inject into the _fullmatchup partial on the home page
 	getFullMatchupHTML = (data) ->
+		image1url = data.player1.first_name + '_' + data.player1.last_name + '.jpg'
+		console.log('image1url: ' + image1url)
+		# image1 = <% asset_path(image1url) %>
+		console.log('image1: ' + image1)
 		fullMatchupHtml = 
 		'<div class="row">' +
 			'<div id="matchupID" data-matchupid=' + data.matchup.id + '></div>' +
@@ -139,16 +143,16 @@ jQuery ->
 	# Get the number of credits from user if signed in, if not, from cookies
 	getNumCredits = ->
 		if $('#account-link').text() != ''
-			console.log('In function, USER: ' + getNumUserCredits())
+			# console.log('In function, USER: ' + getNumUserCredits())
 			getNumUserCredits()
 		else
-			console.log('In function, COOKIE: ' + getNumCookieCredits())
+			# console.log('In function, COOKIE: ' + getNumCookieCredits())
 			getNumCookieCredits()
 
 	# Update number of credits in header on page load
 	$('#credit-counter-value').text(getNumCredits())
 	# console.log('User:' + getNumUserCredits())
-	console.log('Cookie:' + getNumCredits())
+	# console.log('Cookie:' + getNumCredits())
 
 	addClickListenersToPlayerPictures()
 

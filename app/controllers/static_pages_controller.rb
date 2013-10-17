@@ -225,7 +225,10 @@ class StaticPagesController < ApplicationController
 
       # m = Matchup.where.not(Team.find(Player.find(m.player_1).team.send("opp_week_#{current_week}")).name: "Bye Week", Team.find(Player.find(m.player_2).team.send("opp_week_#{current_week}")).name: "Bye Week").order("RANDOM()").first
 
-      m = Matchup.order("RANDOM()").first
+      counter = 0
+      randomMatchups = Matchup.order("RANDOM()")
+      m = randomMatchups[counter]
+      counter +=1
       # m = Matchup.find(886) #test bye-week team
       # m = Matchup.find(1128) #test injured player
 
@@ -250,9 +253,9 @@ class StaticPagesController < ApplicationController
       logger.debug "i1: #{i1}"
       logger.debug "i2: #{i2}"
 
-      counter  = 0
       while o1 == "Bye Week" || o2 == "Bye Week" || i1 == true || i2 == true
-        m = Matchup.order("RANDOM()").first
+
+        m = randomMatchups[counter]
         # m = Matchup.find(886) #test bye-week team
         # m = Matchup.find(1128) #test injured player
 

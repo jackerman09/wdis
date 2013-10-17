@@ -277,7 +277,7 @@ class StaticPagesController < ApplicationController
           break
         end
       end 
-
+      Matchup.connection.clear_query_cache
       return m
     end
 end

@@ -278,8 +278,8 @@ class StaticPagesController < ApplicationController
           break
         end
       end 
-      # matchup.connection.clear_query_cache
-      ActiveRecord::Base.connection.clear_query_cache
+      Matchup.connection.clear_query_cache
+      # ActiveRecord::Base.connection.clear_query_cache
       return m
     end
 end

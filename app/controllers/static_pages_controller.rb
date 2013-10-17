@@ -229,6 +229,7 @@ class StaticPagesController < ApplicationController
       randomMatchups = Matchup.order("RANDOM()")
       m = randomMatchups[counter]
       counter +=1
+
       # m = Matchup.find(886) #test bye-week team
       # m = Matchup.find(1128) #test injured player
 
@@ -277,7 +278,8 @@ class StaticPagesController < ApplicationController
           break
         end
       end 
-      Matchup.connection.clear_query_cache
+      # matchup.connection.clear_query_cache
+      ActiveRecord::Base.connection.clear_query_cache
       return m
     end
 end

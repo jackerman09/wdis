@@ -226,9 +226,11 @@ class StaticPagesController < ApplicationController
       # m = Matchup.where.not(Team.find(Player.find(m.player_1).team.send("opp_week_#{current_week}")).name: "Bye Week", Team.find(Player.find(m.player_2).team.send("opp_week_#{current_week}")).name: "Bye Week").order("RANDOM()").first
 
       counter = 0
-      randomMatchups = Matchup.order("RANDOM()")
-      m = randomMatchups[counter]
-      counter +=1
+      # randomMatchups = Matchup.order("RANDOM()")
+      # m = randomMatchups[counter]
+      ids = Matchup.pluck(:id)
+      m = Matchup.find(ids.shuffle.first)
+      # counter +=1
 
       # m = Matchup.find(886) #test bye-week team
       # m = Matchup.find(1128) #test injured player
@@ -256,7 +258,8 @@ class StaticPagesController < ApplicationController
 
       while o1 == "Bye Week" || o2 == "Bye Week" || i1 == true || i2 == true
 
-        m = randomMatchups[counter]
+        m = Matchup.find(ids.shuffle.first)
+        # m = randomMatchups[counter]
         # m = Matchup.find(886) #test bye-week team
         # m = Matchup.find(1128) #test injured player
 
@@ -278,7 +281,7 @@ class StaticPagesController < ApplicationController
           break
         end
       end 
-      Matchup.connection.clear_query_cache
+      # Matchup.connection.clear_query_cache
       # ActiveRecord::Base.connection.clear_query_cache
       return m
     end

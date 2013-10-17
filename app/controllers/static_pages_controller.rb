@@ -227,7 +227,7 @@ class StaticPagesController < ApplicationController
 
       counter = 0
       ids = Matchup.pluck(:id)
-      m = Matchup.find(ids.sample)
+      m = Matchup.find(ids[rand(ids.length)])
 
       # m = Matchup.find(886) #test bye-week team
       # m = Matchup.find(1128) #test injured player
@@ -240,7 +240,7 @@ class StaticPagesController < ApplicationController
 
       while o1 == "Bye Week" || o2 == "Bye Week" || i1 == true || i2 == true
 
-        m = Matchup.find(ids.sample)
+        m = Matchup.find(ids[rand(ids.length)])
 
         # m = Matchup.find(886) #test bye-week team
         # m = Matchup.find(1128) #test injured player

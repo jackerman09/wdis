@@ -228,6 +228,13 @@ class StaticPagesController < ApplicationController
       counter = 0
       ids = Matchup.pluck(:id)
       m = Matchup.find(ids[rand(ids.length)])
+      logger.info "M: #{m.id}"
+      m = Matchup.find(ids[rand(ids.length)])
+      logger.info "M: #{m.id}"
+      m = Matchup.find(ids[rand(ids.length)])
+      logger.info "M: #{m.id}"
+      m = Matchup.find(ids[rand(ids.length)])
+      logger.info "M: #{m.id}"
 
       # m = Matchup.find(886) #test bye-week team
       # m = Matchup.find(1128) #test injured player

@@ -226,23 +226,11 @@ class StaticPagesController < ApplicationController
       # m = Matchup.where.not(Team.find(Player.find(m.player_1).team.send("opp_week_#{current_week}")).name: "Bye Week", Team.find(Player.find(m.player_2).team.send("opp_week_#{current_week}")).name: "Bye Week").order("RANDOM()").first
 
       counter = 0
-      # randomMatchups = Matchup.order("RANDOM()")
-      # m = randomMatchups[counter]
       ids = Matchup.pluck(:id)
-      m = Matchup.find(ids.shuffle.first)
-      # counter +=1
+      m = Matchup.find(ids.sample)
 
       # m = Matchup.find(886) #test bye-week team
       # m = Matchup.find(1128) #test injured player
-
-      # p1 = Player.find(m.player_1)
-      # t1 = p1.team
-      # o1 = Team.find(t1.send("opp_week_#{current_week}")).name
-      
-
-      # p2 = Player.find(m.player_2)
-      # t2 = p2.team
-      # o2 = Team.find(t2.send("opp_week_#{current_week}")).name
       
       o1 = Team.find(Player.find(m.player_1).team.send("opp_week_#{current_week}")).name
       o2 = Team.find(Player.find(m.player_2).team.send("opp_week_#{current_week}")).name
@@ -250,16 +238,10 @@ class StaticPagesController < ApplicationController
       i1 = Player.find(m.player_1).injured
       i2 = Player.find(m.player_2).injured
 
-      logger.debug "Matchup Before Loop: #{m.id}"
-      logger.debug "o1: #{o1}"
-      logger.debug "o2: #{o2}"
-      logger.debug "i1: #{i1}"
-      logger.debug "i2: #{i2}"
-
       while o1 == "Bye Week" || o2 == "Bye Week" || i1 == true || i2 == true
 
-        m = Matchup.find(ids.shuffle.first)
-        # m = randomMatchups[counter]
+        m = Matchup.find(ids.sample)
+
         # m = Matchup.find(886) #test bye-week team
         # m = Matchup.find(1128) #test injured player
 

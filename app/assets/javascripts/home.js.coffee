@@ -1,26 +1,32 @@
 jQuery ->
-	# Add click listener to player pictures
 	addClickListenersToPlayerPictures = ->
-		console.log('click listeners added from home.js')
+		# Add click listener to player pictures if on home page
 		if $('#home-header').data('votable') == true
 			# bind click event to the two player pictures
 			$(document).on 'click', '.mp', pointForPlayer
 			
+			# add class that makes the picture 'jump' on click
 			$('#mpimage1').addClass('mpimage')
 			$('#mpimage2').addClass('mpimage')
 			
+			# don't show number of votes on home page until after vote
 			$('#num-votes-row').hide()
 		else
+			# remove class that makes picture 'jump' on click if not on home page
 			$('#mpimage1').removeClass('mpimage')
 			$('#mpimage2').removeClass('mpimage')
+
+			# show number of votes if not on home page
 			$('#num-votes-row').show()
 
 	# Increase the votes of the clicked player and the number of credits of the cookies/user
 	pointForPlayer = (e) ->
-		console.log('in pointForPlayer in home.js')
 		e.preventDefault()
+		
+		# get matchup id from DOM to provide to controller via my_data
 		matchupid = $('#matchupID').data('matchupid')
 
+		# determine which picture was clicked and tell the controller which player was voted for
 		if e.currentTarget.id == 'mp1'
 			player1or2 = 1
 		else
@@ -34,33 +40,6 @@ jQuery ->
 		  url: '/updatepts'
 		  type: 'get'
 		  data: my_data
-		  success: (data,status,xhr) ->
-		    # $('#mpts1').find('h2').html(data.new_player_1_pts)
-		    # $('#mpts2').find('h2').html(data.new_player_2_pts)
-
-		    # if $('#account-link').text() != ''
-		    # 	# if the user is signed in
-		    # 	$('#credit-counter-value').text(data.user_credits)
-		    # else
-		    # 	$('#credit-counter-value').text(getNumCookieCredits())
-
-		    # console.log(data)	
-		    # # console.log(getFullMatchupHTML(data))
-
-		    # $('#num-votes-row').slideDown(500)
-		    # delay = (ms, func) -> setTimeout func, ms
-		    # delay 1500, ->
-		    # 	$('#matchupcontainer').fadeOut()
-		    # 	# $('#home-header').html(getLoadAnimation)
-			   #  delay 500, ->
-			   #  	$('#matchupcontainer').html(getFullMatchupHTML(data))
-					 #  delay 700, ->
-				  #   	$('#matchupcontainer').fadeIn()
-					 #    delay 700, ->
-					 #    	addClickListenersToPlayerPictures()
-		  error: (xhr,status,error) ->
-		    console.log(xhr)
-		    alert(error)
 		  })	
 
 	# Get the number of credits from the browser's cookies
@@ -102,13 +81,6 @@ jQuery ->
 
 	# Update number of credits in header on page load
 	$('#credit-counter-value').text(getNumCredits())
-	# console.log('User:' + getNumUserCredits())
-	# console.log('Cookie:' + getNumCredits())
 
 	addClickListenersToPlayerPictures()
-
-	# if $('#home-h1').text() == 'Who Would You Start?'
-	# 	$('#num-votes-row').hide()
-	# else
-	# 	$('#num-votes-row').show()
 

@@ -1,7 +1,7 @@
 class StaticPagesController < ApplicationController
 
   def home
-    @matchup = getRandomMatchup
+    @matchup = randomMatchup
     if @matchup.nil?
       flash[:error] = "Error loading matchup. Please refresh the page."
     else
@@ -77,39 +77,23 @@ class StaticPagesController < ApplicationController
       user_credits = current_credits
     end
 
-    @matchup = getRandomMatchup
-    if @matchup.nil?
-      flash[:error] = "Error loading matchup. Please refresh the page."
-    else
-      @player1 = Player.find(@matchup.player_1)
-      @player2 = Player.find(@matchup.player_2)
-    end
-
-    # debugger
-    # player1img = helper.image_tag "#{@player1.image_name}", alt: "#{@player1.image_name}"
-    # player2img = helper.image_tag "#{@player2.image_name}", alt: "#{@player2.image_name}"
-
-    data = {
-      new_player_1_pts: new_player_1_pts,
-      new_player_2_pts: new_player_2_pts,
-      user_credits: user_credits,
-      matchup: @matchup,
-      player1: @player1,
-      player1OpponentTeamName: Team.find(@player1.team.send("opp_week_#{current_week}")).name,
-      # player1img: player1img,
-      ptsplayer1: @matchup.send("pts_player_1_week_#{current_week}"),
-      player2: @player2,
-      player2OpponentTeamName: Team.find(@player2.team.send("opp_week_#{current_week}")).name,
-      # player2img: player2img,
-      ptsplayer2: @matchup.send("pts_player_2_week_#{current_week}"),
-      current_week: current_week
-    }
-
     respond_to do |format|
       format.js
     end
+  end
 
-    # render :json => data, :status => :ok
+  def getRandomMatchup
+    @matchup = randomMatchup
+    if @matchup.nil?
+      flash[:error] = "Error loading matchup. Please refresh the page."
+      redirect_to root_path
+    else
+      @player1 = Player.find(@matchup.player_1)
+      @player2 = Player.find(@matchup.player_2)
+      respond_to do |format|
+        format.js
+      end
+    end
   end
 
   def userNumCredits
@@ -222,22 +206,16 @@ class StaticPagesController < ApplicationController
   end
 
   private
-    def getRandomMatchup
+    def randomMatchup
       current_week = view_context.current_week
 
+      ### wishful thinking ###
       # m = Matchup.where.not(Team.find(Player.find(m.player_1).team.send("opp_week_#{current_week}")).name: "Bye Week", Team.find(Player.find(m.player_2).team.send("opp_week_#{current_week}")).name: "Bye Week").order("RANDOM()").first
+      ########################
 
       counter = 0
       ids = Matchup.pluck(:id)
       m = Matchup.find(ids[rand(ids.length)])
-
-      # logger.info "M: #{m.id}"
-      # m = Matchup.find(ids[rand(ids.length)])
-      # logger.info "M: #{m.id}"
-      # m = Matchup.find(ids[rand(ids.length)])
-      # logger.info "M: #{m.id}"
-      # m = Matchup.find(ids[rand(ids.length)])
-      # logger.info "M: #{m.id}"
 
       # m = Matchup.find(886) #test bye-week team
       # m = Matchup.find(1128) #test injured player
@@ -273,8 +251,6 @@ class StaticPagesController < ApplicationController
           break
         end
       end 
-      # Matchup.connection.clear_query_cache
-      # ActiveRecord::Base.connection.clear_query_cache
       return m
     end
 end

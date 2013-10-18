@@ -14,6 +14,19 @@ updateMatchupData = ->
 	$('#mpimage1 img').attr('src', '<%= url_for("assets/#{@player1.image_name}") %>')
 	$('#mpimage1 img').attr('alt', '<%= @player1.image_name %>')
 
+	$('#mp2 h3').html('<%= @player2.full_name %>')
+
+	$('#mp2 h4').html('')
+	'<% if Team.find(@player2.team.send("opp_week_#{current_week}")).send("home_week_#{current_week}") == false %>'
+	$('#mp2 h4').html('@ ')
+	'<% end %>'
+	$('#mp2 h4').append('<%= Team.find(@player2.team.send("opp_week_#{current_week}")).name %>')
+
+	$('#mpimage2 img').attr('src', '<%= url_for("assets/#{@player2.image_name}") %>')
+	$('#mpimage2 img').attr('alt', '<%= @player2.image_name %>')
+
+
+
 getFullMatchupHTML = ->
 	fullMatchupHtml = 
 	'<div class="row">' +
@@ -66,13 +79,13 @@ console.log('pts_player_1 = <%= @matchup.send("pts_player_1_week_#{current_week}
 $('#mpts1').find('h2').html('<%= @matchup.send("pts_player_1_week_#{current_week}") %>')
 $('#mpts2').find('h2').html('<%= @matchup.send("pts_player_2_week_#{current_week}") %>')
 
-if $('#account-link').text() != ''
-	# if the user is signed in
-	console.log('update user credits in updatepts.js')
-	$('#credit-counter-value').text('<%= @user.num_credits %>')
-else
-	console.log('update cookie credits in updatepts.js')
-	$('#credit-counter-value').text(getNumCookieCredits())
+# if '<%= @user %>'
+# 	# if the user is signed in
+# 	console.log('update user credits in updatepts.js')
+# 	$('#credit-counter-value').text('<%= @user.num_credits %>')
+# else
+# 	console.log('update cookie credits in updatepts.js')
+# 	$('#credit-counter-value').text(getNumCookieCredits())
 
 $('#num-votes-row').slideDown(500)
 delay = (ms, func) -> setTimeout func, ms

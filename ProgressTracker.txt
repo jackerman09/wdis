@@ -37,3 +37,6 @@ SETUP HOME PAGE MATCHUP SHOWING
 - Show player's weekly scores on the players index in a table w/ opponent
 
 - Update home page (js.coffee) so that the credit value doesn't show [OBJECT] briefly before loading the number (why is this even happening?)
+
+
+ - Added updatepts.js.coffee and moved some coffeescript to it. Commented out the ajax success call in home.js.coffee so that it can run in the new file. ERB is working in the new file, but there keeps being an INDENTED error

@@ -85,9 +85,9 @@ class StaticPagesController < ApplicationController
       @player2 = Player.find(@matchup.player_2)
     end
 
-    # player1img = image_tag "#{@player1.image_name}", alt: "#{@player1.image_name}"
-    # logger.debug(player1img)
-    # player2img = image_tag "#{@player2.image_name}", alt: "#{@player2.image_name}"
+    # debugger
+    # player1img = helper.image_tag "#{@player1.image_name}", alt: "#{@player1.image_name}"
+    # player2img = helper.image_tag "#{@player2.image_name}", alt: "#{@player2.image_name}"
 
     data = {
       new_player_1_pts: new_player_1_pts,
@@ -105,9 +105,11 @@ class StaticPagesController < ApplicationController
       current_week: current_week
     }
 
-    
+    respond_to do |format|
+      format.js
+    end
 
-    render :json => data, :status => :ok
+    # render :json => data, :status => :ok
   end
 
   def userNumCredits
@@ -228,7 +230,7 @@ class StaticPagesController < ApplicationController
       counter = 0
       ids = Matchup.pluck(:id)
       m = Matchup.find(ids[rand(ids.length)])
-      
+
       # logger.info "M: #{m.id}"
       # m = Matchup.find(ids[rand(ids.length)])
       # logger.info "M: #{m.id}"

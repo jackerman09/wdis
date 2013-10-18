@@ -1,3 +1,14 @@
+--- PRIORITY ---
+
+- Update authentication so non-admins cannot access matchups/show unless using the find function
+- Work out weekly and total scoring calculations
+
+----------------
+
+- Add button to generate matchups (that don't already exist) for given player
+
+--------------------------------------------------------------------------------
+
 - Credits don't show if not signed in, but should - FIXED
 - Run seeds for matchup - DONE
 - Remove css click effect on /matchup/show - DONE
@@ -19,22 +30,11 @@
 - Add @ for home/away to team/show and to full_matchup if team is away - DONE
 - Update home page (js.coffee) so that the credit value doesn't show [OBJECT] briefly before loading the number (why is this even happening?) - DONE
 - Show player's weekly scores on the players index in a table w/ opponent - DONE
+- Update authentication so non-admins cannot access matchups or player/team[create, delete, edit] - DONE
+- Number of credits goes blank on non-home page - FIXED
 
-- Sort players/index by this week's score - DONE but untested
+- Sort players/index by this week's score - DONE
 - Add 'injured' field to player to remove them from matchup selection rotation - DONE but untested
 - Have home page load new matchup after voting based on weighted probability so that closer matchups come up more often - DECIDED NOT TO DO THIS
 
 --------------------------------------------------------------------------------
-
-SETUP HOME PAGE MATCHUP SHOWING
-
---- PRIORITY ---
-- Update authentication so non-admins cannot access matchups or player/team[create, delete, edit] - DONE
-- Update authentication so non-admins cannot access matchups/show unless using the find
-- Work out weekly and total scoring calculations
-
-----------------
-
-- Number of credits goes blank on non-home page
-
-- Add button to generate matchups (that don't already exist) for given player

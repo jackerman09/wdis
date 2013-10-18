@@ -122,7 +122,7 @@ class StaticPagesController < ApplicationController
     end
   end
 
-  def getUserNumCredits
+  # def getUserNumCredits
   #   @user = view_context.current_user
   #   current_week = view_context.current_week
 
@@ -147,7 +147,7 @@ class StaticPagesController < ApplicationController
   #   user_credits = @user.num_credits
   #   data = { user_credits: user_credits }
   #   render :json => data, :status => :ok
-  end
+  # end
 
   def findMatchup
     @user = view_context.current_user

@@ -63,6 +63,7 @@ jQuery ->
 	# Get the number of credits from user if signed in, if not, from cookies
 	getNumCredits = ->
 		unless $('#account-link').text() != ''
+			console.log('getting cookie credits')
 			getNumCookieCredits()
 
 ######################################################################

@@ -4,20 +4,24 @@ class MatchupsController < ApplicationController
 
   def index
     @matchups = Matchup.paginate(page: params[:page])
+    @user = view_context.current_user
   end
 
   def show
     @matchup = Matchup.find(params[:id])
     @player1 = Player.find(@matchup.player_1)
     @player2 = Player.find(@matchup.player_2)
+    @user = view_context.current_user
   end
 
   def new
     @matchup = Matchup.new
+    @user = view_context.current_user
   end
 
   def create
     @matchup = Matchup.new(matchup_params)
+    @user = view_context.current_user
     if @matchup.save
       flash[:success] = "Matchup created."
       redirect_to @matchup
@@ -30,10 +34,12 @@ class MatchupsController < ApplicationController
     @matchup = Matchup.find(params[:id])
     @player1 = Player.find(@matchup.player_1)
     @player2 = Player.find(@matchup.player_2)
+    @user = view_context.current_user
   end
 
   def update
     @matchup = Matchup.find(params[:id])
+    @user = view_context.current_user
     # params[:matchup][:team] = Team.find_by(id: params[:matchup][:team_id])
     if @matchup.update_attributes(matchup_params)
       flash[:success] = "Matchup updated."
@@ -44,6 +50,7 @@ class MatchupsController < ApplicationController
   end
 
   def destroy
+    @user = view_context.current_user
     Matchup.find(params[:id]).destroy
     flash[:success] = "Matchup destroyed."
     redirect_to matchups_url

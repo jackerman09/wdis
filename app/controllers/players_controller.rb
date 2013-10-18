@@ -5,19 +5,23 @@ before_action :admin_user,        only: [:new, :create, :edit, :update, :destroy
 
   def index
     @players = Player.paginate(page: params[:page])
+    @user = view_context.current_user
   end
 
   def show
     @player = Player.find(params[:id])
+    @user = view_context.current_user
   end
 
   def new
     @player = Player.new
+    @user = view_context.current_user
   end
 
   def create
     params[:player][:team] = Team.find_by(id: params[:player][:team_id])
     @player = Player.new(player_params)
+    @user = view_context.current_user
     if @player.save
       flash[:success] = "Player created."
       redirect_to @player
@@ -28,6 +32,7 @@ before_action :admin_user,        only: [:new, :create, :edit, :update, :destroy
 
   def edit
     @player = Player.find(params[:id])
+    @user = view_context.current_user
     if @player.team_id == nil
 
     else
@@ -37,6 +42,7 @@ before_action :admin_user,        only: [:new, :create, :edit, :update, :destroy
 
   def update
     @player = Player.find(params[:id])
+    @user = view_context.current_user
     params[:player][:team] = Team.find_by(id: params[:player][:team_id])
     if @player.update_attributes(player_params)
       flash[:success] = "Player updated."
@@ -47,6 +53,7 @@ before_action :admin_user,        only: [:new, :create, :edit, :update, :destroy
   end
 
   def destroy
+    @user = view_context.current_user
     Player.find(params[:id]).destroy
     flash[:success] = "Player destroyed."
     redirect_to players_url

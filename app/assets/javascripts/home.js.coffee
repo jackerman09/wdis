@@ -56,20 +56,6 @@ jQuery ->
 				num_credits_number = parseInt(num_credits_value, 10)
 		return num_credits_number
 
-	# Get the number of credits from the signed in user's model
-	# getNumUserCredits = ->
-	# 	$.ajax({ 
-	# 	  url: '/getUserNumCredits'
-	# 	  type: 'get'
-	# 	  success: (data,status,xhr) ->
-	# 	    if $('#account-link').text() != ''
-	# 	    	# if the user is signed in
-	# 	    	$('#credit-counter-value').text(data.user_credits)
-	# 	  error: (xhr,status,error) ->
-	# 	    console.log(xhr)
-	# 	    alert(error)
-	# 	  })
-
 	# Get the number of credits from user if signed in, if not, from cookies
 	getNumCredits = ->
 		unless $('#account-link').text() != ''

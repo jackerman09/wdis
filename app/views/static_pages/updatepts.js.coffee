@@ -28,7 +28,7 @@ updateCurrentCredits = ->
 	if '<%= @user %>'
 		# if the user is signed in
 		console.log('update user credits in updatepts.js')
-		$('#credit-counter-value').text('<%= @user.num_credits %>')
+		$('#credit-counter-value').text('<% if @user %><%= @user.num_credits %><% end %>')
 	else
 		console.log('update cookie credits in updatepts.js')
 		$('#credit-counter-value').text(getNumCookieCredits())

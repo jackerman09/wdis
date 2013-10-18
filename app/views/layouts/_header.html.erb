@@ -30,11 +30,8 @@
           <li>
             <div id="credit-counter">
               <h3 id="credit-counter-value">
-                <% if false %>
-                  <% if @user.nil? %>
-                  <% else %>
-                    <%= @user.num_credits %>
-                  <% end %>
+                <% if @user %>
+                  <%= @user.num_credits %>
                 <% end %>
               </h3>
             </div>

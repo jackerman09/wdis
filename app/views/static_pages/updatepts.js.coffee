@@ -39,6 +39,9 @@ updateCurrentCredits = ->
 # Update the div showing the number of votes for the current matchup and show it
 updateCurrentMatchupVote()
 
+# Update the number of credits belonging to the user
+updateCurrentCredits()
+
 # Call getRandomMatchup to put a new matchup on the home page
 delay 1500, ->
 	$('#matchupcontainer').fadeOut()

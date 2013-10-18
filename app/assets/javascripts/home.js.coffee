@@ -57,26 +57,22 @@ jQuery ->
 		return num_credits_number
 
 	# Get the number of credits from the signed in user's model
-	getNumUserCredits = ->
-		$.ajax({ 
-		  url: '/getUserNumCredits'
-		  type: 'get'
-		  success: (data,status,xhr) ->
-		    if $('#account-link').text() != ''
-		    	# if the user is signed in
-		    	$('#credit-counter-value').text(data.user_credits)
-		  error: (xhr,status,error) ->
-		    console.log(xhr)
-		    alert(error)
-		  })
+	# getNumUserCredits = ->
+	# 	$.ajax({ 
+	# 	  url: '/getUserNumCredits'
+	# 	  type: 'get'
+	# 	  success: (data,status,xhr) ->
+	# 	    if $('#account-link').text() != ''
+	# 	    	# if the user is signed in
+	# 	    	$('#credit-counter-value').text(data.user_credits)
+	# 	  error: (xhr,status,error) ->
+	# 	    console.log(xhr)
+	# 	    alert(error)
+	# 	  })
 
 	# Get the number of credits from user if signed in, if not, from cookies
 	getNumCredits = ->
-		if $('#account-link').text() != ''
-			# console.log('In function, USER: ' + getNumUserCredits())
-			getNumUserCredits()
-		else
-			# console.log('In function, COOKIE: ' + getNumCookieCredits())
+		unless $('#account-link').text() != ''
 			getNumCookieCredits()
 
 	# Update number of credits in header on page load

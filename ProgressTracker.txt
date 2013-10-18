@@ -17,6 +17,8 @@
 - Fix infinite loop on bye-week avoiding matchup selection - ADDED ERROR CATCHER
 - After signin redirect_to root_path - DONE
 - Add @ for home/away to team/show and to full_matchup if team is away - DONE
+- Update home page (js.coffee) so that the credit value doesn't show [OBJECT] briefly before loading the number (why is this even happening?) - DONE
+- Show player's weekly scores on the players index in a table w/ opponent - DONE
 
 - Sort players/index by this week's score - DONE but untested
 - Add 'injured' field to player to remove them from matchup selection rotation - DONE but untested
@@ -28,15 +30,8 @@ SETUP HOME PAGE MATCHUP SHOWING
 
 --- PRIORITY ---
 - Update authentication so non-admins cannot access matchups or player/team[create, delete, edit]
+- Work out weekly and total scoring calculations
 
 ----------------
 
 - Add button to generate matchups (that don't already exist) for given player
-
-- Work out weekly and total scoring calculations
-- Show player's weekly scores on the players index in a table w/ opponent
-
-- Update home page (js.coffee) so that the credit value doesn't show [OBJECT] briefly before loading the number (why is this even happening?)
-
-
- - Added updatepts.js.coffee and moved some coffeescript to it. Commented out the ajax success call in home.js.coffee so that it can run in the new file. ERB is working in the new file, but there keeps being an INDENTED error

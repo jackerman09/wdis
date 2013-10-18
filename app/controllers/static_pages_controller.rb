@@ -21,6 +21,10 @@ class StaticPagesController < ApplicationController
   end
 
   def updatepts
+    ###################################################
+    # Setup
+    ###################################################
+
     @matchup = Matchup.find(params[:matchupid])
     @player1 = Player.find(@matchup.player_1)
     @player2 = Player.find(@matchup.player_2)
@@ -29,28 +33,37 @@ class StaticPagesController < ApplicationController
     
     current_week = view_context.current_week
 
-    new_player_1_pts = @matchup.send("pts_player_1_week_#{current_week}")
-    new_player_2_pts = @matchup.send("pts_player_2_week_#{current_week}")
+    ###################################################
+    # Update matchup's votes
+    ###################################################
 
-    this_week_player_1_pts = @player1.send("pts_week_#{current_week}")
-    this_week_player_2_pts = @player2.send("pts_week_#{current_week}")
+    new_player_1_votes = @matchup.send("pts_player_1_week_#{current_week}")
+    new_player_2_votes = @matchup.send("pts_player_2_week_#{current_week}")
     
     if params[:player1or2] == '1'
-      if new_player_1_pts.nil?
-        new_player_1_pts = 1
+      if new_player_1_votes.nil?
+        new_player_1_votes = 1
       else
-        new_player_1_pts += 1
+        new_player_1_votes += 1
       end
-      @matchup.update_attributes("pts_player_1_week_#{current_week}".to_sym => new_player_1_pts)
+      @matchup.update_attributes("pts_player_1_week_#{current_week}".to_sym => new_player_1_votes)
     else
-      if new_player_2_pts.nil?
-        new_player_2_pts = 1
+      if new_player_2_votes.nil?
+        new_player_2_votes = 1
       else
-        new_player_2_pts += 1
+        new_player_2_votes += 1
       end
-      @matchup.update_attributes("pts_player_2_week_#{current_week}".to_sym => new_player_2_pts)
+      @matchup.update_attributes("pts_player_2_week_#{current_week}".to_sym => new_player_2_votes)
     end
 
+    ###################################################
+    ###################################################
+
+    ###################################################
+    # Update credits
+    ###################################################
+
+    ##### Update cookie credits #####
     if cookies[:num_credits].nil?
       cookies.permanent[:num_credits] = 1
     elsif @user.nil?
@@ -59,6 +72,7 @@ class StaticPagesController < ApplicationController
       cookies[:num_credits] = current_credits
     end
 
+    ##### Update user credits if signed in #####
     if @user.nil?
       # flash[:error] = "No current user"
     else
@@ -76,6 +90,29 @@ class StaticPagesController < ApplicationController
       end
       user_credits = current_credits
     end
+
+    ###################################################
+    ###################################################
+
+    ###################################################
+    # Update player's points
+    ###################################################
+
+    this_week_player_1_pts = @player1.send("pts_week_#{current_week}")
+    this_week_player_2_pts = @player2.send("pts_week_#{current_week}")
+    # this_week_total_votes = this_week_player_1_pts + this_week_player_2_pts
+    this_week_total_votes = @matchup.total_votes
+
+    if params[:player1or2] == '1'
+      new_player_1_pts = this_week_player_1_pts + (new_player_1_votes/this_week_total_votes)
+      @player1.update_attributes("pts_week_#{current_week}".to_sym => new_player_1_pts)
+    else
+      new_player_2_pts = this_week_player_2_pts + (new_player_2_votes/this_week_total_votes)
+      @player2.update_attributes("pts_week_#{current_week}".to_sym => new_player_2_pts)
+    end
+
+    ###################################################
+    ###################################################
 
     respond_to do |format|
       format.js
@@ -121,33 +158,6 @@ class StaticPagesController < ApplicationController
       user_credits = current_credits.to_f
     end
   end
-
-  # def getUserNumCredits
-  #   @user = view_context.current_user
-  #   current_week = view_context.current_week
-
-  #   if @user.nil?
-  #     flash[:error] = "Not logged in"
-  #     redirect_to root_path
-  #   else
-  #     if @user.num_credits.nil?
-  #       current_credits = 0
-  #       @user.num_credits = current_credits
-  #       @user.save
-  #       error_messages_returned = @user.errors.full_messages.to_sentence
-  #       if error_messages_returned = "Password is too short (minimum is 6 characters)"
-  #         @user.save(validate: false)
-  #       end
-  #     else
-  #       current_credits = @user.num_credits
-  #     end
-  #     user_credits = current_credits
-  #   end
-
-  #   user_credits = @user.num_credits
-  #   data = { user_credits: user_credits }
-  #   render :json => data, :status => :ok
-  # end
 
   def findMatchup
     @user = view_context.current_user

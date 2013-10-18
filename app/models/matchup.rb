@@ -111,7 +111,6 @@ class Matchup < ActiveRecord::Base
 
 		def update_total_votes
 			current_week = self.current_week
-			# Addition in next line causing error of 'undefined method + for nil:NilClass'
 			self.total_votes = send("pts_player_1_week_#{current_week}").to_f + send("pts_player_2_week_#{current_week}").to_f
 		end
 end

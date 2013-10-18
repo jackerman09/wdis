@@ -15,7 +15,6 @@ SampleApp::Application.routes.draw do
   match '/contact', to: 'static_pages#contact', via: 'get'
   match '/updatepts', to: 'static_pages#updatepts', via: 'get'
   match '/findMatchup', to: 'static_pages#findMatchup', via: 'get'
-  # match '/getUserNumCredits', to: 'static_pages#getUserNumCredits', via: 'get'
   match '/getRandomMatchup',  to: 'static_pages#getRandomMatchup', via: 'get'
 
   root :to => 'static_pages#home'

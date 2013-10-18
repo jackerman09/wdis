@@ -1,4 +1,8 @@
 jQuery ->
+	######################################################################
+	# Functions that will be called below
+	######################################################################
+	
 	addClickListenersToPlayerPictures = ->
 		# Add click listener to player pictures if on home page
 		if $('#home-header').data('votable') == true
@@ -60,6 +64,9 @@ jQuery ->
 	getNumCredits = ->
 		unless $('#account-link').text() != ''
 			getNumCookieCredits()
+
+######################################################################
+######################################################################
 
 	# Update number of credits in header on page load
 	$('#credit-counter-value').text(getNumCredits())

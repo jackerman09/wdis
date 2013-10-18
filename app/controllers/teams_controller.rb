@@ -1,4 +1,7 @@
 class TeamsController < ApplicationController
+
+  before_action :admin_user, only: [:show, :index, :new, :create, :edit, :update, :destroy]
+
   def index
     @teams = Team.paginate(page: params[:page])
   end

@@ -29,9 +29,12 @@
 SETUP HOME PAGE MATCHUP SHOWING
 
 --- PRIORITY ---
-- Update authentication so non-admins cannot access matchups or player/team[create, delete, edit]
+- Update authentication so non-admins cannot access matchups or player/team[create, delete, edit] - DONE
+- Update authentication so non-admins cannot access matchups/show unless using the find
 - Work out weekly and total scoring calculations
 
 ----------------
+
+- Number of credits goes blank on non-home page
 
 - Add button to generate matchups (that don't already exist) for given player

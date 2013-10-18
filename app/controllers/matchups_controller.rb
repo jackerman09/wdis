@@ -1,5 +1,7 @@
 class MatchupsController < ApplicationController
 
+  before_action :admin_user, only: [:index, :new, :create, :edit, :update, :destroy]
+
   def index
     @matchups = Matchup.paginate(page: params[:page])
   end

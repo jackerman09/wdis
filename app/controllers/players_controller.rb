@@ -1,5 +1,9 @@
 class PlayersController < ApplicationController
-def index
+
+before_action :signed_in_user,    only: [:index, :show]
+before_action :admin_user,        only: [:new, :create, :edit, :update, :destroy]
+
+  def index
     @players = Player.paginate(page: params[:page])
   end
 

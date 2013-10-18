@@ -12,12 +12,15 @@ class StaticPagesController < ApplicationController
   end
   
   def help
+    @user = view_context.current_user
   end
 
   def about
+    @user = view_context.current_user
   end
 
   def contact
+    @user = view_context.current_user
   end
 
   def updatepts

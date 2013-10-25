@@ -2,6 +2,7 @@
 
 - Update authentication so non-admins cannot access matchups/show unless using the find function
 - Work out weekly and total scoring calculations
+- Fix find matchup dropdown formatting when deployed
 
 ----------------
 
@@ -32,6 +33,8 @@
 - Show player's weekly scores on the players index in a table w/ opponent - DONE
 - Update authentication so non-admins cannot access matchups or player/team[create, delete, edit] - DONE
 - Number of credits goes blank on non-home page - FIXED
+- Set header credit-amount to 0 if blank - DONE
+- Fix footer formatting when deployed - DONE
 
 - Sort players/index by this week's score - DONE
 - Add 'injured' field to player to remove them from matchup selection rotation - DONE but untested

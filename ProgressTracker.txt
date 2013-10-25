@@ -3,6 +3,8 @@
 - Update authentication so non-admins cannot access matchups/show unless using the find function
 - Work out weekly and total scoring calculations
 - Fix find matchup dropdown formatting when deployed
+- Google analytics
+- Custom domain
 
 ----------------
 

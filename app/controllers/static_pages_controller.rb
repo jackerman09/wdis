@@ -101,18 +101,21 @@ class StaticPagesController < ApplicationController
     # Update player's points
     ###################################################
 
-    this_week_player_1_pts = @player1.send("pts_week_#{current_week}")
-    this_week_player_2_pts = @player2.send("pts_week_#{current_week}")
-    # this_week_total_votes = this_week_player_1_pts + this_week_player_2_pts
-    this_week_total_votes = @matchup.total_votes
+    # this_week_player_1_pts = @player1.send("pts_week_#{current_week}")
+    # this_week_player_2_pts = @player2.send("pts_week_#{current_week}")
+    # # this_week_total_votes = this_week_player_1_pts + this_week_player_2_pts
+    # this_week_total_votes = @matchup.total_votes
 
-    if params[:player1or2] == '1'
-      new_player_1_pts = this_week_player_1_pts + (new_player_1_votes/this_week_total_votes)
-      @player1.update_attributes("pts_week_#{current_week}".to_sym => new_player_1_pts)
-    else
-      new_player_2_pts = this_week_player_2_pts + (new_player_2_votes/this_week_total_votes)
-      @player2.update_attributes("pts_week_#{current_week}".to_sym => new_player_2_pts)
-    end
+    # this_week_player_1_win_pct = @player1.win_pct(@player1, current_week)
+    # logger.debug("player1 win pct: #{this_week_player_1_win_pct}")
+
+    # if params[:player1or2] == '1'
+    #   new_player_1_pts = this_week_player_1_pts + (new_player_1_votes/this_week_total_votes)
+    #   @player1.update_attributes("pts_week_#{current_week}".to_sym => new_player_1_pts)
+    # else
+    #   new_player_2_pts = this_week_player_2_pts + (new_player_2_votes/this_week_total_votes)
+    #   @player2.update_attributes("pts_week_#{current_week}".to_sym => new_player_2_pts)
+    # end
 
     ###################################################
     ###################################################
@@ -252,11 +255,11 @@ class StaticPagesController < ApplicationController
         i1 = Player.find(m.player_1).injured
         i2 = Player.find(m.player_2).injured
 
-        logger.debug "Matchup In Loop (#{counter}): #{m.id}"
-        logger.debug "o1: #{o1}"
-        logger.debug "o2: #{o2}"
-        logger.debug "i1: #{i1}"
-        logger.debug "i2: #{i2}"
+        # logger.debug "Matchup In Loop (#{counter}): #{m.id}"
+        # logger.debug "o1: #{o1}"
+        # logger.debug "o2: #{o2}"
+        # logger.debug "i1: #{i1}"
+        # logger.debug "i2: #{i2}"
 
         counter+=1
         if counter > 9

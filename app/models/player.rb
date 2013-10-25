@@ -16,6 +16,47 @@ class Player < ActiveRecord::Base
 	has_many :matchplays
 	has_many :matchups, through: :matchplays
 
+	def win_pct(current_week)
+		# The number of times player 1 has appeared in a matchup (as either player 1 or player 2)
+		this_week_appearances = self.num_matchups(current_week)    
+
+    # The number of times player 1 has appeared in a matchup (as either player 1 or player 2) and won
+    this_week_wins = Matchup.where(player_1: self.id).sum("pts_player_1_week_#{current_week}")
+    this_week_wins += Matchup.where(player_2: self.id).sum("pts_player_2_week_#{current_week}")
+
+    # The percentage of times that player 1 has won a matchup that he was in
+    if this_week_appearances > 0 then
+    	this_week_win_pct = this_week_wins.to_f/this_week_appearances.to_f
+    else
+    	this_week_win_pct = 0.0
+    end
+    this_week_win_pct
+	end
+
+	def scored_vote(current_week)
+		total_weighted_score = 0
+		Matchup.where('player_1=? OR player_2=?', self.id, self.id).each do |m|
+			if m.player_1 == self.id
+				total_weighted_score += m.send("pts_player_1_week_#{current_week}").to_f*Player.find(m.player_2).win_pct(current_week)
+			else
+				total_weighted_score += m.send("pts_player_2_week_#{current_week}").to_f*Player.find(m.player_1).win_pct(current_week)
+			end
+		end
+		logger.debug("weighted_score: #{total_weighted_score}")
+		if self.num_matchups(current_week) > 0
+			total_weighted_score_per_matchup = total_weighted_score.to_f/self.num_matchups(current_week).to_f
+		else
+			total_weighted_score_per_matchup = 0.0
+		end
+		total_weighted_score_per_matchup = total_weighted_score_per_matchup.round(2)
+	end
+
+	def num_matchups(current_week)
+		this_week_appearances = Matchup.where(player_1: self.id).sum("pts_player_1_week_#{current_week}")
+    this_week_appearances += Matchup.where(player_1: self.id).sum("pts_player_2_week_#{current_week}")
+    this_week_appearances += Matchup.where(player_2: self.id).sum("pts_player_1_week_#{current_week}")
+    this_week_appearances += Matchup.where(player_2: self.id).sum("pts_player_2_week_#{current_week}")
+	end
 	private
 		def set_pts_to_0
 			self.pts_week_1  = 0

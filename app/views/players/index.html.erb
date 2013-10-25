@@ -15,7 +15,7 @@
 	  		<% if false %>
 	  			<%= render @players.sort_by &"pts_week_#{current_week}".to_sym %>
 	  		<% end %>
-	  		<%= render @players.sort_by { |p| [p.send("pts_week_#{current_week}"), p.last_name] } %>
+	  		<%= render @players.sort_by { |p| [p.scored_vote(current_week), p.last_name] } %>
 	  	</tbody>
 	</table>
 	<%= will_paginate %>

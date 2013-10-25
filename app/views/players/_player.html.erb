@@ -1,6 +1,8 @@
 <tr>  
   <td><%= link_to "#{player.last_name}, #{player.first_name}", player %></td>
-  <td><%= player.send("pts_week_#{current_week}") %></td>
+  <!-- <td><%= player.send("pts_week_#{current_week}") %></td> -->
+  <!-- <td><%= player.win_pct(current_week) %></td> -->
+  <td><%= player.scored_vote(current_week) %></td>
 </tr>
   <% if false %>
 	  <% if current_user && current_user.admin? %>

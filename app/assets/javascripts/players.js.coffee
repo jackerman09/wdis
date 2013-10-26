@@ -12,8 +12,5 @@
 
 jQuery ->
 	$('#show-scores-button').bind('ajax:beforeSend', ->
-	  $('#players-table').html('<h2>LOADING...</h2>')
+	  $('#players-table').html('<h2>LOADING PLAYER SCORES...</h2>')
 	)
-	# $('#show-scores-button').bind('ajax:complete', ->
-	#   console.log 'complete ran'
-	# )

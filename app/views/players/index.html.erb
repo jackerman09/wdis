@@ -11,8 +11,6 @@
 </br>
 
 <div class="row">
-	<!-- <%= will_paginate %> -->
-
 	<table id="players-table" class="table">
 			<thead>
 				<tr>
@@ -29,7 +27,6 @@
 	  		<%= render @players.sort_by { |p| [p.last_name] } %>
 	  	</tbody>
 	</table>
-	<!-- <%= will_paginate %> -->
 </div>
 </br>
 <div class="row">

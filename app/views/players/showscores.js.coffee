@@ -1,4 +1,3 @@
-console.log('in showscores.js')
 newtable = 
 	'<thead>' +
 	'<tr>' +
@@ -12,5 +11,6 @@ newtable =
 	'<td><%= player.scored_vote(current_week) %></td>' +
 	'</tr>'+
 	'<% end %>'
-$('#players-table').html('')
+$('#players-table').empty()
 $('#players-table').html(newtable)
+$('#players-table').tablesorter({sortList: [[1,1], [0,0]]})

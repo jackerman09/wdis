@@ -2,7 +2,6 @@
 <h1 class=""> <%= @player.first_name %> <%= @player.last_name %></h1>
 <% if @player.injured == true %>
 	<h5 id="injured-status">Currently injured.</h5>
-	<!-- </br> -->
 <% end %>
 <div id="player-show-image" class="pimage">
 		<%= image_tag("#{@player.first_name}_#{@player.last_name}.jpg", alt: "#{@player.first_name}_#{@player.last_name}", class: "show-player-pic") %>
@@ -10,6 +9,7 @@
 </br>
 <div class="row">
 	<h4 id="player-show-subtitle">Team:			<% if @player.team != nil%><%= @player.team.name %><% end %> | Position: 	<%= @player.position %></h4>
+	
 	<div id="edit-player-link" class="row">
 		<% if current_user && current_user.admin? %>
 			<%= link_to 'Edit This Player', edit_player_path(@player) %>
@@ -25,7 +25,7 @@
 			<tr>
 				<th></th>
 				<th>Opponent</th>
-				<th>Weekly Points</th>
+				<!-- <th>Weekly Points</th> -->
 			</tr>
 		</thead>
 		<tbody>
@@ -33,7 +33,7 @@
 				<tr>
 					<td>Week <%= week %></td>
 					<td><% if Team.exists?(id: @player.team.send("opp_week_#{week}")) %><%= Team.find(@player.team.send("opp_week_#{week}")).name %><% end %></td>
-					<td><%= @player.send("pts_week_#{week}") %></td>
+					<% if false %><td><%= @player.send("pts_week_#{week}") %></td><% end %>
 				</tr>
 			<% end %>
 		</tbody>

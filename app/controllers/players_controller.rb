@@ -1,7 +1,7 @@
 class PlayersController < ApplicationController
 
 before_action :signed_in_user,    only: [:index, :show]
-before_action :admin_user,        only: [:new, :create, :edit, :update, :destroy]
+before_action :admin_user,        only: [:new, :create, :edit, :update, :destroy, :addmatchups]
 
   def index
     @players = Player.paginate(page: params[:page])
@@ -57,6 +57,20 @@ before_action :admin_user,        only: [:new, :create, :edit, :update, :destroy
     Player.find(params[:id]).destroy
     flash[:success] = "Player destroyed."
     redirect_to players_url
+  end
+
+  def addmatchups
+    players = Player.all
+    player1 = Player.find(params[:id])
+    matchups = []
+    players.each do |player2|
+      if player1.id != player2.id
+        matchup = { player_1: player1.id, player_2: player2.id }
+        matchups.push matchup
+      end
+    end
+
+    Matchup.create(matchups)
   end
 
   private

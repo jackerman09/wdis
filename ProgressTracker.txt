@@ -2,12 +2,6 @@
 
 - Update authentication so non-admins cannot access matchups/show unless using the find function
 - Work out weekly and total scoring calculations
-- Fix find matchup dropdown formatting when deployed
-- Google analytics
-- Custom domain
-
-----------------
-
 - Add button to generate matchups (that don't already exist) for given player
 
 --------------------------------------------------------------------------------
@@ -37,6 +31,9 @@
 - Number of credits goes blank on non-home page - FIXED
 - Set header credit-amount to 0 if blank - DONE
 - Fix footer formatting when deployed - DONE
+- Fix find matchup dropdown formatting when deployed - DONE
+- Google analytics - DONE
+- Custom domain - DONE
 
 - Sort players/index by this week's score - DONE
 - Add 'injured' field to player to remove them from matchup selection rotation - DONE but untested

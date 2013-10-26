@@ -5,6 +5,11 @@
 			<div id="mpcontainer" class="">
 				<div id="mp1" class="span5 mp">
 					<h3><%= @player1.full_name %></h3>
+					<% if @player1.injured == true %>
+						<h5 class="m-injured-status">Currently injured.</h5>
+					<% elsif @player2.injured == true %>
+						<h5 class="m-o-injured-status"> - </h5>
+					<% end %>
 					<h4>
 						<% if Team.find(@player1.team.send("opp_week_#{current_week}")).send("home_week_#{current_week}") == false %>
 							@
@@ -24,6 +29,11 @@
 				</div>
 				<div id="mp2" class="span5 mp">
 					<h3><%= @player2.full_name %></h3>
+					<% if @player2.injured == true %>
+						<h5 class="m-injured-status">Currently injured.</h5>
+					<% elsif @player1.injured == true %>
+						<h5 class="m-o-injured-status"> - </h5>
+					<% end %>
 					<h4>
 						<% if Team.find(@player2.team.send("opp_week_#{current_week}")).send("home_week_#{current_week}") == false %>
 							@

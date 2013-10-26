@@ -367,6 +367,16 @@ aside {
   }
 }
 
+.m-injured-status {
+  text-align: center;
+  color: red;
+}
+
+.m-o-injured-status {
+  text-align: center;
+  color: $grayMediumLight;
+}
+
 //Player//
 .pimage {
   width: 400px;

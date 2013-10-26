@@ -72,10 +72,15 @@ before_action :admin_user,        only: [:new, :create, :edit, :update, :destroy
         end
       end
     end
-
     Matchup.create(matchups)
-
     redirect_to matchups_path
+  end
+
+  def showscores
+    @players = Player.all
+    respond_to do |format|
+      format.js
+    end
   end
 
   private

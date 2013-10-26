@@ -1,24 +1,35 @@
 <% provide(:title, 'All Players') %>
 <h1>All Players</h1>
 
-<div class="row">
-	<%= will_paginate %>
+<div id="show-scores-link">
+	<%= link_to 'Load Player Scores', showscores_path, class: 'btn', remote: true %>
+	</br></br>
+	<div id="player-score-warning">
+		<p>(Warning: Because of the intricate nature of the scoring system and the beta-status of the app, loading player scores takes approximately 60-90 seconds)</p>
+	</div>
+</div>
+</br>
 
-	<table class="table">
+<div class="row">
+	<!-- <%= will_paginate %> -->
+
+	<table id="players-table" class="table">
 			<thead>
 				<tr>
 					<th>Player</th>
 					<th>This Week's Score</th>
 				</tr>
 			</thead>
-	  	<tbody>
+	  	<tbody id="player-table-body">
 	  		<% if false %>
+	  			<!-- not used -->
 	  			<%= render @players.sort_by &"pts_week_#{current_week}".to_sym %>
+	  			<%= render @players.sort_by { |p| [-p.scored_vote(current_week), p.last_name] } %>
 	  		<% end %>
-	  		<%= render @players.sort_by { |p| [-p.scored_vote(current_week), p.last_name] } %>
+	  		<%= render @players.sort_by { |p| [p.last_name] } %>
 	  	</tbody>
 	</table>
-	<%= will_paginate %>
+	<!-- <%= will_paginate %> -->
 </div>
 </br>
 <div class="row">

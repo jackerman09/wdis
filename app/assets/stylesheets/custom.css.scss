@@ -393,7 +393,7 @@ aside {
   margin: auto;
 }
 
-#player-show-subtitle, #player-show-total-points {
+#player-show-subtitle, #player-show-total-points, #show-scores-link {
   text-align: center;
 }
 
@@ -407,6 +407,12 @@ aside {
 
   position: relative;
   margin-top: -20px;
+}
+
+#player-score-warning {
+  width: 600px;
+  margin: auto;
+  font-style: italic;
 }
 
 //TESTING//

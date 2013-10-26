@@ -28,7 +28,7 @@ class Player < ActiveRecord::Base
     if this_week_appearances > 0 then
     	this_week_win_pct = this_week_wins.to_f/this_week_appearances.to_f
     else
-    	this_week_win_pct = 0.0
+    	this_week_win_pct = 0.5
     end
     this_week_win_pct
 	end
@@ -52,7 +52,8 @@ class Player < ActiveRecord::Base
 	end
 
 	def num_matchups(current_week)
-		this_week_appearances = Matchup.where(player_1: self.id).sum("pts_player_1_week_#{current_week}")
+		this_week_appearances = 0
+		this_week_appearances += Matchup.where(player_1: self.id).sum("pts_player_1_week_#{current_week}")
     this_week_appearances += Matchup.where(player_1: self.id).sum("pts_player_2_week_#{current_week}")
     this_week_appearances += Matchup.where(player_2: self.id).sum("pts_player_1_week_#{current_week}")
     this_week_appearances += Matchup.where(player_2: self.id).sum("pts_player_2_week_#{current_week}")

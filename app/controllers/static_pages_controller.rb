@@ -94,32 +94,6 @@ class StaticPagesController < ApplicationController
       user_credits = current_credits
     end
 
-    ###################################################
-    ###################################################
-
-    ###################################################
-    # Update player's points
-    ###################################################
-
-    # this_week_player_1_pts = @player1.send("pts_week_#{current_week}")
-    # this_week_player_2_pts = @player2.send("pts_week_#{current_week}")
-    # # this_week_total_votes = this_week_player_1_pts + this_week_player_2_pts
-    # this_week_total_votes = @matchup.total_votes
-
-    # this_week_player_1_win_pct = @player1.win_pct(@player1, current_week)
-    # logger.debug("player1 win pct: #{this_week_player_1_win_pct}")
-
-    # if params[:player1or2] == '1'
-    #   new_player_1_pts = this_week_player_1_pts + (new_player_1_votes/this_week_total_votes)
-    #   @player1.update_attributes("pts_week_#{current_week}".to_sym => new_player_1_pts)
-    # else
-    #   new_player_2_pts = this_week_player_2_pts + (new_player_2_votes/this_week_total_votes)
-    #   @player2.update_attributes("pts_week_#{current_week}".to_sym => new_player_2_pts)
-    # end
-
-    ###################################################
-    ###################################################
-
     respond_to do |format|
       format.js
     end

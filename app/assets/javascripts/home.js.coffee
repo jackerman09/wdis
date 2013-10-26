@@ -29,7 +29,6 @@ jQuery ->
 		
 		# get matchup id from DOM to provide to controller via my_data
 		matchupid = $('#matchupID').attr('data-matchupid')
-		console.log("matchupID: #{matchupid}")
 
 		# determine which picture was clicked and tell the controller which player was voted for
 		if e.currentTarget.id == 'mp1'

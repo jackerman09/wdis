@@ -36,3 +36,6 @@ jQuery ->
 	$('#show-scores-button').bind('ajax:beforeSend', ->
 		$('#players-table').html(loadinghtml)
 	)
+	# $('#show-scores-button').bind('ajax:error', ->
+	# 	$('#players-table').html('ERROR')
+	# )

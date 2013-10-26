@@ -4,45 +4,48 @@
 			<div id="matchupID" data-matchupid= <%= "#{@matchup.id}" %>></div>
 			<div id="mpcontainer" class="">
 				<div id="mp1" class="span5 mp">
-					<h3><%= @player1.full_name %></h3>
+					<div id="player-details-1">
+						<h3><%= @player1.full_name %></h3>
+						<p class="team-name">(<%= @player1.team.name%>)</p>
+					</div>
 					<% if @player1.injured == true %>
 						<h5 class="m-injured-status">Currently injured.</h5>
 					<% elsif @player2.injured == true %>
 						<h5 class="m-o-injured-status"> - </h5>
 					<% end %>
-					<h4>
+					<div id="mpimage1" class="mpimage">
+						<%= image_tag(@player1.image_name, alt: @player1.image_name, class: "playerpic") %>
+					</div>
+					<h4 id="opponent-name-1">
 						<% if Team.find(@player1.team.send("opp_week_#{current_week}")).send("home_week_#{current_week}") == false %>
 							@
+						<% else %>
+							vs.
 						<% end %>
 						<%= Team.find(@player1.team.send("opp_week_#{current_week}")).name %>
 					</h4>
-					<div id="mpimage1" class="mpimage">
-						<% if true %>
-							<%= image_tag(@player1.image_name, alt: @player1.image_name, class: "playerpic") %>
-						<% end %>
-						<!-- commented out -->
-						<% if false %>
-							<%= link_to image_tag("#{@player1.first_name}_#{@player1.last_name}.jpg", alt: "#{@player1.first_name}_#{@player1.last_name}", class: "playerpic"), updatepts_path, :remote => true %>
-						<% end %>
-						<!--  -->
-					</div>
 				</div>
 				<div id="mp2" class="span5 mp">
-					<h3><%= @player2.full_name %></h3>
+					<div id="player-details-2">
+						<h3><%= @player2.full_name %></h3>
+						<p id="team-name-2" class="team-name">(<%= @player2.team.name %>)</p>
+					</div>
 					<% if @player2.injured == true %>
 						<h5 class="m-injured-status">Currently injured.</h5>
 					<% elsif @player1.injured == true %>
 						<h5 class="m-o-injured-status"> - </h5>
 					<% end %>
-					<h4>
-						<% if Team.find(@player2.team.send("opp_week_#{current_week}")).send("home_week_#{current_week}") == false %>
-							@
-						<% end %>
-						<%= Team.find(@player2.team.send("opp_week_#{current_week}")).name %>
-					</h4>
 					<div id="mpimage2" class="mpimage">
 						<%= image_tag(@player2.image_name, alt: @player2.image_name, class: "playerpic") %>
 					</div>
+					<h4 id="opponent-name-2">
+						<% if Team.find(@player2.team.send("opp_week_#{current_week}")).send("home_week_#{current_week}") == false %>
+							@
+						<% else %>
+							vs.
+						<% end %>
+						<%= Team.find(@player2.team.send("opp_week_#{current_week}")).name %>
+					</h4>
 				</div>
 			</div>
 		</div>

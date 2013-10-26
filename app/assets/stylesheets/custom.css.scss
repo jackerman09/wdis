@@ -307,6 +307,20 @@ aside {
   }
 }
 
+.team-name {
+  margin-top: -10px;
+  font-size: 1.0em;
+}
+
+#player-details-1 {
+
+}
+
+#player-details-2 {
+  position: relative;
+  margin-left: 50px;
+}
+
 * {box-sizing: border-box;}
 
 #mpimage1 {
@@ -337,6 +351,15 @@ aside {
 }
 
 #mpts2 {
+  margin-left: 60px;
+}
+
+#opponent-name-1 {
+
+}
+
+#opponent-name-2 {
+  position: relative;
   margin-left: 50px;
 }
 
@@ -351,7 +374,7 @@ aside {
 }
 
 #home-header {
-  height: 550px;
+  height: 600px;
 }
 
 //Matchup Show Page//

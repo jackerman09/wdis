@@ -49,15 +49,16 @@ class Player < ActiveRecord::Base
 		else
 			total_weighted_score_per_matchup = 0.0
 		end
-		total_weighted_score_per_matchup = total_weighted_score_per_matchup.round(2)
+		total_weighted_score_per_matchup = (total_weighted_score_per_matchup*100).round(2)
 	end
 
 	def num_matchups(current_week)
 		this_week_appearances = 0
-		this_week_appearances += Matchup.where(player_1: self.id).sum("pts_player_1_week_#{current_week}")
-    this_week_appearances += Matchup.where(player_1: self.id).sum("pts_player_2_week_#{current_week}")
-    this_week_appearances += Matchup.where(player_2: self.id).sum("pts_player_1_week_#{current_week}")
-    this_week_appearances += Matchup.where(player_2: self.id).sum("pts_player_2_week_#{current_week}")
+		# this_week_appearances += Matchup.where(player_1: self.id).sum("pts_player_1_week_#{current_week}")
+  #   this_week_appearances += Matchup.where(player_1: self.id).sum("pts_player_2_week_#{current_week}")
+  #   this_week_appearances += Matchup.where(player_2: self.id).sum("pts_player_1_week_#{current_week}")
+  #   this_week_appearances += Matchup.where(player_2: self.id).sum("pts_player_2_week_#{current_week}")
+  	this_week_appearances =	Matchup.where('player_1 = :id or player_2 = :id', :id => self.id).sum("pts_player_1_week_#{current_week} + pts_player_2_week_#{current_week}").to_i
 	end
 	private
 		def set_pts_to_0

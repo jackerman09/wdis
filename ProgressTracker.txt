@@ -1,7 +1,6 @@
 --- PRIORITY ---
 
 - Update authentication so non-admins cannot access matchups/show unless using the find function
-- Update about to discuss player scores - link to it from players/index?
 
 --------------------------------------------------------------------------------
 
@@ -40,6 +39,7 @@
 - Add notice (flash) re IE - DONE
 - Show loading animation while player scores load - DONE
 - Sort players by score, then name, after input by button (in .each) - DONE
+- Update about to discuss player scores - link to it from players/index? - DONE
 
 - Have home page load new matchup after voting based on weighted probability so that closer matchups come up more often - DECIDED NOT TO DO THIS
 

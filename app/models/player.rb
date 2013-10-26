@@ -49,7 +49,7 @@ class Player < ActiveRecord::Base
 		else
 			total_weighted_score_per_matchup = 0.0
 		end
-		total_weighted_score_per_matchup = (total_weighted_score_per_matchup*100).round(2)
+		total_weighted_score_per_matchup = (total_weighted_score_per_matchup*100).round(1)
 	end
 
 	def num_matchups(current_week)

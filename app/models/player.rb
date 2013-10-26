@@ -26,7 +26,8 @@ class Player < ActiveRecord::Base
 
     # The percentage of times that player 1 has won a matchup that he was in
     if this_week_appearances > 0 then
-    	this_week_win_pct = this_week_wins.to_f/this_week_appearances.to_f
+    	# Use max so that even if a player has never won a matchup, their opponent gets a little credit for beating them
+    	this_week_win_pct = [this_week_wins.to_f/this_week_appearances.to_f, 0.1].max
     else
     	this_week_win_pct = 0.5
     end

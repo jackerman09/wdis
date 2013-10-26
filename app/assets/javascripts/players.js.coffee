@@ -2,8 +2,18 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-$('show-scores-link').bind("ajaxSend", function(){
-   $("#loading").show();
- }).bind("ajaxComplete", function(){
-   $("#loading").hide();
- });
+# $('show-scores-link').bind("ajaxSend", function(){
+#    # $("#loading").show();
+#    console.log('before-send ran')
+#  }).bind("ajaxComplete", function(){
+#    # $("#loading").hide();
+#    console.log('complete ran')
+#  });
+
+jQuery ->
+	$('#show-scores-button').bind('ajax:beforeSend', ->
+	  $('#players-table').html('<h2>LOADING...</h2>')
+	)
+	# $('#show-scores-button').bind('ajax:complete', ->
+	#   console.log 'complete ran'
+	# )

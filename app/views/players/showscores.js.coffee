@@ -1,3 +1,4 @@
+console.log('in showscores.js')
 newtable = 
 	'<thead>' +
 	'<tr>' +

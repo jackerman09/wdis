@@ -1,4 +1,4 @@
-console.log('in updatepts.js')
+# console.log('in updatepts.js')
 
 ######################################################################
 # Functions that will be called below
@@ -27,10 +27,10 @@ updateCurrentMatchupVote = ->
 updateCurrentCredits = ->
 	if '<%= @user %>'
 		# if the user is signed in
-		console.log('update user credits in updatepts.js')
+		# console.log('update user credits in updatepts.js')
 		$('#credit-counter-value').text('<% if @user %><%= @user.num_credits %><% end %>')
 	else
-		console.log('update cookie credits in updatepts.js')
+		# console.log('update cookie credits in updatepts.js')
 		$('#credit-counter-value').text(getNumCookieCredits())
 
 ######################################################################
@@ -45,7 +45,7 @@ updateCurrentCredits()
 # Call getRandomMatchup to put a new matchup on the home page
 delay 1500, ->
 	$('#matchupcontainer').fadeOut()
-	console.log('about to make ajax call to getRandomMatchup')
+	# console.log('about to make ajax call to getRandomMatchup')
 	$.ajax({ 
 	  url: '/getRandomMatchup'
 	  type: 'get'

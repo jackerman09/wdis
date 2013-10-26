@@ -4,9 +4,19 @@
 <div class="row">
 	<%= will_paginate %>
 
-	<ul class="users">
-	  <%= render @matchups %>
-	</ul>
+	<table id="players-table" class="table">
+		<thead>
+			<tr>
+				<th>Player 1</th>
+				<th>Player 2</th>
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+	  	<%= render @matchups %>
+	  </tbody>
+	</table>
 
 	<%= will_paginate %>
 </div>

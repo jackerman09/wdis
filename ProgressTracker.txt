@@ -1,6 +1,7 @@
 --- PRIORITY ---
 
 - Update authentication so non-admins cannot access matchups/show unless using the find function
+- Stephen Jackson picture is of him on the Rams, not the Falcons
 
 --------------------------------------------------------------------------------
 

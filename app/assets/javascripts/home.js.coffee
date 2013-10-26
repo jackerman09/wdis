@@ -28,7 +28,8 @@ jQuery ->
 		e.preventDefault()
 		
 		# get matchup id from DOM to provide to controller via my_data
-		matchupid = $('#matchupID').data('matchupid')
+		matchupid = $('#matchupID').attr('data-matchupid')
+		console.log("matchupID: #{matchupid}")
 
 		# determine which picture was clicked and tell the controller which player was voted for
 		if e.currentTarget.id == 'mp1'
@@ -63,7 +64,7 @@ jQuery ->
 	# Get the number of credits from user if signed in, if not, from cookies
 	getNumCredits = ->
 		unless $('#account-link').text() != ''
-			console.log('getting cookie credits')
+			# console.log('getting cookie credits')
 			getNumCookieCredits()
 
 ######################################################################

@@ -1,8 +1,11 @@
-console.log('in getRandomMatchup')
+# console.log('in getRandomMatchup')
 
 updateMatchupData = ->
 	# hide the votes div
 	$('#num-votes-row').hide()
+
+	##### Update MatchupID #####
+	$('#matchupID').attr('data-matchupid', '<%= @matchup.id %>')
 
 	##### Update player 1 info #####
 	$('#mp1 h3').html('<%= @player1.full_name %>')

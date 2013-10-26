@@ -1,10 +1,9 @@
-<li>
-	<% @player1 = Player.find(matchup.player_1) %>
-	<% @player2 = Player.find(matchup.player_2) %>
-  <%= link_to "#{@player1.first_name} #{@player1.last_name} vs. #{@player2.first_name} #{@player2.last_name}", matchup %>
+<tr>
+  <td><%= link_to "#{Player.find(matchup.player_1).full_name}", matchup %> (<%= matchup.send("pts_player_1_week_#{current_week}") %>)</td>
+  <td><%= link_to Player.find(matchup.player_2).full_name, matchup %> (<%= matchup.send("pts_player_1_week_#{current_week}") %>)</td>
   <% if current_user && current_user.admin? %>
-    // <%= link_to "edit", edit_matchup_path(matchup) %>
-    // <%= link_to "delete", matchup, method: :delete,
-                                  data: { confirm: "You sure?" } %>
+    <td><%= link_to "edit", edit_matchup_path(matchup) %></td>
+    <td><%= link_to "delete", matchup, method: :delete,
+                                  data: { confirm: "You sure?" } %></td>
   <% end %>
-</li>
+</tr>

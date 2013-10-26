@@ -62,15 +62,21 @@ before_action :admin_user,        only: [:new, :create, :edit, :update, :destroy
   def addmatchups
     players = Player.all
     player1 = Player.find(params[:id])
+    logger.debug("p1: #{player1.full_name}")
     matchups = []
     players.each do |player2|
-      if player1.id != player2.id
-        matchup = { player_1: player1.id, player_2: player2.id }
-        matchups.push matchup
+      exists = Matchup.find_by(player_1: player1.id, player_2: player2.id) || Matchup.find_by(player_1: player2.id, player_2: player1.id)
+      if exists.nil?
+        if player1.id != player2.id
+          matchup = { player_1: player1.id, player_2: player2.id }
+          matchups.push matchup
+        end
       end
     end
 
     Matchup.create(matchups)
+
+    redirect_to matchups_path
   end
 
   private

@@ -8,6 +8,7 @@ class StaticPagesController < ApplicationController
       @player1 = Player.find(@matchup.player_1)
       @player2 = Player.find(@matchup.player_2)
       @user = view_context.current_user
+      flash.now[:notice] = "Older versions of Internet Explorer are not currently supported. If you are using one and things don't seem to working, consider upgrading."
     end
   end
   

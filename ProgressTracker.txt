@@ -1,7 +1,9 @@
 --- PRIORITY ---
 
 - Update authentication so non-admins cannot access matchups/show unless using the find function
-- Work out weekly and total scoring calculations
+- Sort players by score, then name, after input by button (in .each)
+- Show loading animation while player scores load
+- Update about to discuss player scores - link to it from players/index?
 
 --------------------------------------------------------------------------------
 
@@ -36,6 +38,8 @@
 - Add button to generate matchups (that don't already exist) for given player - DONE
 - Sort players/index by this week's score - DONE
 - Add 'injured' field to player to remove them from matchup selection rotation - DONE
+- Work out weekly and total scoring calculations - DONE
+- Add notice (flash) re IE - DONE
 
 - Have home page load new matchup after voting based on weighted probability so that closer matchups come up more often - DECIDED NOT TO DO THIS
 

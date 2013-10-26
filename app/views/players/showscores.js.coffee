@@ -1,5 +1,4 @@
-console.log('showing scores')
-newtbody = 
+newtable = 
 	'<thead>' +
 	'<tr>' +
 	'<th>Player</th>' +
@@ -13,4 +12,4 @@ newtbody =
 	'</tr>'+
 	'<% end %>'
 $('#players-table').html('')
-$('#players-table').html(newtbody)
+$('#players-table').html(newtable)

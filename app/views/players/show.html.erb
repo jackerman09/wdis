@@ -14,7 +14,7 @@
 		<% if current_user && current_user.admin? %>
 			<%= link_to 'Edit This Player', edit_player_path(@player) %>
 			</br>
-			<%= link_to 'Add Matchups For Player', addmatchups_path %>
+			<%= link_to 'Add Matchups For Player', addmatchups_path(player1: @player) %>
 		<% end %>
 	</div>
 	<!-- <p id="player-show-total-points">Total Points: <%= @player.pts_week_1 %></p> -->

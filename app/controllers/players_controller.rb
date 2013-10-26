@@ -61,7 +61,7 @@ before_action :admin_user,        only: [:new, :create, :edit, :update, :destroy
 
   def addmatchups
     players = Player.all
-    player1 = Player.find(params[:id])
+    player1 = Player.find(params[:player1])
     logger.debug("p1: #{player1.full_name}")
     matchups = []
     players.each do |player2|

@@ -16,7 +16,7 @@ SampleApp::Application.routes.draw do
   match '/updatepts',         to: 'static_pages#updatepts',         via: 'get'
   match '/findMatchup',       to: 'static_pages#findMatchup',       via: 'get'
   match '/getRandomMatchup',  to: 'static_pages#getRandomMatchup',  via: 'get'
-  match '/addmatchups',       to: 'players_controller#addmatcups',  via: 'get'
+  match '/addmatchups',       to: 'players#addmatchups',  via: 'get'
 
   root :to => 'static_pages#home'
 end

@@ -45,6 +45,7 @@ updateCurrentCredits()
 # Call getRandomMatchup to put a new matchup on the home page
 delay 1500, ->
 	$('#matchupcontainer').fadeOut()
+	$('div.container div.alert').slideUp(1000)
 	# console.log('about to make ajax call to getRandomMatchup')
 	$.ajax({ 
 	  url: '/getRandomMatchup'

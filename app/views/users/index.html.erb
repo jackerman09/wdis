@@ -3,8 +3,21 @@
 
 <%= will_paginate %>
 
-<ul class="users">
-  <%= render @users %>
+<div class="row">
+	<table id="users-table" class="table">
+		<thead>
+			<tr>
+				<th></th>
+				<th>User</th>
+				<th>Email</th>
+				<th>Credits</th>
+				<th>Delete</th>
+			</tr>
+		</thead>
+  	<tbody id="user-table-body">
+			<%= render @users %>
+		</tbody>
+	</table>
 </ul>
 
 <%= will_paginate %>

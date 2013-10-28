@@ -17,7 +17,7 @@
 
   		<%= will_paginate %>
 
-			<%= render @users %>
+			<%= render @users.sort_by(&:id) %>
 
 			<%= will_paginate %>
 

@@ -2,7 +2,5 @@
   <%= link_to team.name, team %>
   <% if current_user.admin? %>
     // <%= link_to "edit", edit_team_path(team) %>
-    // <%= link_to "delete", team, method: :delete,
-                                  data: { confirm: "You sure?" } %>
   <% end %>
 </li>

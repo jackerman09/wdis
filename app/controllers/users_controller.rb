@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :signed_in_user,
-                only: [:index, :edit, :update, :destroy]
+  # before_action :signed_in_user,
+  #               only: [:edit, :update, :destroy]
   before_action :correct_user,   only: [:show, :edit, :update]
   before_action :admin_user,     only: [:destroy, :index]
 
@@ -61,6 +61,6 @@ class UsersController < ApplicationController
     end
 
     def admin_user
-      redirect_to(root_url) unless current_user.admin?
+      redirect_to(root_url) unless current_user && current_user.admin?
     end
   end

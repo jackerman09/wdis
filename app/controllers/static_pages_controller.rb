@@ -89,7 +89,7 @@ class StaticPagesController < ApplicationController
       @user.num_credits = current_credits
       @user.save
       error_messages_returned = @user.errors.full_messages.to_sentence
-      if error_messages_returned = "Password is too short (minimum is 6 characters)"
+      if error_messages_returned == "Password is too short (minimum is 6 characters)"
         @user.save(validate: false)
       end
       user_credits = current_credits
@@ -130,7 +130,7 @@ class StaticPagesController < ApplicationController
         @user.num_credits = current_credits
         @user.save
         error_messages_returned = @user.errors.full_messages.to_sentence
-        if error_messages_returned = "Password is too short (minimum is 6 characters)"
+        if error_messages_returned == "Password is too short (minimum is 6 characters)"
           @user.save(validate: false)
         end
       else
@@ -186,7 +186,7 @@ class StaticPagesController < ApplicationController
             @user.num_credits = current_credits
             @user.save
             error_messages_returned = @user.errors.full_messages.to_sentence
-            if error_messages_returned = "Password is too short (minimum is 6 characters)"
+            if error_messages_returned == "Password is too short (minimum is 6 characters)"
               @user.save(validate: false)
             end
           end

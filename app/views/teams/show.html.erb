@@ -2,6 +2,10 @@
 <h1> <%= @team.location %> <%= @team.name %></h1>
 
 <div class="row">
+	<%= link_to 'Edit this Team', edit_team_path(@team) %>
+</div>
+</br>
+<div class="row">
 	<ul class="users">
 		<% (1..17).each do |wk| %>
 			<li>
@@ -17,6 +21,10 @@
 	</ul>
 </div>
 </br>
+</br>
+</br>
+</br>
 <div class="row">
-	<%= link_to 'Edit this Team', edit_team_path(@team) %>
+	<td><%= link_to "Delete This Team", @team, method: :delete,
+                                  data: { confirm: "You sure?" } %></td>
 </div>

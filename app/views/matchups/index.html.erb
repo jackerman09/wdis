@@ -1,6 +1,8 @@
 <% provide(:title, 'All Matchups') %>
-<h1>All Matchups</h1>
-
+<div id="matchup-header">
+	<h1>All Matchups</h1>
+	<h4>Total Votes: <%= @this_weeks_votes %></h4>
+</div>
 <div class="row">
 	<%= will_paginate %>
 

@@ -5,6 +5,14 @@ class MatchupsController < ApplicationController
   def index
     @matchups = Matchup.paginate(page: params[:page])
     @user = view_context.current_user
+    current_week = view_context.current_week
+
+    total_votes = 0
+    Matchup.all.each do |m|
+      total_votes += m.send("pts_player_1_week_#{current_week}")
+      total_votes += m.send("pts_player_2_week_#{current_week}")
+    end
+    @this_weeks_votes = total_votes
   end
 
   def show
